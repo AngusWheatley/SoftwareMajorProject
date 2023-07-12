@@ -49,79 +49,88 @@ namespace SoftwareMajorProject
 
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
-
             userName = txtUserName.Text;
             userPassword = txtUserPassword.Text;
             userEmail = txtUserEmail.Text;
 
-            trimmedUserName = String.Concat(userName.Where(c => !Char.IsWhiteSpace(c)));
-            trimmedUserPassword = String.Concat(userPassword.Where(c => !Char.IsWhiteSpace(c)));
-            trimmedUserEmail = String.Concat(userEmail.Where(c => !Char.IsWhiteSpace(c)));
-
-
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-
-            //Check if user exists
-            SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword;");
-
-            cmd.Parameters.AddWithValue("@userName", trimmedUserName);
-            cmd.Parameters.AddWithValue("@userPassword", trimmedUserPassword);
-            cmd.Parameters.AddWithValue("@userEmail", trimmedUserEmail);
-            cmd.Connection = sqlConnection;
-            sqlConnection.Open();
-
-            DataSet userInfoDataSet = new DataSet();
-            SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
-
-            dataAdapter.Fill(userInfoDataSet);
-            sqlConnection.Close();
-
-            userExists = ((userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0));
-            //---------------------------------------------
-            MessageBox.Show("User exists= " + Convert.ToString(userExists));
-
-
-
-            if (userExists == false)
+            if (userName != null && userPassword != null && userEmail != null) 
             {
-                //Creats and sends verification code to user
-                Random randomCode = new Random();
-                verificationCode = randomCode.Next(100000, 1000000);
+                MessageBox.Show("True that");
 
-                MailMessage mailMessage = new MailMessage();
-                mailMessage.From = new MailAddress("noterservices@gmail.com");
-                mailMessage.To.Add(trimmedUserEmail);
-                mailMessage.Subject = "New account creation";
-                mailMessage.Body = "Your account verification code is " + verificationCode + ". If you did not request for this code, please ignore this message.";
+                
 
-                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
-                smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
-                smtpClient.EnableSsl = true;
+                trimmedUserName = String.Concat(userName.Where(c => !Char.IsWhiteSpace(c)));
+                trimmedUserPassword = String.Concat(userPassword.Where(c => !Char.IsWhiteSpace(c)));
+                trimmedUserEmail = String.Concat(userEmail.Where(c => !Char.IsWhiteSpace(c)));
 
-                try
-                {
-                    smtpClient.Send(mailMessage);
-                    MessageBox.Show("email sent");
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed to send. Error: " + ex.Message);
-                }
+                SQLiteConnection sqlConnection = new SQLiteConnection();
+                sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+
+                //Check if user exists
+                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword;");
+
+                cmd.Parameters.AddWithValue("@userName", trimmedUserName);
+                cmd.Parameters.AddWithValue("@userPassword", trimmedUserPassword);
+                cmd.Parameters.AddWithValue("@userEmail", trimmedUserEmail);
+                cmd.Connection = sqlConnection;
+                sqlConnection.Open();
+
+                DataSet userInfoDataSet = new DataSet();
+                SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
+
+                dataAdapter.Fill(userInfoDataSet);
+                sqlConnection.Close();
+
+                userExists = ((userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0));
                 //---------------------------------------------
+                MessageBox.Show("User exists= " + Convert.ToString(userExists));
 
 
-                VerificationCodeForm verificationCodeForm = new VerificationCodeForm();
-                this.Hide();
-                verificationCodeForm.Show();
+
+                if (userExists == false)
+                {
+                    //Creats and sends verification code to user
+                    Random randomCode = new Random();
+                    verificationCode = randomCode.Next(100000, 1000000);
+
+                    MailMessage mailMessage = new MailMessage();
+                    mailMessage.From = new MailAddress("noterservices@gmail.com");
+                    mailMessage.To.Add(trimmedUserEmail);
+                    mailMessage.Subject = "New account creation";
+                    mailMessage.Body = "Your account verification code is " + verificationCode + ". If you did not request for this code, please ignore this message.";
+
+                    SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                    smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
+                    smtpClient.EnableSsl = true;
+
+                    try
+                    {
+                        smtpClient.Send(mailMessage);
+                        MessageBox.Show("email sent");
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to send. Error: " + ex.Message);
+                    }
+                    //---------------------------------------------
+
+
+                    VerificationCodeForm verificationCodeForm = new VerificationCodeForm();
+                    this.Hide();
+                    verificationCodeForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("User already exists. Try another name.");
+                }
             }
             else
             {
-                MessageBox.Show("User already exists. Try another name.");
+                MessageBox.Show("Nothing entered");
             }
-
 
 
 
@@ -277,6 +286,30 @@ namespace SoftwareMajorProject
 
 
 
+        }
+
+        private void txtUserName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnSignUp_Click(sender, e);
+            }
+        }
+
+        private void txtUserPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnSignUp_Click(sender, e);
+            }
+        }
+
+        private void txtUserEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnSignUp_Click(sender, e);
+            }
         }
     }
 

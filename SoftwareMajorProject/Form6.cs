@@ -138,5 +138,13 @@ namespace SoftwareMajorProject
             this.Hide();
             newAccountPage.Show();
         }
+
+        private void txtCodeEntered_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnSubmitCode_Click(sender, e);
+            }
+        }
     }
 }

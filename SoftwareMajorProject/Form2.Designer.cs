@@ -63,6 +63,7 @@
             this.txtUserPassword.PasswordChar = '*';
             this.txtUserPassword.Size = new System.Drawing.Size(560, 80);
             this.txtUserPassword.TabIndex = 8;
+            this.txtUserPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserPassword_KeyDown);
             // 
             // lblUsername
             // 
@@ -83,6 +84,7 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(560, 80);
             this.txtUserName.TabIndex = 6;
+            this.txtUserName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserName_KeyDown);
             // 
             // picBackPlate
             // 
@@ -112,6 +114,7 @@
             this.txtUserEmail.Name = "txtUserEmail";
             this.txtUserEmail.Size = new System.Drawing.Size(560, 80);
             this.txtUserEmail.TabIndex = 10;
+            this.txtUserEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUserEmail_KeyDown);
             // 
             // btnSignUp
             // 

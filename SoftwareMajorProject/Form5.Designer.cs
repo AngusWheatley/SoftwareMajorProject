@@ -31,14 +31,14 @@
             this.picBackPlate = new System.Windows.Forms.PictureBox();
             this.btnHome = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtDiaryEntry = new System.Windows.Forms.TextBox();
             this.btnDeleteNotification = new System.Windows.Forms.Button();
-            this.btnSaveNotification = new System.Windows.Forms.Button();
+            this.BtnSaveDiaryEntry = new System.Windows.Forms.Button();
             this.cmbYearPicker = new System.Windows.Forms.ComboBox();
             this.cmbMonthPicker = new System.Windows.Forms.ComboBox();
             this.cmbDatePicker = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.TxtDiaryTitle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
@@ -75,13 +75,13 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Todays Entry:";
             // 
-            // textBox1
+            // TxtDiaryEntry
             // 
-            this.textBox1.Location = new System.Drawing.Point(132, 274);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(553, 512);
-            this.textBox1.TabIndex = 27;
+            this.TxtDiaryEntry.Location = new System.Drawing.Point(132, 274);
+            this.TxtDiaryEntry.Multiline = true;
+            this.TxtDiaryEntry.Name = "TxtDiaryEntry";
+            this.TxtDiaryEntry.Size = new System.Drawing.Size(553, 512);
+            this.TxtDiaryEntry.TabIndex = 27;
             // 
             // btnDeleteNotification
             // 
@@ -93,15 +93,16 @@
             this.btnDeleteNotification.Text = "Delete";
             this.btnDeleteNotification.UseVisualStyleBackColor = true;
             // 
-            // btnSaveNotification
+            // BtnSaveDiaryEntry
             // 
-            this.btnSaveNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveNotification.Location = new System.Drawing.Point(728, 224);
-            this.btnSaveNotification.Name = "btnSaveNotification";
-            this.btnSaveNotification.Size = new System.Drawing.Size(273, 74);
-            this.btnSaveNotification.TabIndex = 32;
-            this.btnSaveNotification.Text = "Save";
-            this.btnSaveNotification.UseVisualStyleBackColor = true;
+            this.BtnSaveDiaryEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSaveDiaryEntry.Location = new System.Drawing.Point(728, 224);
+            this.BtnSaveDiaryEntry.Name = "BtnSaveDiaryEntry";
+            this.BtnSaveDiaryEntry.Size = new System.Drawing.Size(273, 74);
+            this.BtnSaveDiaryEntry.TabIndex = 32;
+            this.BtnSaveDiaryEntry.Text = "Save";
+            this.BtnSaveDiaryEntry.UseVisualStyleBackColor = true;
+            this.BtnSaveDiaryEntry.Click += new System.EventHandler(this.BtnSaveDiaryEntry_Click);
             // 
             // cmbYearPicker
             // 
@@ -292,13 +293,13 @@
             this.label5.TabIndex = 28;
             this.label5.Text = "Date of Entry:";
             // 
-            // textBox2
+            // TxtDiaryTitle
             // 
-            this.textBox2.Location = new System.Drawing.Point(132, 174);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(553, 41);
-            this.textBox2.TabIndex = 35;
+            this.TxtDiaryTitle.Location = new System.Drawing.Point(132, 174);
+            this.TxtDiaryTitle.Multiline = true;
+            this.TxtDiaryTitle.Name = "TxtDiaryTitle";
+            this.TxtDiaryTitle.Size = new System.Drawing.Size(553, 41);
+            this.TxtDiaryTitle.TabIndex = 35;
             // 
             // label2
             // 
@@ -314,7 +315,7 @@
             // txtUserName
             // 
             this.txtUserName.Location = new System.Drawing.Point(203, 54);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(115, 20);
             this.txtUserName.TabIndex = 36;
@@ -326,15 +327,15 @@
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 813);
             this.Controls.Add(this.txtUserName);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.TxtDiaryTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDeleteNotification);
-            this.Controls.Add(this.btnSaveNotification);
+            this.Controls.Add(this.BtnSaveDiaryEntry);
             this.Controls.Add(this.cmbYearPicker);
             this.Controls.Add(this.cmbMonthPicker);
             this.Controls.Add(this.cmbDatePicker);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtDiaryEntry);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.picBackPlate);
@@ -357,14 +358,14 @@
         private System.Windows.Forms.PictureBox picBackPlate;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtDiaryEntry;
         private System.Windows.Forms.Button btnDeleteNotification;
-        private System.Windows.Forms.Button btnSaveNotification;
+        private System.Windows.Forms.Button BtnSaveDiaryEntry;
         private System.Windows.Forms.ComboBox cmbYearPicker;
         private System.Windows.Forms.ComboBox cmbMonthPicker;
         private System.Windows.Forms.ComboBox cmbDatePicker;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox TxtDiaryTitle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUserName;
     }

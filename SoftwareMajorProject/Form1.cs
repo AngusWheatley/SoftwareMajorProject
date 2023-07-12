@@ -18,6 +18,7 @@ namespace SoftwareMajorProject
 
         public static string userName;
         public static string userPassword;
+        public static string trimmedUserName;
 
         public LoginPage()
         {

@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkNewAccount = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,11 +139,18 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Noter";
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(1057, 271);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 9;
+            // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkNewAccount);
             this.Controls.Add(this.label1);
@@ -177,6 +185,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkNewAccount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
     }
 }
 
