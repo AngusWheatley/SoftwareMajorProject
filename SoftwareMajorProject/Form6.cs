@@ -144,6 +144,7 @@ namespace SoftwareMajorProject
             if (e.KeyCode == Keys.Enter)
             {
                 BtnSubmitCode_Click(sender, e);
+                txtCodeEntered.Text = txtCodeEntered.Text.Replace(System.Environment.NewLine, "");
             }
         }
     }

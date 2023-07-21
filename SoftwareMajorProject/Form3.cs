@@ -25,7 +25,7 @@ namespace SoftwareMajorProject
 
             txtName.Text = LoginPage.userName;
             txtPassword.Text = LoginPage.userPassword;
-
+            TxtUserEmail.Text = LoginPage.userEmail;
 
 
 

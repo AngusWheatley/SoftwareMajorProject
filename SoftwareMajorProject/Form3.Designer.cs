@@ -34,6 +34,7 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.TxtUserEmail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,12 +97,20 @@
             this.txtPassword.Size = new System.Drawing.Size(142, 20);
             this.txtPassword.TabIndex = 28;
             // 
+            // TxtUserEmail
+            // 
+            this.TxtUserEmail.Location = new System.Drawing.Point(61, 163);
+            this.TxtUserEmail.Name = "TxtUserEmail";
+            this.TxtUserEmail.Size = new System.Drawing.Size(142, 20);
+            this.TxtUserEmail.TabIndex = 29;
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.TxtUserEmail);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnHome);
@@ -130,5 +139,6 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox TxtUserEmail;
     }
 }

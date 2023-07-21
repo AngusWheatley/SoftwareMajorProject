@@ -53,7 +53,12 @@ namespace SoftwareMajorProject
             userPassword = txtUserPassword.Text;
             userEmail = txtUserEmail.Text;
 
-            if (userName != null && userPassword != null && userEmail != null) 
+
+
+            bool isLetter = !string.IsNullOrEmpty(userName) && Char.IsLetter(userName[0]);
+
+
+            if (userName != "" && userPassword != "" && userEmail != "" && isLetter == true) 
             {
                 MessageBox.Show("True that");
 
@@ -126,6 +131,10 @@ namespace SoftwareMajorProject
                 {
                     MessageBox.Show("User already exists. Try another name.");
                 }
+            }
+            else if (isLetter == false)
+            {
+                MessageBox.Show("Username is invalid and must start with a letter.");
             }
             else
             {
@@ -293,6 +302,7 @@ namespace SoftwareMajorProject
             if (e.KeyCode == Keys.Enter)
             {
                 BtnSignUp_Click(sender, e);
+                txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
             }
         }
 
@@ -301,6 +311,7 @@ namespace SoftwareMajorProject
             if (e.KeyCode == Keys.Enter)
             {
                 BtnSignUp_Click(sender, e);
+                txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
         }
 
@@ -309,8 +320,10 @@ namespace SoftwareMajorProject
             if (e.KeyCode == Keys.Enter)
             {
                 BtnSignUp_Click(sender, e);
+                txtUserEmail.Text = txtUserEmail.Text.Replace(System.Environment.NewLine, "");
             }
         }
+
     }
 
 }

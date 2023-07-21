@@ -19,6 +19,7 @@ namespace SoftwareMajorProject
         public static string userName;
         public static string userPassword;
         public static string trimmedUserName;
+        public static string userEmail;
 
         public LoginPage()
         {
@@ -157,16 +158,39 @@ namespace SoftwareMajorProject
                 DataSet userInfoDataSet = new DataSet();
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
 
+
+
+                SQLiteCommand getEmailCommand = new SQLiteCommand("SELECT userEmail FROM userInfo where username = @userName or userEmail = @userEmail");
+                userEmail = getEmailCommand.CommandText; 
+
+
+
+
+
+
+
                 dataAdapter.Fill(userInfoDataSet);
                 sqlConnection.Close();
+
+
+
+                
+
+
+
+
+
 
                 bool loginSuccessful = ((userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0));
 
                 if (loginSuccessful)
                 {
+
+
+
                     MessageBox.Show("Successfuly Logged In");
 
-
+                    
 
                     userName = txtUserName.Text;
                     userPassword = txtUserPassword.Text;
@@ -203,6 +227,7 @@ namespace SoftwareMajorProject
             if (e.KeyCode == Keys.Enter)
             {
                 BtnLogin_Click(sender, e);
+                txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
             }
         }
 
@@ -211,6 +236,7 @@ namespace SoftwareMajorProject
             if (e.KeyCode == Keys.Enter)
             {
                 BtnLogin_Click(sender, e);
+                txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
         }
     }
