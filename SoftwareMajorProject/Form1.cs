@@ -155,36 +155,41 @@ namespace SoftwareMajorProject
                 cmd.Connection = sqlConnection;
                 sqlConnection.Open();
 
-                DataSet userInfoDataSet = new DataSet();
+                DataTable userInfoDataTable = new DataTable();
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
 
 
 
+                /* Trying to get user email to take to other forms
                 SQLiteCommand getEmailCommand = new SQLiteCommand("SELECT userEmail FROM userInfo where username = @userName or userEmail = @userEmail");
                 userEmail = getEmailCommand.CommandText; 
+                */
 
-
-
-
-
-
-
-                dataAdapter.Fill(userInfoDataSet);
+                dataAdapter.Fill(userInfoDataTable);
                 sqlConnection.Close();
 
 
 
-                
 
-
-
-
-
-
-                bool loginSuccessful = ((userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0));
+                bool loginSuccessful = (userInfoDataTable.Rows.Count > 0);
 
                 if (loginSuccessful)
                 {
+
+                    /* Trying to get user email to take to other forms
+                    DataRow[] userIndex = userInfoDataTable.Select("userName = " + userName + "AND userPassword = " + userPassword);
+                    MessageBox.Show(Convert.ToString(userIndex));
+                    foreach (DataRow row in userIndex)
+                    {
+                        MessageBox.Show(Convert.ToString(row["userEmail"]));
+                    }
+
+                    string userEmail = userInfoDataTable.Rows[].Field<string>("userEmail");
+                    
+                    */
+
+
+
 
 
 

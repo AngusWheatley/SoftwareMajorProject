@@ -34,13 +34,11 @@
             this.TxtDiaryEntry = new System.Windows.Forms.TextBox();
             this.btnDeleteNotification = new System.Windows.Forms.Button();
             this.BtnSaveDiaryEntry = new System.Windows.Forms.Button();
-            this.cmbYearPicker = new System.Windows.Forms.ComboBox();
-            this.cmbMonthPicker = new System.Windows.Forms.ComboBox();
-            this.cmbDatePicker = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.TxtDiaryTitle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CalNotificationDate = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +84,7 @@
             // btnDeleteNotification
             // 
             this.btnDeleteNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeleteNotification.Location = new System.Drawing.Point(1016, 224);
+            this.btnDeleteNotification.Location = new System.Drawing.Point(1016, 354);
             this.btnDeleteNotification.Name = "btnDeleteNotification";
             this.btnDeleteNotification.Size = new System.Drawing.Size(273, 74);
             this.btnDeleteNotification.TabIndex = 33;
@@ -96,202 +94,13 @@
             // BtnSaveDiaryEntry
             // 
             this.BtnSaveDiaryEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSaveDiaryEntry.Location = new System.Drawing.Point(728, 224);
+            this.BtnSaveDiaryEntry.Location = new System.Drawing.Point(728, 354);
             this.BtnSaveDiaryEntry.Name = "BtnSaveDiaryEntry";
             this.BtnSaveDiaryEntry.Size = new System.Drawing.Size(273, 74);
             this.BtnSaveDiaryEntry.TabIndex = 32;
             this.BtnSaveDiaryEntry.Text = "Save";
             this.BtnSaveDiaryEntry.UseVisualStyleBackColor = true;
             this.BtnSaveDiaryEntry.Click += new System.EventHandler(this.BtnSaveDiaryEntry_Click);
-            // 
-            // cmbYearPicker
-            // 
-            this.cmbYearPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbYearPicker.FormattingEnabled = true;
-            this.cmbYearPicker.Items.AddRange(new object[] {
-            "Year: ",
-            "2023",
-            "2024",
-            "2025",
-            "2026",
-            "2027",
-            "2028",
-            "2029",
-            "2030",
-            "2031",
-            "2032",
-            "2033",
-            "2034",
-            "2035",
-            "2036",
-            "2037",
-            "2038",
-            "2039",
-            "2040",
-            "2041",
-            "2042",
-            "2043",
-            "2044",
-            "2045",
-            "2046",
-            "2047",
-            "2048",
-            "2049",
-            "2050",
-            "2051",
-            "2052",
-            "2053",
-            "2054",
-            "2055",
-            "2056",
-            "2057",
-            "2058",
-            "2059",
-            "2060",
-            "2061",
-            "2062",
-            "2063",
-            "2064",
-            "2065",
-            "2066",
-            "2067",
-            "2068",
-            "2069",
-            "2070",
-            "2071",
-            "2072",
-            "2073",
-            "2074",
-            "2075",
-            "2076",
-            "2077",
-            "2078",
-            "2079",
-            "2080",
-            "2081",
-            "2082",
-            "2083",
-            "2084",
-            "2085",
-            "2086",
-            "2087",
-            "2088",
-            "2089",
-            "2090",
-            "2091",
-            "2092",
-            "2093",
-            "2094",
-            "2095",
-            "2096",
-            "2097",
-            "2098",
-            "2099",
-            "2100",
-            "2101",
-            "2102",
-            "2103",
-            "2104",
-            "2105",
-            "2106",
-            "2107",
-            "2108",
-            "2109",
-            "2110",
-            "2111",
-            "2112",
-            "2113",
-            "2114",
-            "2115",
-            "2116",
-            "2117",
-            "2118",
-            "2119",
-            "2120",
-            "2121",
-            "2122",
-            "2123"});
-            this.cmbYearPicker.Location = new System.Drawing.Point(1105, 180);
-            this.cmbYearPicker.Name = "cmbYearPicker";
-            this.cmbYearPicker.Size = new System.Drawing.Size(184, 28);
-            this.cmbYearPicker.TabIndex = 31;
-            // 
-            // cmbMonthPicker
-            // 
-            this.cmbMonthPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbMonthPicker.FormattingEnabled = true;
-            this.cmbMonthPicker.Items.AddRange(new object[] {
-            "Month: ",
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cmbMonthPicker.Location = new System.Drawing.Point(728, 180);
-            this.cmbMonthPicker.Name = "cmbMonthPicker";
-            this.cmbMonthPicker.Size = new System.Drawing.Size(184, 28);
-            this.cmbMonthPicker.TabIndex = 30;
-            // 
-            // cmbDatePicker
-            // 
-            this.cmbDatePicker.Cursor = System.Windows.Forms.Cursors.Default;
-            this.cmbDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbDatePicker.FormattingEnabled = true;
-            this.cmbDatePicker.Items.AddRange(new object[] {
-            "Date: ",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31"});
-            this.cmbDatePicker.Location = new System.Drawing.Point(916, 180);
-            this.cmbDatePicker.Name = "cmbDatePicker";
-            this.cmbDatePicker.Size = new System.Drawing.Size(184, 28);
-            this.cmbDatePicker.TabIndex = 29;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(722, 145);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 26);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Date of Entry:";
             // 
             // TxtDiaryTitle
             // 
@@ -320,21 +129,38 @@
             this.txtUserName.Size = new System.Drawing.Size(115, 20);
             this.txtUserName.TabIndex = 36;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(723, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(139, 26);
+            this.label3.TabIndex = 41;
+            this.label3.Text = "Date of Entry";
+            // 
+            // CalNotificationDate
+            // 
+            this.CalNotificationDate.Location = new System.Drawing.Point(728, 180);
+            this.CalNotificationDate.MaxSelectionCount = 1;
+            this.CalNotificationDate.Name = "CalNotificationDate";
+            this.CalNotificationDate.ShowTodayCircle = false;
+            this.CalNotificationDate.TabIndex = 37;
+            // 
             // DiaryEditorPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 813);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.CalNotificationDate);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.TxtDiaryTitle);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDeleteNotification);
             this.Controls.Add(this.BtnSaveDiaryEntry);
-            this.Controls.Add(this.cmbYearPicker);
-            this.Controls.Add(this.cmbMonthPicker);
-            this.Controls.Add(this.cmbDatePicker);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.TxtDiaryEntry);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnHome);
@@ -361,12 +187,10 @@
         private System.Windows.Forms.TextBox TxtDiaryEntry;
         private System.Windows.Forms.Button btnDeleteNotification;
         private System.Windows.Forms.Button BtnSaveDiaryEntry;
-        private System.Windows.Forms.ComboBox cmbYearPicker;
-        private System.Windows.Forms.ComboBox cmbMonthPicker;
-        private System.Windows.Forms.ComboBox cmbDatePicker;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtDiaryTitle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MonthCalendar CalNotificationDate;
     }
 }
