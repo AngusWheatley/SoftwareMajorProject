@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkNewAccount = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.BtnSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,18 +139,23 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Noter";
             // 
-            // monthCalendar1
+            // BtnSettings
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(1057, 271);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 9;
+            this.BtnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSettings.Location = new System.Drawing.Point(1073, 209);
+            this.BtnSettings.Name = "BtnSettings";
+            this.BtnSettings.Size = new System.Drawing.Size(185, 104);
+            this.BtnSettings.TabIndex = 9;
+            this.BtnSettings.Text = "Settings";
+            this.BtnSettings.UseVisualStyleBackColor = true;
+            this.BtnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
-            this.Controls.Add(this.monthCalendar1);
+            this.Controls.Add(this.BtnSettings);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkNewAccount);
             this.Controls.Add(this.label1);
@@ -185,7 +190,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkNewAccount;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button BtnSettings;
     }
 }
 

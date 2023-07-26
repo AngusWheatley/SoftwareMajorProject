@@ -244,5 +244,12 @@ namespace SoftwareMajorProject
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
         }
+
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            NoterSettings settings = new NoterSettings();
+            this.Hide();
+            settings.Show();
+        }
     }
 }

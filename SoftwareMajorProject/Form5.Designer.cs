@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.CalNotificationDate = new System.Windows.Forms.MonthCalendar();
+            this.CalDiaryEntryDate = new System.Windows.Forms.MonthCalendar();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,13 +140,14 @@
             this.label3.TabIndex = 41;
             this.label3.Text = "Date of Entry";
             // 
-            // CalNotificationDate
+            // CalDiaryEntryDate
             // 
-            this.CalNotificationDate.Location = new System.Drawing.Point(728, 180);
-            this.CalNotificationDate.MaxSelectionCount = 1;
-            this.CalNotificationDate.Name = "CalNotificationDate";
-            this.CalNotificationDate.ShowTodayCircle = false;
-            this.CalNotificationDate.TabIndex = 37;
+            this.CalDiaryEntryDate.Location = new System.Drawing.Point(728, 180);
+            this.CalDiaryEntryDate.MaxSelectionCount = 1;
+            this.CalDiaryEntryDate.Name = "CalDiaryEntryDate";
+            this.CalDiaryEntryDate.ShowTodayCircle = false;
+            this.CalDiaryEntryDate.TabIndex = 37;
+            this.CalDiaryEntryDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalDiaryEntryDate_DateSelected);
             // 
             // DiaryEditorPage
             // 
@@ -155,7 +156,7 @@
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 813);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.CalNotificationDate);
+            this.Controls.Add(this.CalDiaryEntryDate);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.TxtDiaryTitle);
             this.Controls.Add(this.label2);
@@ -191,6 +192,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MonthCalendar CalNotificationDate;
+        private System.Windows.Forms.MonthCalendar CalDiaryEntryDate;
     }
 }

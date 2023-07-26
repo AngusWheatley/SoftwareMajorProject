@@ -12,6 +12,9 @@ namespace SoftwareMajorProject
 {
     public partial class HomePage : Form
     {
+        public static string userName = LoginPage.userName;
+        public static string userPassword = LoginPage.userPassword;
+        public static string userEmail = LoginPage.userEmail;
         public HomePage()
         {
             InitializeComponent();
@@ -23,9 +26,9 @@ namespace SoftwareMajorProject
             this.Height = 860; 
 
 
-            txtName.Text = LoginPage.userName;
-            txtPassword.Text = LoginPage.userPassword;
-            TxtUserEmail.Text = LoginPage.userEmail;
+            txtName.Text = userName;
+            txtPassword.Text = userPassword;
+            TxtUserEmail.Text = userEmail;
 
 
 
