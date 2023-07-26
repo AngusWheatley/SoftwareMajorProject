@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Data.SQLite;
 using System.IO;
 using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using System.Reflection;
 
 namespace SoftwareMajorProject
 {
@@ -61,6 +63,7 @@ namespace SoftwareMajorProject
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
+
 
         }
 
@@ -195,7 +198,7 @@ namespace SoftwareMajorProject
 
                     MessageBox.Show("Successfuly Logged In");
 
-                    
+
 
                     userName = txtUserName.Text;
                     userPassword = txtUserPassword.Text;
@@ -245,11 +248,6 @@ namespace SoftwareMajorProject
             }
         }
 
-        private void BtnSettings_Click(object sender, EventArgs e)
-        {
-            NoterSettings settings = new NoterSettings();
-            this.Hide();
-            settings.Show();
-        }
+        
     }
 }

@@ -33,6 +33,7 @@
             this.lblBackgroundColour = new System.Windows.Forms.Label();
             this.BtnSaveSettings = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,12 +94,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(897, 280);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(100, 20);
+            this.txtUserName.TabIndex = 11;
+            // 
             // NoterSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnSaveSettings);
             this.Controls.Add(this.lblBackgroundColour);
@@ -123,5 +132,6 @@
         private System.Windows.Forms.Label lblBackgroundColour;
         private System.Windows.Forms.Button BtnSaveSettings;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtUserName;
     }
 }
