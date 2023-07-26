@@ -65,7 +65,7 @@ namespace SoftwareMajorProject
                 }
             } //Colour selecter
 
-            foregroundColourSelected = "Red";
+            foregroundColourSelected = "Green";
             fontType = "Times New Roman";
 
 
@@ -74,7 +74,7 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            SQLiteCommand cmd = new SQLiteCommand("UPDATE NoterSettings SET userName=@userName, backgroundColour=@backgroundColour, foregroundColour=@foregroundColour, fontType=@fontType");
+            SQLiteCommand cmd = new SQLiteCommand("UPDATE NoterSettings SET userName=@userName, backgroundColour=@backgroundColour, foregroundColour=@foregroundColour, fontType=@fontType WHERE userName=@userName");
 
             cmd.Parameters.AddWithValue("@userName", userName);
             cmd.Parameters.AddWithValue("@backgroundColour", backgroundColourSelected);

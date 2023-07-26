@@ -32,13 +32,13 @@ namespace SoftwareMajorProject
             TxtUserEmail.Text = userEmail;
 
 
-
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            string cmd = "SELECT * FROM NoterSettings WHERE userName=" + userName;
-            SQLiteDataAdapter userSettingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
+            string commandSelectUserSettings = "SELECT * FROM NoterSettings WHERE userName=" + userName;
             var datatableUserSettings = new DataTable();
+            SQLiteDataAdapter userSettingsDataAdapter = new SQLiteDataAdapter(commandSelectUserSettings, sqlConnection);
+            
 
             sqlConnection.Open();
             userSettingsDataAdapter.Fill(datatableUserSettings);
