@@ -13,11 +13,14 @@ namespace SoftwareMajorProject
 {
     public partial class HomePage : Form
     {
-        public static string userName = LoginPage.userName;
+        string userNameGiven;
         public static string userPassword = LoginPage.userPassword;
         public static string userEmail = LoginPage.userEmail;
-        public HomePage()
+        public static string trimmedUserName = LoginPage.trimmedUserName;
+
+        public HomePage(string userName)
         {
+            userNameGiven = userName;
             InitializeComponent();
         }
 
@@ -27,11 +30,89 @@ namespace SoftwareMajorProject
             this.Height = 860; 
 
 
-            txtName.Text = userName;
+            txtName.Text = userNameGiven;
             txtPassword.Text = userPassword;
             TxtUserEmail.Text = userEmail;
 
 
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string cmd = "SELECT * FROM 'NoterSettings'";
+            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
+
+            var dataGridViewSettings = new DataTable();
+
+            sqlConnection.Open();
+            settingsDataAdapter.Fill(dataGridViewSettings);
+            sqlConnection.Close();
+
+            DgvSettings.DataSource = dataGridViewSettings;
+
+
+            foreach (DataRow row in dataGridViewSettings.Rows)
+            {
+                if (row[0].ToString() == userNameGiven)
+                {
+                    txtReplacedUserName.Text = row[0].ToString();
+                    txtUserBackgroundColour.Text = row[1].ToString();
+                    txtUserForegroundColour.Text = row[2].ToString();
+                    txtUserFont.Text = row[3].ToString();
+                }
+            }
+
+
+
+
+            //txtReplacedUserName.Text = dataGridViewSettings.Rows[0]["userName"].ToString();
+            //txtUserBackgroundColour.Text = dataGridViewSettings.Rows[0]["backgroundColour"].ToString();
+            //txtUserForegroundColour.Text = dataGridViewSettings.Rows[0]["foregroundColour"].ToString();
+            //txtUserFont.Text = dataGridViewSettings.Rows[0]["fontType"].ToString();
+
+
+
+            /*
+            DataRow[] dr = dataGridViewSettings.Select("userName = '" + txtName.Text + "'");
+            if (dr.Length != 0)
+            {
+                DgvSettings.DataSource = dr;
+            }*/
+
+
+
+            /*
+
+
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string commandSelectUserSettings = "SELECT * FROM 'NoterSettings' WHERE 'userName' LIKE'%" + txtName.Text + "%'";
+            
+            SQLiteDataAdapter userSettingsDataAdapter = new SQLiteDataAdapter(commandSelectUserSettings, sqlConnection);
+            
+            var datatableUserSettings = new DataTable();
+
+            sqlConnection.Open();
+            userSettingsDataAdapter.Fill(datatableUserSettings);
+            
+
+
+
+            txtReplacedUserName.Text = datatableUserSettings.Rows[0]["'userName'"].ToString();
+            txtUserBackgroundColour.Text = datatableUserSettings.Rows[0]["backgroundColour"].ToString();
+            txtUserForegroundColour.Text = datatableUserSettings.Rows[0]["foregroundColour"].ToString();
+            txtUserFont.Text = datatableUserSettings.Rows[0]["fontType"].ToString();
+
+            sqlConnection.Close();
+
+            BackColor = Color.FromName(txtUserBackgroundColour.Text);
+
+
+            */
+
+
+            /*
+            {
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
@@ -51,6 +132,7 @@ namespace SoftwareMajorProject
             sqlConnection.Close();
 
             BackColor = Color.FromName(txtUserBackgroundColour.Text);
+            }*/
 
 
 
@@ -91,7 +173,7 @@ namespace SoftwareMajorProject
             }
             else
             {
-                MessageBox.Show("Successfully Remined Logged In");
+                MessageBox.Show("Successfully Remained Logged In");
             }
 
             

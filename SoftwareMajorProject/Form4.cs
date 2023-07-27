@@ -15,7 +15,7 @@ namespace SoftwareMajorProject
     public partial class ReminderEditorPage : Form
     {
         public string notificationDate; 
-        public string userName = LoginPage.userName;
+        //public string userName = LoginPage.userName;
         public ReminderEditorPage()
         {
             InitializeComponent();
@@ -29,9 +29,9 @@ namespace SoftwareMajorProject
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            HomePage HomePage = new HomePage();
-            this.Hide();
-            HomePage.Show();
+            //HomePage HomePage = new HomePage();
+            //this.Hide();
+            //HomePage.Show();
         }
 
         private void BtnSaveNotification_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace SoftwareMajorProject
             sqlCommandNewUser.CommandType = CommandType.Text;
             sqlCommandNewUser.CommandText = "INSERT into Notifications (userName, Title, Description, Location, Time) values (@userName, @Title, @Description, @Location, @Time)";
 
-            sqlCommandNewUser.Parameters.AddWithValue("@userName", userName);
+            //sqlCommandNewUser.Parameters.AddWithValue("@userName", userName);
             sqlCommandNewUser.Parameters.AddWithValue("@Title", notificationTitle);
             sqlCommandNewUser.Parameters.AddWithValue("@Description", notificationDescription);
             sqlCommandNewUser.Parameters.AddWithValue("@Location", notificationLocation);

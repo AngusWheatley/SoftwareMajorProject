@@ -16,7 +16,7 @@ namespace SoftwareMajorProject
     public partial class DiaryEditorPage : Form
     {
         public static string diaryDate;
-        public static string userName = HomePage.userName;
+        //public static string userName = HomePage.userName;
         public DiaryEditorPage()
         {
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace SoftwareMajorProject
 
         private void DiaryEditorPage_Load(object sender, EventArgs e)
         {
-            txtUserName.Text = userName;
+            //txtUserName.Text = userName;
             
 
 
@@ -32,9 +32,9 @@ namespace SoftwareMajorProject
 
         private void BtnHome_Click(object sender, EventArgs e)
         {
-            HomePage HomePage = new HomePage();
+            //HomePage HomePage = new HomePage();
             this.Hide();
-            HomePage.Show();
+            //HomePage.Show();
 
 
         }
@@ -47,7 +47,7 @@ namespace SoftwareMajorProject
 
             if (diaryDate != null && diaryTitle != "" && diaryEntry != "")
             {
-                string userNameDiary = userName + "_Diary";
+                //string userNameDiary = userName + "_Diary";
 
 
                 SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -57,7 +57,7 @@ namespace SoftwareMajorProject
                 SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
                 sqlCommandNewUser.Connection = sqlConnection;
                 sqlCommandNewUser.CommandType = CommandType.Text;
-                sqlCommandNewUser.CommandText = "INSERT into " + userNameDiary + " (date, title, contents) values (@date, @title, @contents)";
+                //sqlCommandNewUser.CommandText = "INSERT into " + userNameDiary + " (date, title, contents) values (@date, @title, @contents)";
 
                 sqlCommandNewUser.Parameters.AddWithValue("@date", diaryDate);
                 sqlCommandNewUser.Parameters.AddWithValue("@title", diaryTitle);

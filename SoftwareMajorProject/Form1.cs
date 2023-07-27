@@ -18,7 +18,7 @@ namespace SoftwareMajorProject
     public partial class LoginPage : Form
     {
 
-        public static string userName;
+        string userName = "";
         public static string userPassword;
         public static string trimmedUserName;
         public static string userEmail;
@@ -28,6 +28,7 @@ namespace SoftwareMajorProject
             InitializeComponent();
 
             {
+                userName = "";
                 /*
                 SQLiteConnection sqlConnection = new SQLiteConnection();
                 sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
@@ -63,12 +64,14 @@ namespace SoftwareMajorProject
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
-
+            userName = "";
 
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            
+
             {
                 /*
                 SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -140,15 +143,17 @@ namespace SoftwareMajorProject
             userName = txtUserName.Text;
             userPassword = txtUserPassword.Text;
 
-            string trimmedUserName = String.Concat(userName.Where(c => !Char.IsWhiteSpace(c)));
+            trimmedUserName = String.Concat(txtUserName.Text.Where(c => !Char.IsWhiteSpace(c)));
             string trimmedUserPassword = String.Concat(userPassword.Where(c => !Char.IsWhiteSpace(c)));
 
+
+            MessageBox.Show(trimmedUserName);
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            if (txtUserName.Text != null && txtUserPassword.Text != null && txtUserName.Text != "" && txtUserPassword.Text != "")
+            if (txtUserName.Text != "" && txtUserPassword.Text != "" && txtUserName.Text != "" && txtUserPassword.Text != "")
             {
                 SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword;");
 
@@ -203,10 +208,9 @@ namespace SoftwareMajorProject
                     userName = txtUserName.Text;
                     userPassword = txtUserPassword.Text;
 
+                    
 
-
-
-                    HomePage HomePage = new HomePage();
+                    HomePage HomePage = new HomePage(userName);
                     this.Hide();
                     HomePage.Show();
                 }

@@ -40,7 +40,9 @@
             this.txtUserForegroundColour = new System.Windows.Forms.TextBox();
             this.txtUserFont = new System.Windows.Forms.TextBox();
             this.txtReplacedUserName = new System.Windows.Forms.TextBox();
+            this.DgvSettings = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // picBackPlate
@@ -147,12 +149,21 @@
             this.txtReplacedUserName.Size = new System.Drawing.Size(110, 20);
             this.txtReplacedUserName.TabIndex = 34;
             // 
+            // DgvSettings
+            // 
+            this.DgvSettings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvSettings.Location = new System.Drawing.Point(414, 63);
+            this.DgvSettings.Name = "DgvSettings";
+            this.DgvSettings.Size = new System.Drawing.Size(588, 279);
+            this.DgvSettings.TabIndex = 35;
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.DgvSettings);
             this.Controls.Add(this.txtReplacedUserName);
             this.Controls.Add(this.txtUserFont);
             this.Controls.Add(this.txtUserForegroundColour);
@@ -174,6 +185,7 @@
             this.Text = "Noter - Home Page";
             this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +205,6 @@
         private System.Windows.Forms.TextBox txtUserForegroundColour;
         private System.Windows.Forms.TextBox txtUserFont;
         private System.Windows.Forms.TextBox txtReplacedUserName;
+        private System.Windows.Forms.DataGridView DgvSettings;
     }
 }

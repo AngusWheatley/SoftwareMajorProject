@@ -28,7 +28,7 @@ namespace SoftwareMajorProject
         private void Settings_Load(object sender, EventArgs e)
         {
 
-            userName = HomePage.userName;
+            //userName = HomePage.userName;
             txtUserName.Text = userName;
 
 
@@ -113,9 +113,9 @@ namespace SoftwareMajorProject
 
         private void button1_Click(object sender, EventArgs e)
         {
-            HomePage HomePage = new HomePage();
+            //HomePage HomePage = new HomePage();
             this.Hide();
-            HomePage.Show();
+            //HomePage.Show();
         }
     }
 }
