@@ -40,6 +40,7 @@
             // picBackPlate
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.picBackPlate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picBackPlate.Location = new System.Drawing.Point(260, 12);
             this.picBackPlate.Name = "picBackPlate";
             this.picBackPlate.Size = new System.Drawing.Size(920, 800);

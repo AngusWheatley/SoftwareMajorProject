@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SoftwareMajorProject
 {
@@ -58,6 +59,9 @@ namespace SoftwareMajorProject
                     txtUserBackgroundColour.Text = row[1].ToString();
                     txtUserForegroundColour.Text = row[2].ToString();
                     txtUserFont.Text = row[3].ToString();
+
+                    BackColor = Color.FromName(row[1].ToString());
+                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
                 }
             }
 
@@ -181,7 +185,7 @@ namespace SoftwareMajorProject
 
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            NoterSettings settings = new NoterSettings();
+            NoterSettings settings = new NoterSettings(userNameGiven);
             this.Hide();
             settings.Show();
             
