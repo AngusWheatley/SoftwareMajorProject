@@ -69,6 +69,7 @@ namespace SoftwareMajorProject
                     //Text Size
                     //var sizeConverter = new SizeConverter();
                     //lblBackgroundColour.Font = sizeConverter.ConvertFromInvariantString.row[4].ToString();
+                    
                 }
             }
 
