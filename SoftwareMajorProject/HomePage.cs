@@ -14,14 +14,14 @@ namespace SoftwareMajorProject
 {
     public partial class HomePage : Form
     {
-        string userNameGiven;
+        string userNameLoggedIn;
         public static string userPassword = LoginPage.userPassword;
         public static string userEmail = LoginPage.userEmail;
         public static string trimmedUserName = LoginPage.trimmedUserName;
 
         public HomePage(string userName)
         {
-            userNameGiven = userName;
+            userNameLoggedIn = userName;
             InitializeComponent();
         }
 
@@ -31,7 +31,7 @@ namespace SoftwareMajorProject
             this.Height = 860; 
 
 
-            txtName.Text = userNameGiven;
+            txtName.Text = userNameLoggedIn;
             txtPassword.Text = userPassword;
             TxtUserEmail.Text = userEmail;
 
@@ -53,15 +53,36 @@ namespace SoftwareMajorProject
 
             foreach (DataRow row in dataGridViewSettings.Rows)
             {
-                if (row[0].ToString() == userNameGiven)
+                if (row[0].ToString() == userNameLoggedIn)
                 {
                     txtReplacedUserName.Text = row[0].ToString();
                     txtUserBackgroundColour.Text = row[1].ToString();
                     txtUserForegroundColour.Text = row[2].ToString();
                     txtUserFont.Text = row[3].ToString();
 
+
+
+
+
                     BackColor = Color.FromName(row[1].ToString());
+
+
+
+
+
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+
+
+                    //Font type
+                    var fontConverter = new FontConverter();
+
+                    btnNotifications.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    btnDiary.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    BtnLogOut.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    BtnSettings.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+
+
+
                 }
             }
 
@@ -147,7 +168,7 @@ namespace SoftwareMajorProject
         private void BtnReminder_Click(object sender, EventArgs e)
         {
 
-            ReminderEditorPage reminderEditorPage = new ReminderEditorPage();
+            ReminderEditorPage reminderEditorPage = new ReminderEditorPage(userNameLoggedIn);
             this.Hide();
             reminderEditorPage.Show();
         }
@@ -155,12 +176,12 @@ namespace SoftwareMajorProject
         private void btnDiary_Click(object sender, EventArgs e)
         {
 
-            DiaryEditorPage DiaryEditorPage = new DiaryEditorPage();
+            DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
             this.Hide();
             DiaryEditorPage.Show();
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void BtnLogOut_Click(object sender, EventArgs e)
         {
             string logOutMessage = "Are You Sure You Want To Log Out?";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -185,7 +206,7 @@ namespace SoftwareMajorProject
 
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            NoterSettings settings = new NoterSettings(userNameGiven);
+            NoterSettings settings = new NoterSettings(userNameLoggedIn);
             this.Hide();
             settings.Show();
             

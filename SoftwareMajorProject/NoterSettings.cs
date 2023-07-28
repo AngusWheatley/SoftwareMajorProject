@@ -17,9 +17,9 @@ namespace SoftwareMajorProject
     public partial class NoterSettings : Form
     {
         string userName;
-        public static string backgroundColourSelected;
-        public static string foregroundColourSelected;
-        public static string fontType;
+        string backgroundColourSelected;
+        string foregroundColourSelected;
+        string fontType;
 
         public NoterSettings(string userNameGiven)
         {
@@ -59,7 +59,7 @@ namespace SoftwareMajorProject
                     lblBackgroundColour.BackColor = Color.FromName(row[2].ToString());
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
 
-                    //Text font
+                    //Font type
                     var fontConverter = new FontConverter();
                     var sizeConverter = new SizeConverter();
                     lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));

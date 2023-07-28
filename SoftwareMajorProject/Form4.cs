@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,9 +16,10 @@ namespace SoftwareMajorProject
     public partial class ReminderEditorPage : Form
     {
         public string notificationDate; 
-        //public string userName = LoginPage.userName;
-        public ReminderEditorPage()
+        string userName;
+        public ReminderEditorPage(string userNameLoggedIn)
         {
+            userName = userNameLoggedIn;
             InitializeComponent();
         }
 
@@ -25,13 +27,75 @@ namespace SoftwareMajorProject
         {
 
 
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string cmd = "SELECT * FROM 'NoterSettings'";
+            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
+
+            var dataGridViewSettings = new DataTable();
+
+            sqlConnection.Open();
+            settingsDataAdapter.Fill(dataGridViewSettings);
+            sqlConnection.Close();
+
+
+
+            foreach (DataRow row in dataGridViewSettings.Rows)
+            {
+                if (row[0].ToString() == userName)
+                {
+                    //Back colour
+                    BackColor = Color.FromName(row[1].ToString());
+
+                    //Front colour
+                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationTitle.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationDescription.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationLocation.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationOccurrence.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationHour.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationMinute.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationPeriod.BackColor = Color.FromName(row[2].ToString());
+                    lblCurrentNotifications.BackColor = Color.FromName(row[2].ToString());
+                    
+
+                    //Font type
+                    var fontConverter = new FontConverter();
+                    var sizeConverter = new SizeConverter();
+                    //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
+                    lblNotificationTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    txtNotificationTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblNotificationDescription.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    txtNotificationDescription.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblNotificationLocation.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    txtNotificationLocation.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblNotificationOccurrence.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    CalNotificationDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblNotificationHour.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    CmbNotificationHour.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblNotificationMinute.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    CmbNotificationMinute.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblNotificationPeriod.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    CmbNotificationPeriod.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    BtnSaveNotification.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    btnDeleteNotification.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblCurrentNotifications.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    DgvCurrentNotifications.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+
+                }
+            }
+
+
+
         }
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            //HomePage HomePage = new HomePage();
-            //this.Hide();
-            //HomePage.Show();
+            HomePage HomePage = new HomePage(userName);
+            this.Hide();
+            HomePage.Show();
         }
 
         private void BtnSaveNotification_Click(object sender, EventArgs e)

@@ -15,39 +15,87 @@ namespace SoftwareMajorProject
 {
     public partial class DiaryEditorPage : Form
     {
-        public static string diaryDate;
-        //public static string userName = HomePage.userName;
-        public DiaryEditorPage()
+        string diaryDate;
+        string userName;
+        public DiaryEditorPage(string userNameLoggedIn)
         {
+            userName = userNameLoggedIn;
             InitializeComponent();
         }
 
         private void DiaryEditorPage_Load(object sender, EventArgs e)
         {
-            //txtUserName.Text = userName;
-            
+
+
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string cmd = "SELECT * FROM 'NoterSettings'";
+            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
+
+            var dataGridViewSettings = new DataTable();
+
+            sqlConnection.Open();
+            settingsDataAdapter.Fill(dataGridViewSettings);
+            sqlConnection.Close();
+
+
+
+            foreach (DataRow row in dataGridViewSettings.Rows)
+            {
+                if (row[0].ToString() == userName)
+                {
+                    //Back colour
+                    BackColor = Color.FromName(row[1].ToString());
+
+                    //Front colour
+                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
+                    lblEntryContents.BackColor = Color.FromName(row[2].ToString());
+                    lblEntryDate.BackColor = Color.FromName(row[2].ToString());
+
+
+                    //Font type
+                    var fontConverter = new FontConverter();
+                    var sizeConverter = new SizeConverter();
+                    //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
+                    lblEntryTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    TxtEntryTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblEntryContents.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    TxtEntryContents.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    txtUserName.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    CalEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    BtnSaveEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    BtnDeleteEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+
+                }
+            }
+
+
 
 
         }
 
         private void BtnHome_Click(object sender, EventArgs e)
         {
-            //HomePage HomePage = new HomePage();
+            HomePage HomePage = new HomePage(userName);
             this.Hide();
-            //HomePage.Show();
+            HomePage.Show();
 
 
         }
 
-        private void BtnSaveDiaryEntry_Click(object sender, EventArgs e)
+        private void BtnSaveEntry_Click(object sender, EventArgs e)
         {
-            string diaryTitle = TxtDiaryTitle.Text;
-            string diaryEntry = TxtDiaryEntry.Text;
+            string diaryTitle = TxtEntryTitle.Text;
+            string diaryEntry = TxtEntryContents.Text;
             
 
             if (diaryDate != null && diaryTitle != "" && diaryEntry != "")
             {
-                //string userNameDiary = userName + "_Diary";
+                string userNameDiary = userName + "_Diary";
 
 
                 SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -57,7 +105,7 @@ namespace SoftwareMajorProject
                 SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
                 sqlCommandNewUser.Connection = sqlConnection;
                 sqlCommandNewUser.CommandType = CommandType.Text;
-                //sqlCommandNewUser.CommandText = "INSERT into " + userNameDiary + " (date, title, contents) values (@date, @title, @contents)";
+                sqlCommandNewUser.CommandText = "INSERT into " + userNameDiary + " (date, title, contents) values (@date, @title, @contents)";
 
                 sqlCommandNewUser.Parameters.AddWithValue("@date", diaryDate);
                 sqlCommandNewUser.Parameters.AddWithValue("@title", diaryTitle);

@@ -41,14 +41,16 @@
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.picBackPlate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBackPlate.Location = new System.Drawing.Point(260, 12);
+            this.picBackPlate.Location = new System.Drawing.Point(347, 15);
+            this.picBackPlate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.picBackPlate.Name = "picBackPlate";
-            this.picBackPlate.Size = new System.Drawing.Size(920, 800);
+            this.picBackPlate.Size = new System.Drawing.Size(1226, 984);
             this.picBackPlate.TabIndex = 6;
             this.picBackPlate.TabStop = false;
             // 
             // CmbBackgroundColour
             // 
+            this.CmbBackgroundColour.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbBackgroundColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmbBackgroundColour.FormattingEnabled = true;
             this.CmbBackgroundColour.Items.AddRange(new object[] {
@@ -58,9 +60,10 @@
             "Green",
             "Blue",
             "Purple"});
-            this.CmbBackgroundColour.Location = new System.Drawing.Point(328, 178);
+            this.CmbBackgroundColour.Location = new System.Drawing.Point(437, 219);
+            this.CmbBackgroundColour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CmbBackgroundColour.Name = "CmbBackgroundColour";
-            this.CmbBackgroundColour.Size = new System.Drawing.Size(171, 28);
+            this.CmbBackgroundColour.Size = new System.Drawing.Size(227, 28);
             this.CmbBackgroundColour.TabIndex = 7;
             // 
             // lblBackgroundColour
@@ -68,7 +71,8 @@
             this.lblBackgroundColour.AutoSize = true;
             this.lblBackgroundColour.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblBackgroundColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBackgroundColour.Location = new System.Drawing.Point(324, 155);
+            this.lblBackgroundColour.Location = new System.Drawing.Point(432, 191);
+            this.lblBackgroundColour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblBackgroundColour.Name = "lblBackgroundColour";
             this.lblBackgroundColour.Size = new System.Drawing.Size(149, 20);
             this.lblBackgroundColour.TabIndex = 8;
@@ -77,9 +81,10 @@
             // BtnSaveSettings
             // 
             this.BtnSaveSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSaveSettings.Location = new System.Drawing.Point(365, 554);
+            this.BtnSaveSettings.Location = new System.Drawing.Point(487, 682);
+            this.BtnSaveSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BtnSaveSettings.Name = "BtnSaveSettings";
-            this.BtnSaveSettings.Size = new System.Drawing.Size(150, 61);
+            this.BtnSaveSettings.Size = new System.Drawing.Size(200, 75);
             this.BtnSaveSettings.TabIndex = 9;
             this.BtnSaveSettings.Text = "Save Settings";
             this.BtnSaveSettings.UseVisualStyleBackColor = true;
@@ -87,9 +92,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(763, 513);
+            this.button1.Location = new System.Drawing.Point(1017, 631);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(168, 79);
+            this.button1.Size = new System.Drawing.Size(224, 97);
             this.button1.TabIndex = 10;
             this.button1.Text = "Home";
             this.button1.UseVisualStyleBackColor = true;
@@ -97,26 +103,28 @@
             // 
             // txtUserName
             // 
-            this.txtUserName.Location = new System.Drawing.Point(897, 280);
+            this.txtUserName.Location = new System.Drawing.Point(1196, 345);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(100, 20);
+            this.txtUserName.Size = new System.Drawing.Size(132, 22);
             this.txtUserName.TabIndex = 11;
             // 
             // NoterSettings
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.ClientSize = new System.Drawing.Size(1899, 1010);
             this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BtnSaveSettings);
             this.Controls.Add(this.lblBackgroundColour);
             this.Controls.Add(this.CmbBackgroundColour);
             this.Controls.Add(this.picBackPlate);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1440, 860);
-            this.MinimumSize = new System.Drawing.Size(1440, 860);
+            this.MaximumSize = new System.Drawing.Size(1915, 1049);
+            this.MinimumSize = new System.Drawing.Size(1915, 1030);
             this.Name = "NoterSettings";
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
