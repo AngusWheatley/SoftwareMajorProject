@@ -15,7 +15,10 @@ namespace SoftwareMajorProject
 {
     public partial class ReminderEditorPage : Form
     {
+        //(Change when need to pass to other forms)
         public string notificationDate; 
+        //----------------------------
+
         string userName;
         public ReminderEditorPage(string userNameLoggedIn)
         {
@@ -25,8 +28,6 @@ namespace SoftwareMajorProject
 
         private void ReminderEditorPage_Load(object sender, EventArgs e)
         {
-
-
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 

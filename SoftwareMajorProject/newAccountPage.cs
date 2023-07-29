@@ -18,15 +18,15 @@ namespace SoftwareMajorProject
 {
     public partial class NewAccountPage : Form
     {
-        public static int verificationCode;
+        int verificationCode;
         
-        public static string userName;
-        public static string userPassword;
-        public static string userEmail;
-        public static bool userExists;
-        public static string trimmedUserName;
-        public static string trimmedUserPassword;
-        public static string trimmedUserEmail;
+        string userName;
+        string userPassword;
+        string userEmail;
+        bool userExists;
+        string trimmedUserName;
+        string trimmedUserPassword;
+        string trimmedUserEmail;
 
         public NewAccountPage()
         {
@@ -115,6 +115,10 @@ namespace SoftwareMajorProject
                         smtpClient.Send(mailMessage);
                         MessageBox.Show("email sent");
 
+                        VerificationCodeForm verificationCodeForm = new VerificationCodeForm(verificationCode, userName, userEmail, userExists, trimmedUserName, trimmedUserPassword, trimmedUserEmail);
+                        this.Hide();
+                        verificationCodeForm.Show();
+
                     }
                     catch (Exception ex)
                     {
@@ -123,9 +127,7 @@ namespace SoftwareMajorProject
                     //---------------------------------------------
 
 
-                    VerificationCodeForm verificationCodeForm = new VerificationCodeForm();
-                    this.Hide();
-                    verificationCodeForm.Show();
+                    
                 }
                 else
                 {

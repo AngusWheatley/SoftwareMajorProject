@@ -9,15 +9,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SoftwareMajorProject
 {
     public partial class VerificationCodeForm : Form
     {
+        int givenVerificationCode;
+        string givenUserName;
+        string givenUserEmail;
+        bool givenUserExists;
+        string givenTrimmedUserName;
+        string givenTrimmedUserPassword;
+        string givenTrimmedUserEmail;
 
+        bool verificationCodeCorrect = false;
 
-        public VerificationCodeForm()
+        public VerificationCodeForm(int verificationCode, string userName, string userEmail, bool userExists, string trimmedUserName, string trimmedUserPassword, string trimmedUserEmail)
         {
+            givenVerificationCode = verificationCode;
+            givenUserName = userName;
+            givenUserEmail = userEmail;
+            givenUserExists = userExists;
+            givenTrimmedUserName = trimmedUserName;
+            givenTrimmedUserPassword = trimmedUserPassword;
+            givenTrimmedUserEmail = trimmedUserEmail;
+
             InitializeComponent();
         }
 
@@ -26,19 +43,11 @@ namespace SoftwareMajorProject
             string codeEntered = txtCodeEntered.Text;
             int trimmedCodeEntered = Convert.ToInt32(String.Concat(codeEntered.Where(c => !Char.IsWhiteSpace(c))));
 
-
-            int verificationCode = NewAccountPage.verificationCode;
-            string userName = NewAccountPage.userName;
-            string userPassword = NewAccountPage.userPassword;
-            string userEmail = NewAccountPage.userEmail;
-            bool userExists = NewAccountPage.userExists;
-            string trimmedUserName = NewAccountPage.trimmedUserName;
-            string trimmedUserPassword = NewAccountPage.trimmedUserPassword;
-            string trimmedUserEmail = NewAccountPage.trimmedUserEmail;
-            bool verificationCodeCorrect = false;
+            MessageBox.Show("You entered code " + Convert.ToString(trimmedCodeEntered) + ". But the correct code was " + givenVerificationCode);
+            
 
             //Checks Input box for verification code entered
-            if (trimmedCodeEntered == verificationCode)
+            if (trimmedCodeEntered == givenVerificationCode)
             {
                 verificationCodeCorrect = true;
             }
@@ -53,7 +62,7 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            if (trimmedUserName != null && trimmedUserPassword != null && trimmedUserEmail != null && userExists == false && verificationCodeCorrect == true)
+            if (givenTrimmedUserName != null && givenTrimmedUserPassword != null && givenTrimmedUserEmail != null && givenUserExists == false && verificationCodeCorrect == true)
             {
                 //Places user in user database
                 SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
@@ -61,9 +70,9 @@ namespace SoftwareMajorProject
                 sqlCommandNewUser.CommandType = CommandType.Text;
                 sqlCommandNewUser.CommandText = "INSERT into UserInfo (userEmail, userName, userPassword) values (@userEmail, @userName, @userPassword)";
 
-                sqlCommandNewUser.Parameters.AddWithValue("@userName", trimmedUserName);
-                sqlCommandNewUser.Parameters.AddWithValue("@userPassword", trimmedUserPassword);
-                sqlCommandNewUser.Parameters.AddWithValue("@userEmail", trimmedUserEmail);
+                sqlCommandNewUser.Parameters.AddWithValue("@userName", givenTrimmedUserName);
+                sqlCommandNewUser.Parameters.AddWithValue("@userPassword", givenTrimmedUserPassword);
+                sqlCommandNewUser.Parameters.AddWithValue("@userEmail", givenTrimmedUserEmail);
 
                 sqlConnection.Open();
                 sqlCommandNewUser.ExecuteNonQuery();
@@ -72,9 +81,32 @@ namespace SoftwareMajorProject
 
 
 
+                //Places user into settings database
+                SQLiteCommand sqlCommandNewUserSettings = new SQLiteCommand();
+                sqlCommandNewUserSettings.Connection = sqlConnection;
+                sqlCommandNewUserSettings.CommandType = CommandType.Text;
+                sqlCommandNewUserSettings.CommandText = "INSERT into NoterSettings (userName, backgroundColour, foregroundColour, fontType, fontSize) values (@userName, @backgroundColour, @foregroundColour, @fontType, @fontSize)";
+
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@userName", givenTrimmedUserName);
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@backgroundColour", "Blue");
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@foregroundColour", "Green");
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@fontType", "Microsoft Sans Serif");
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@fontSize", "12");
+
+                sqlConnection.Open();
+                sqlCommandNewUserSettings.ExecuteNonQuery();
+                sqlConnection.Close();
+                //---------------------------------------------
+
+
+
+
+
+
+
                 //Checks if database for user already exists
                 sqlConnection.Open();
-                var commandCheckForTable = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='" + trimmedUserName + "Diary';", sqlConnection);
+                var commandCheckForTable = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='" + givenTrimmedUserName + "Diary';", sqlConnection);
                 var reader = commandCheckForTable.ExecuteReader();
 
                 bool tableExists = reader.HasRows;
@@ -92,7 +124,7 @@ namespace SoftwareMajorProject
                     //Creates diary table for user
                     sqlConnection.Open();
 
-                    string sqlCreateDiary = "CREATE TABLE " + trimmedUserName + "_Diary (date TEXT, title TEXT, contents TEXT)";
+                    string sqlCreateDiary = "CREATE TABLE " + givenTrimmedUserName + "_Diary (date TEXT, title TEXT, contents TEXT)";
                     SQLiteCommand command = new SQLiteCommand(sqlCreateDiary, sqlConnection);
 
                     command.ExecuteNonQuery();
@@ -117,7 +149,7 @@ namespace SoftwareMajorProject
                 }
 
             }
-            else if (userExists == true)
+            else if (givenUserExists == true)
             {
                 MessageBox.Show("User already exists");
             }

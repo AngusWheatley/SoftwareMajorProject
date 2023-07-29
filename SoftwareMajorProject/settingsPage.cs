@@ -214,8 +214,11 @@ namespace SoftwareMajorProject
             }*/
 
             lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(fontType) as Font, FontStyle.Underline);
+            CmbBackgroundColour.Font = fontConverter.ConvertFromString(fontType) as Font;
             lblForegroundColour.Font = new Font(fontConverter.ConvertFromString(fontType) as Font, FontStyle.Underline);
+            CmbForegroundColour.Font = fontConverter.ConvertFromString(fontType) as Font;
             lblFontType.Font = new Font(fontConverter.ConvertFromString(fontType) as Font, FontStyle.Underline);
+            cmbFontType.Font = fontConverter.ConvertFromString(fontType) as Font;
             BtnSaveSettings.Font = fontConverter.ConvertFromString(fontType) as Font;
             BtnHome.Font = fontConverter.ConvertFromString(fontType) as Font;
 
