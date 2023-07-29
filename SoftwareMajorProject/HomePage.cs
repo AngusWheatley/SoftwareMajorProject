@@ -206,7 +206,7 @@ namespace SoftwareMajorProject
 
         private void BtnSettings_Click(object sender, EventArgs e)
         {
-            NoterSettings settings = new NoterSettings(userNameLoggedIn);
+            settingsPage settings = new settingsPage(userNameLoggedIn);
             this.Hide();
             settings.Show();
             

@@ -59,11 +59,11 @@ namespace SoftwareMajorProject
                     var fontConverter = new FontConverter();
                     var sizeConverter = new SizeConverter();
                     //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
-                    lblEntryTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblEntryTitle.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
                     TxtEntryTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryContents.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblEntryContents.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
                     TxtEntryContents.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    lblEntryDate.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
                     txtUserName.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
                     CalEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
                     BtnSaveEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
