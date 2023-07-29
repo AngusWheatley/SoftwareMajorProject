@@ -63,7 +63,7 @@ namespace SoftwareMajorProject
 
                     //Font type
                     var fontConverter = new FontConverter();
-                    var sizeConverter = new SizeConverter();
+                    //var sizeConverter = new SizeConverter();
                     //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
                     lblNotificationTitle.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
                     txtNotificationTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;

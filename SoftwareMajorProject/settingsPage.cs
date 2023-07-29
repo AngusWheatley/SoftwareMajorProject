@@ -103,7 +103,16 @@ namespace SoftwareMajorProject
             foregroundColourSelected = CmbForegroundColour.Text;
             fontType = cmbFontType.Text;
 
+            BackColor = Color.FromName(backgroundColourSelected);
 
+            picBackPlate.BackColor = Color.FromName(foregroundColourSelected);
+            lblBackgroundColour.BackColor = Color.FromName(foregroundColourSelected);
+            lblForegroundColour.BackColor = Color.FromName(foregroundColourSelected);
+            lblFontType.BackColor = Color.FromName(foregroundColourSelected);
+
+
+
+            /*
             switch (backgroundColourSelected)
             {
                 case "Red":
@@ -130,8 +139,9 @@ namespace SoftwareMajorProject
                     BackColor = Color.Purple;
                 break;
             } //Colour selecter
+            */
 
-
+            /*
             switch (foregroundColourSelected)
             {
                 case "Red":
@@ -175,7 +185,7 @@ namespace SoftwareMajorProject
                     lblForegroundColour.BackColor = Color.Purple;
                     lblFontType.BackColor = Color.Purple;
                     break;
-            }
+            }*/
 
 
 
