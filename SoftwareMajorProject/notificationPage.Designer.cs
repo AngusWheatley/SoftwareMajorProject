@@ -135,7 +135,7 @@
             this.BtnSaveNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSaveNotification.Location = new System.Drawing.Point(730, 354);
             this.BtnSaveNotification.Name = "BtnSaveNotification";
-            this.BtnSaveNotification.Size = new System.Drawing.Size(273, 60);
+            this.BtnSaveNotification.Size = new System.Drawing.Size(272, 60);
             this.BtnSaveNotification.TabIndex = 21;
             this.BtnSaveNotification.Text = "Save";
             this.BtnSaveNotification.UseVisualStyleBackColor = true;
@@ -146,19 +146,23 @@
             this.btnDeleteNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeleteNotification.Location = new System.Drawing.Point(1018, 354);
             this.btnDeleteNotification.Name = "btnDeleteNotification";
-            this.btnDeleteNotification.Size = new System.Drawing.Size(273, 60);
+            this.btnDeleteNotification.Size = new System.Drawing.Size(272, 60);
             this.btnDeleteNotification.TabIndex = 22;
             this.btnDeleteNotification.Text = "Delete";
             this.btnDeleteNotification.UseVisualStyleBackColor = true;
+            this.btnDeleteNotification.Click += new System.EventHandler(this.btnDeleteNotification_Click);
             // 
             // DgvCurrentNotifications
             // 
+            this.DgvCurrentNotifications.AllowUserToResizeColumns = false;
+            this.DgvCurrentNotifications.AllowUserToResizeRows = false;
             this.DgvCurrentNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCurrentNotifications.Location = new System.Drawing.Point(730, 477);
             this.DgvCurrentNotifications.Name = "DgvCurrentNotifications";
             this.DgvCurrentNotifications.RowHeadersWidth = 51;
-            this.DgvCurrentNotifications.Size = new System.Drawing.Size(561, 274);
+            this.DgvCurrentNotifications.Size = new System.Drawing.Size(560, 274);
             this.DgvCurrentNotifications.TabIndex = 23;
+            this.DgvCurrentNotifications.SelectionChanged += new System.EventHandler(this.DgvCurrentNotifications_SelectionChanged);
             // 
             // btnHome
             // 
@@ -362,7 +366,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ReminderEditorPage";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Notification Editor";
             this.Load += new System.EventHandler(this.ReminderEditorPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();

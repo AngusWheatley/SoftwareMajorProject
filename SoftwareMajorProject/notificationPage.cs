@@ -20,6 +20,8 @@ namespace SoftwareMajorProject
         //----------------------------
 
         string userName;
+        string selectedNotificationIndex;
+
         public ReminderEditorPage(string userNameLoggedIn)
         {
             userName = userNameLoggedIn;
@@ -96,6 +98,11 @@ namespace SoftwareMajorProject
             }
 
 
+            //==================================================================================================================
+
+
+
+
             SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
             sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
@@ -140,14 +147,13 @@ namespace SoftwareMajorProject
             */
 
             DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
             DgvCurrentNotifications.Columns["UserName"].Visible = false;
 
-            DgvCurrentNotifications.Columns[0].Width = 20;
-            DgvCurrentNotifications.Columns[1].Width = 80;
-            DgvCurrentNotifications.Columns[2].Width = 200;
-            DgvCurrentNotifications.Columns[3].Width = 140;
-            DgvCurrentNotifications.Columns[4].Width = 120;
-
+            DgvCurrentNotifications.Columns[2].Width = 120;
+            DgvCurrentNotifications.Columns[3].Width = 145;
+            DgvCurrentNotifications.Columns[4].Width = 115;
+            DgvCurrentNotifications.Columns[5].Width = 110;
 
             /*
             var dataTableUserNotifications = new DataTable();
@@ -262,9 +268,13 @@ namespace SoftwareMajorProject
             
 
             DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
             DgvCurrentNotifications.Columns["UserName"].Visible = false;
 
-
+            DgvCurrentNotifications.Columns[1].Width = 60;
+            DgvCurrentNotifications.Columns[2].Width = 150;
+            DgvCurrentNotifications.Columns[3].Width = 140;
+            DgvCurrentNotifications.Columns[4].Width = 120;
 
 
         }
@@ -272,6 +282,84 @@ namespace SoftwareMajorProject
         private void CalNotificationDate_DateChanged(object sender, DateRangeEventArgs e)
         {
             notificationDate = e.Start.ToShortDateString();
+        }
+
+        private void btnDeleteNotification_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+            sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            SQLiteCommand deleteNotificationCommand = new SQLiteCommand();
+
+            deleteNotificationCommand.Connection = sqlConnectionDeleteNotification;
+            deleteNotificationCommand.CommandType = CommandType.Text;
+            deleteNotificationCommand.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=" + selectedNotificationIndex;
+
+            deleteNotificationCommand.Parameters.AddWithValue("@NotificationIndex", selectedNotificationIndex);
+
+            sqlConnectionDeleteNotification.Open();
+            deleteNotificationCommand.ExecuteNonQuery();
+            sqlConnectionDeleteNotification.Close();
+
+
+            //============================================================================================================================
+
+
+            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
+            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+            
+
+            sqlConnectionNotifications.Open();
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+
+
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotifications.Close();
+
+
+            DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
+            DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+            DgvCurrentNotifications.Columns[2].Width = 120;
+            DgvCurrentNotifications.Columns[3].Width = 145;
+            DgvCurrentNotifications.Columns[4].Width = 115;
+            DgvCurrentNotifications.Columns[5].Width = 110;
+
+
+
+
+
+
+        }
+
+        private void DgvCurrentNotifications_SelectionChanged(object sender, EventArgs e)
+        {
+            SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+            sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            if (DgvCurrentNotifications.SelectedRows.Count > 0)
+            {
+                selectedNotificationIndex = DgvCurrentNotifications.SelectedRows[0].Cells[0].Value.ToString();
+
+                string selectNotificationIndexCommand = "SELECT * FROM Notifications WHERE NotificationIndex=" + selectedNotificationIndex;
+
+                var dataTableNotifications = new DataTable();
+                SQLiteDataAdapter selectNotificationDataAdapter = new SQLiteDataAdapter(selectNotificationIndexCommand, sqlConnectionDeleteNotification);
+
+                sqlConnectionDeleteNotification.Open();
+                selectNotificationDataAdapter.Fill(dataTableNotifications);
+
+                sqlConnectionDeleteNotification.Close();
+
+
+            }
+
+
+
         }
     }
 }

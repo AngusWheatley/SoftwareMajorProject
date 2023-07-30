@@ -187,7 +187,8 @@
             this.MaximumSize = new System.Drawing.Size(1440, 860);
             this.MinimumSize = new System.Drawing.Size(1440, 844);
             this.Name = "settingsPage";
-            this.Text = "Settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Noter - Settings";
             this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             this.ResumeLayout(false);
