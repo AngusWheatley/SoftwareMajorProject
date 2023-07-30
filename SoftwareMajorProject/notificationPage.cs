@@ -28,6 +28,9 @@ namespace SoftwareMajorProject
 
         private void ReminderEditorPage_Load(object sender, EventArgs e)
         {
+            txtNotificationTitle.Text = userName;
+
+
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
@@ -92,30 +95,67 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
             sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            string insertNotificationsCommand = "SELECT * FROM 'Notifications' where UserName = '@" + userName + "'";
-            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
-            var dataTableNotifications = new DataTable();
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
+
+
+            //insertNotificationsCommand.Parameters.AddWithValue("@userName", userName);
+            //insertNotificationsCommand.Connection = sqlConnectionNotifications;
 
             sqlConnectionNotifications.Open();
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+            
+            
             notificationsDataAdapter.Fill(dataTableNotifications);
             sqlConnectionNotifications.Close();
 
 
+            //DataTable dataTableUserNotifications = new DataTable();
+            //dataTableUserNotifications = dataTableNotifications.Copy();
+
+            /*
+            bool userNotificationExists = dataTableUserNotifications.Rows.Count > 0;
+            MessageBox.Show(Convert.ToString(userNotificationExists));
+
+
+            dataTableUserNotifications.AcceptChanges();
+
+            for (int i = dataTableUserNotifications.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow row = dataTableUserNotifications.Rows[i];
+                if (row["UserName"] != userName)
+                {
+                    row.Delete();
+                }
+            }
+            dataTableUserNotifications.AcceptChanges();
+
+
+            bool userNotificationExistsShort = dataTableUserNotifications.Rows.Count > 0;
+            MessageBox.Show(Convert.ToString(userNotificationExistsShort));
+            */
+
+            DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+
+
+
+            /*
             var dataTableUserNotifications = new DataTable();
             foreach (DataRow row in dataTableNotifications.Rows)
             {
                 if (row[0].ToString() == userName)
                 {
-                    dataTableUserNotifications.Rows.Add(row);
+                    dataTableUserNotifications.ImportRow(row);
                     
                 }
-
-            }
-
+            }*/
 
 
 
-            DgvCurrentNotifications.DataSource = dataTableUserNotifications;
+
+            //DgvCurrentNotifications.DataSource = dataTableNotifications;
 
 
 
@@ -165,9 +205,9 @@ namespace SoftwareMajorProject
             SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
             sqlCommandNewUser.Connection = sqlConnection;
             sqlCommandNewUser.CommandType = CommandType.Text;
-            sqlCommandNewUser.CommandText = "INSERT into Notifications (userName, Title, Description, Location, Time) values (@userName, @Title, @Description, @Location, @Time)";
+            sqlCommandNewUser.CommandText = "INSERT into Notifications (UserName, Title, Description, Location, Time) values (@UserName, @Title, @Description, @Location, @Time)";
 
-            //sqlCommandNewUser.Parameters.AddWithValue("@userName", userName);
+            sqlCommandNewUser.Parameters.AddWithValue("@UserName", userName);
             sqlCommandNewUser.Parameters.AddWithValue("@Title", notificationTitle);
             sqlCommandNewUser.Parameters.AddWithValue("@Description", notificationDescription);
             sqlCommandNewUser.Parameters.AddWithValue("@Location", notificationLocation);
@@ -177,6 +217,29 @@ namespace SoftwareMajorProject
             sqlCommandNewUser.ExecuteNonQuery();
             sqlConnection.Close();
 
+
+
+            //----------------------------------------------------------------------------------------------
+
+
+            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
+            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
+
+            sqlConnectionNotifications.Open();
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+
+
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotifications.Close();
+
+
+            
+
+            DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["UserName"].Visible = false;
 
 
         }
