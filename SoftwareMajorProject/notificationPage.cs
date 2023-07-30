@@ -89,6 +89,55 @@ namespace SoftwareMajorProject
             }
 
 
+            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
+            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM 'Notifications' where UserName = '@" + userName + "'";
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+            var dataTableNotifications = new DataTable();
+
+            sqlConnectionNotifications.Open();
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotifications.Close();
+
+
+            var dataTableUserNotifications = new DataTable();
+            foreach (DataRow row in dataTableNotifications.Rows)
+            {
+                if (row[0].ToString() == userName)
+                {
+                    dataTableUserNotifications.Rows.Add(row);
+                    
+                }
+
+            }
+
+
+
+
+            DgvCurrentNotifications.DataSource = dataTableUserNotifications;
+
+
+
+
+            /*
+            DataRow[] userNotifications = dataTableNotifications.Select("UserName = '" + userName + "'");
+            foreach (DataRow row in userNotifications)
+            {
+
+
+
+            }*/
+
+
+            //DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+
+
+
+
+
+
 
         }
 
