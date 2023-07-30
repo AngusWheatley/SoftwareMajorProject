@@ -16,7 +16,7 @@ namespace SoftwareMajorProject
     public partial class ReminderEditorPage : Form
     {
         //(Change when need to pass to other forms)
-        public string notificationDate; 
+        string notificationDate; 
         //----------------------------
 
         string userName;
@@ -28,7 +28,11 @@ namespace SoftwareMajorProject
 
         private void ReminderEditorPage_Load(object sender, EventArgs e)
         {
-            txtNotificationTitle.Text = userName;
+            CmbNotificationHour.Text = "12";
+            CmbNotificationMinute.Text = "00";
+            CmbNotificationPeriod.Text = "AM";
+
+
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -95,8 +99,8 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
             sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
-
+            //string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
 
             //insertNotificationsCommand.Parameters.AddWithValue("@userName", userName);
             //insertNotificationsCommand.Connection = sqlConnectionNotifications;
@@ -138,7 +142,11 @@ namespace SoftwareMajorProject
             DgvCurrentNotifications.DataSource = dataTableNotifications;
             DgvCurrentNotifications.Columns["UserName"].Visible = false;
 
-
+            DgvCurrentNotifications.Columns[0].Width = 20;
+            DgvCurrentNotifications.Columns[1].Width = 80;
+            DgvCurrentNotifications.Columns[2].Width = 200;
+            DgvCurrentNotifications.Columns[3].Width = 140;
+            DgvCurrentNotifications.Columns[4].Width = 120;
 
 
             /*
@@ -190,10 +198,25 @@ namespace SoftwareMajorProject
 
         private void BtnSaveNotification_Click(object sender, EventArgs e)
         {
+            /*
+            string time = DateTime.Now.Date.ToString();
+
+            MessageBox.Show(time);
+
+
+
+            if (notificationDate == "")
+            {
+                notificationDate = DateTime.Now.ToString("dd/MM/yyyy");
+            }*/
+
+
+            string notificationDateSelected = CalNotificationDate.SelectionStart.ToShortDateString();
+
             string notificationTitle = txtNotificationTitle.Text;
             string notificationDescription = txtNotificationDescription.Text;
             string notificationLocation = txtNotificationLocation.Text;
-            string notificationTime = notificationDate + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
+            string notificationTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
 
             MessageBox.Show(notificationTime);
 
@@ -225,7 +248,7 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
             sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
 
             sqlConnectionNotifications.Open();
             var dataTableNotifications = new DataTable();
@@ -240,6 +263,8 @@ namespace SoftwareMajorProject
 
             DgvCurrentNotifications.DataSource = dataTableNotifications;
             DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+
 
 
         }
