@@ -23,6 +23,7 @@ namespace SoftwareMajorProject
         string selectedNotificationIndex;
         string notificationDateTime;
         string userEmail;
+        string overdueUserName; 
 
         public ReminderEditorPage(string userNameLoggedIn)
         {
@@ -394,61 +395,66 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
             sqlConnectionNotificationsCheck.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            string insertNotificationsCommand = "SELECT * FROM Notifications";
+            string insertNotificationsCommand = "SELECT * FROM 'Notifications'";
 
 
-            sqlConnectionNotificationsCheck.Open();
+            
             var dataTableNotificationsCheck = new DataTable();
             SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotificationsCheck);
 
-
+            sqlConnectionNotificationsCheck.Open();
             notificationsDataAdapter.Fill(dataTableNotificationsCheck);
             sqlConnectionNotificationsCheck.Close();
 
 
-
-
-
-
-            foreach (DataRow rowNotificationCheck in dataTableNotificationsCheck.Rows)
+            foreach (DataRow rowNotificationsCheck in dataTableNotificationsCheck.Rows) //Checks each row of the 'Notifications' table
             {
-                DateTime dateTimeNow = DateTime.Now;
-                DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
+                DateTime dateTimeNow = DateTime.Now; //Gets current dateTime
+                string fullNotificationDateTimeString = rowNotificationsCheck[5].ToString(); //Gets notification dateTime from row in 'Notifications' as a string
+                DateTime fullNotificationDateTime = Convert.ToDateTime(fullNotificationDateTimeString); //Converts dateTime from row in 'Notificaitons'
 
-                int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow);
-                if (comparedDates < 0)
+
+
+                int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
+                if (comparedDates < 0) //Occurs when the date is past current date
                 {
 
-                    //SQLiteCommand checkIfNotificationOverdueCommand = new SQLiteCommand("SELECT * FROM UserInfo WHERE userName='" + userName + "'");
-                    //checkIfNotificationOverdueCommand.Parameters.AddWithValue("@userEmail", userEmail);
-
-                    string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
-                    SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
-
-                    //checkIfNotificationOverdueCommand.Parameters.AddWithValue("", );
-
-
-                    var dataTableCheckIfNotificationOverdue = new DataTable();
-
-                    sqlConnectionNotificationsCheck.Open();
-                    notificationOverdueDataAdapter.Fill(dataTableCheckIfNotificationOverdue);
-                    sqlConnectionNotificationsCheck.Close();
-
-                    foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)
+                    foreach (DataRow rowUserNotification in dataTableNotificationsCheck.Rows)
                     {
-                        if (rowNotificationOverdue[1].ToString() == userName)
+                        string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
+                        SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
+
+
+
+                        var dataTableCheckIfNotificationOverdue = new DataTable();
+
+                        sqlConnectionNotificationsCheck.Open();
+                        notificationOverdueDataAdapter.Fill(dataTableCheckIfNotificationOverdue);
+                        sqlConnectionNotificationsCheck.Close();
+
+
+                        overdueUserName = rowUserNotification[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
+
+                        foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)
                         {
-                            userEmail = rowNotificationOverdue[3].ToString();
+                            if (rowNotificationOverdue[1].ToString() == overdueUserName)
+                            {
+                                userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
 
 
-                            //Prepare email to send to user about notification
+                                //Prepare email to send to user about notification
 
 
-                            MessageBox.Show(userEmail + "<==== Here is an email.");
+                                MessageBox.Show(userEmail + "<==== Here is an email.");
 
 
+                            }
                         }
                     }
+                }
+                else
+                {
+                    MessageBox.Show(notificationDateTime + " Date still to come");
                 }
             }
 
