@@ -68,6 +68,8 @@ namespace SoftwareMajorProject
                     lblNotificationMinute.BackColor = Color.FromName(row[2].ToString());
                     lblNotificationPeriod.BackColor = Color.FromName(row[2].ToString());
                     lblCurrentNotifications.BackColor = Color.FromName(row[2].ToString());
+                    DgvCurrentNotifications.BackgroundColor = Color.FromName(row[2].ToString());
+                    DgvCurrentNotifications.CellBorderStyle = DataGridViewCellBorderStyle.Single;
                     
 
                     //Font type
@@ -222,60 +224,80 @@ namespace SoftwareMajorProject
             string notificationTitle = txtNotificationTitle.Text;
             string notificationDescription = txtNotificationDescription.Text;
             string notificationLocation = txtNotificationLocation.Text;
-            string notificationTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
+            string notificationDateTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
 
-            MessageBox.Show(notificationTime);
-
-
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-            
-
-            SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
-            sqlCommandNewUser.Connection = sqlConnection;
-            sqlCommandNewUser.CommandType = CommandType.Text;
-            sqlCommandNewUser.CommandText = "INSERT into Notifications (UserName, Title, Description, Location, Time) values (@UserName, @Title, @Description, @Location, @Time)";
-
-            sqlCommandNewUser.Parameters.AddWithValue("@UserName", userName);
-            sqlCommandNewUser.Parameters.AddWithValue("@Title", notificationTitle);
-            sqlCommandNewUser.Parameters.AddWithValue("@Description", notificationDescription);
-            sqlCommandNewUser.Parameters.AddWithValue("@Location", notificationLocation);
-            sqlCommandNewUser.Parameters.AddWithValue("@Time", notificationTime);
-
-            sqlConnection.Open();
-            sqlCommandNewUser.ExecuteNonQuery();
-            sqlConnection.Close();
+            MessageBox.Show(notificationDateTime);
 
 
 
-            //----------------------------------------------------------------------------------------------
+            if (notificationDateSelected != "" && CmbNotificationHour.Text != "" && CmbNotificationMinute.Text != "" && CmbNotificationPeriod.Text != "")
+            {
+                MessageBox.Show("Comparing dates");
+
+                DateTime dateTimeNow = DateTime.Now;
+                DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
+
+                int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow);
+                if (comparedDates == 0)
+                {
+                    MessageBox.Show("Same date and time");
+                }
+                else if (comparedDates < 0)
+                {
+                    MessageBox.Show("Invalid date selected");
+                }
+                else
+                {
+                    MessageBox.Show("Valid date!");
+                    
+
+                    SQLiteConnection sqlConnection = new SQLiteConnection();
+                    sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
 
-            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
-            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+                    SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
+                    sqlCommandNewUser.Connection = sqlConnection;
+                    sqlCommandNewUser.CommandType = CommandType.Text;
+                    sqlCommandNewUser.CommandText = "INSERT into Notifications (UserName, Title, Description, Location, Time) values (@UserName, @Title, @Description, @Location, @Time)";
 
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+                    sqlCommandNewUser.Parameters.AddWithValue("@UserName", userName);
+                    sqlCommandNewUser.Parameters.AddWithValue("@Title", notificationTitle);
+                    sqlCommandNewUser.Parameters.AddWithValue("@Description", notificationDescription);
+                    sqlCommandNewUser.Parameters.AddWithValue("@Location", notificationLocation);
+                    sqlCommandNewUser.Parameters.AddWithValue("@Time", notificationDateTime);
 
-            sqlConnectionNotifications.Open();
-            var dataTableNotifications = new DataTable();
-            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+                    sqlConnection.Open();
+                    sqlCommandNewUser.ExecuteNonQuery();
+                    sqlConnection.Close();
+
+                }
+
+                SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
+                sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+                string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+
+                sqlConnectionNotifications.Open();
+                var dataTableNotifications = new DataTable();
+                SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
 
 
-            notificationsDataAdapter.Fill(dataTableNotifications);
-            sqlConnectionNotifications.Close();
+                notificationsDataAdapter.Fill(dataTableNotifications);
+                sqlConnectionNotifications.Close();
+
+                //=========================================================================================================
+
+                DgvCurrentNotifications.DataSource = dataTableNotifications;
+                DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
+                DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+                DgvCurrentNotifications.Columns[2].Width = 120;
+                DgvCurrentNotifications.Columns[3].Width = 145;
+                DgvCurrentNotifications.Columns[4].Width = 115;
+                DgvCurrentNotifications.Columns[5].Width = 110;
 
 
-            
-
-            DgvCurrentNotifications.DataSource = dataTableNotifications;
-            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
-            DgvCurrentNotifications.Columns["UserName"].Visible = false;
-
-            DgvCurrentNotifications.Columns[1].Width = 60;
-            DgvCurrentNotifications.Columns[2].Width = 150;
-            DgvCurrentNotifications.Columns[3].Width = 140;
-            DgvCurrentNotifications.Columns[4].Width = 120;
-
+            }
 
         }
 

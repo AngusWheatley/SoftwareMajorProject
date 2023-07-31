@@ -156,6 +156,7 @@
             // 
             this.DgvCurrentNotifications.AllowUserToResizeColumns = false;
             this.DgvCurrentNotifications.AllowUserToResizeRows = false;
+            this.DgvCurrentNotifications.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvCurrentNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCurrentNotifications.Location = new System.Drawing.Point(730, 477);
             this.DgvCurrentNotifications.Name = "DgvCurrentNotifications";
