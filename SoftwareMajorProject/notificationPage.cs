@@ -21,6 +21,8 @@ namespace SoftwareMajorProject
 
         string userName;
         string selectedNotificationIndex;
+        string notificationDateTime;
+        string userEmail;
 
         public ReminderEditorPage(string userNameLoggedIn)
         {
@@ -224,7 +226,7 @@ namespace SoftwareMajorProject
             string notificationTitle = txtNotificationTitle.Text;
             string notificationDescription = txtNotificationDescription.Text;
             string notificationLocation = txtNotificationLocation.Text;
-            string notificationDateTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
+            notificationDateTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
 
             MessageBox.Show(notificationDateTime);
 
@@ -382,6 +384,62 @@ namespace SoftwareMajorProject
 
 
 
+        }
+
+        private void BtnNotificationCheck_Click(object sender, EventArgs e)
+        {
+            
+
+            SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
+            sqlConnectionNotificationsCheck.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+
+
+            sqlConnectionNotificationsCheck.Open();
+            var dataTableNotificationsCheck = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotificationsCheck);
+
+
+            notificationsDataAdapter.Fill(dataTableNotificationsCheck);
+            sqlConnectionNotificationsCheck.Close();
+
+
+
+
+            foreach (DataRow rowNotificationCheck in dataTableNotificationsCheck.Rows)
+            {
+
+                DateTime dateTimeNow = DateTime.Now;
+                DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
+
+                int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow);
+                if (comparedDates < 0)
+                {
+
+                    //SQLiteCommand checkIfNotificationOverdueCommand = new SQLiteCommand("SELECT * FROM UserInfo WHERE userName='" + userName + "'");
+                    //checkIfNotificationOverdueCommand.Parameters.AddWithValue("@userEmail", userEmail);
+
+                    string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
+                    SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
+
+                    var dataTableCheckIfNotificationOverdue = new DataTable();
+
+                    sqlConnectionNotificationsCheck.Open();
+                    notificationOverdueDataAdapter.Fill(dataTableCheckIfNotificationOverdue);
+                    sqlConnectionNotificationsCheck.Close();
+
+                    foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)
+                    {
+                        if (rowNotificationOverdue[1].ToString() == userName);
+                        {
+                            userEmail = rowNotificationOverdue[3].ToString();
+                        }
+                    }
+                }
+            }
+
+            MessageBox.Show(userEmail);
         }
     }
 }

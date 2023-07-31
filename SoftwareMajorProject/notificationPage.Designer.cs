@@ -48,6 +48,7 @@
             this.lblNotificationMinute = new System.Windows.Forms.Label();
             this.lblNotificationPeriod = new System.Windows.Forms.Label();
             this.lblCurrentNotifications = new System.Windows.Forms.Label();
+            this.BtnNotificationCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCurrentNotifications)).BeginInit();
             this.SuspendLayout();
@@ -338,12 +339,24 @@
             this.lblCurrentNotifications.TabIndex = 33;
             this.lblCurrentNotifications.Text = "Current Notifications:";
             // 
+            // BtnNotificationCheck
+            // 
+            this.BtnNotificationCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnNotificationCheck.Location = new System.Drawing.Point(388, 33);
+            this.BtnNotificationCheck.Name = "BtnNotificationCheck";
+            this.BtnNotificationCheck.Size = new System.Drawing.Size(215, 85);
+            this.BtnNotificationCheck.TabIndex = 34;
+            this.BtnNotificationCheck.Text = "Check is any notifications are overdue";
+            this.BtnNotificationCheck.UseVisualStyleBackColor = true;
+            this.BtnNotificationCheck.Click += new System.EventHandler(this.BtnNotificationCheck_Click);
+            // 
             // ReminderEditorPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.BtnNotificationCheck);
             this.Controls.Add(this.lblCurrentNotifications);
             this.Controls.Add(this.lblNotificationPeriod);
             this.Controls.Add(this.lblNotificationMinute);
@@ -398,5 +411,6 @@
         private System.Windows.Forms.Label lblNotificationMinute;
         private System.Windows.Forms.Label lblNotificationPeriod;
         private System.Windows.Forms.Label lblCurrentNotifications;
+        private System.Windows.Forms.Button BtnNotificationCheck;
     }
 }
