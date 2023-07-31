@@ -49,6 +49,8 @@
             this.lblNotificationPeriod = new System.Windows.Forms.Label();
             this.lblCurrentNotifications = new System.Windows.Forms.Label();
             this.BtnNotificationCheck = new System.Windows.Forms.Button();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtUserEmail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCurrentNotifications)).BeginInit();
             this.SuspendLayout();
@@ -350,12 +352,28 @@
             this.BtnNotificationCheck.UseVisualStyleBackColor = true;
             this.BtnNotificationCheck.Click += new System.EventHandler(this.BtnNotificationCheck_Click);
             // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(650, 44);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(208, 20);
+            this.txtUserName.TabIndex = 35;
+            // 
+            // txtUserEmail
+            // 
+            this.txtUserEmail.Location = new System.Drawing.Point(650, 70);
+            this.txtUserEmail.Name = "txtUserEmail";
+            this.txtUserEmail.Size = new System.Drawing.Size(208, 20);
+            this.txtUserEmail.TabIndex = 36;
+            // 
             // ReminderEditorPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.txtUserEmail);
+            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.BtnNotificationCheck);
             this.Controls.Add(this.lblCurrentNotifications);
             this.Controls.Add(this.lblNotificationPeriod);
@@ -412,5 +430,7 @@
         private System.Windows.Forms.Label lblNotificationPeriod;
         private System.Windows.Forms.Label lblCurrentNotifications;
         private System.Windows.Forms.Button BtnNotificationCheck;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtUserEmail;
     }
 }

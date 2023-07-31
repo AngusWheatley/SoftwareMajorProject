@@ -388,12 +388,13 @@ namespace SoftwareMajorProject
 
         private void BtnNotificationCheck_Click(object sender, EventArgs e)
         {
-            
+            DgvCurrentNotifications.ClearSelection();
+
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
             sqlConnectionNotificationsCheck.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+            string insertNotificationsCommand = "SELECT * FROM Notifications";
 
 
             sqlConnectionNotificationsCheck.Open();
@@ -407,9 +408,10 @@ namespace SoftwareMajorProject
 
 
 
+
+
             foreach (DataRow rowNotificationCheck in dataTableNotificationsCheck.Rows)
             {
-
                 DateTime dateTimeNow = DateTime.Now;
                 DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
 
@@ -423,6 +425,9 @@ namespace SoftwareMajorProject
                     string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
                     SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
 
+                    //checkIfNotificationOverdueCommand.Parameters.AddWithValue("", );
+
+
                     var dataTableCheckIfNotificationOverdue = new DataTable();
 
                     sqlConnectionNotificationsCheck.Open();
@@ -431,15 +436,23 @@ namespace SoftwareMajorProject
 
                     foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)
                     {
-                        if (rowNotificationOverdue[1].ToString() == userName);
+                        if (rowNotificationOverdue[1].ToString() == userName)
                         {
                             userEmail = rowNotificationOverdue[3].ToString();
+
+
+                            //Prepare email to send to user about notification
+
+
+                            MessageBox.Show(userEmail + "<==== Here is an email.");
+
+
                         }
                     }
                 }
             }
 
-            MessageBox.Show(userEmail);
+            
         }
     }
 }
