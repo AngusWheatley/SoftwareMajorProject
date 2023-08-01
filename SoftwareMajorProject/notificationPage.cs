@@ -23,7 +23,8 @@ namespace SoftwareMajorProject
         string selectedNotificationIndex;
         string notificationDateTime;
         string userEmail;
-        string overdueUserName; 
+        string overdueUserName;
+        string overdueUserIndex;
 
         public ReminderEditorPage(string userNameLoggedIn)
         {
@@ -418,6 +419,7 @@ namespace SoftwareMajorProject
                 int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
                 if (comparedDates < 0) //Occurs when the date is past current date
                 {
+                    MessageBox.Show(fullNotificationDateTime + " Has already passed");
 
                     foreach (DataRow rowUserNotification in dataTableNotificationsCheck.Rows)
                     {
@@ -435,26 +437,43 @@ namespace SoftwareMajorProject
 
                         overdueUserName = rowUserNotification[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
 
-                        foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)
+
+
+                        foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)//-------------------- Problem may be here as it is checking and getting all rows regardless if it 
                         {
-                            if (rowNotificationOverdue[1].ToString() == overdueUserName)
+
+                            if (overdueUserName == rowNotificationOverdue[1].ToString() && comparedDates < 0)
                             {
                                 userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
+
+
+                                /*foreach (DataRow row in dataTableNotificationsCheck.Rows)
+                                {
+                                    if (overdueUserName == rowNotificationOverdue.ToString())
+                                    {
+                                        MessageBox.Show(userEmail + "<==== Here is an email...");
+                                    }
+
+                                    MessageBox.Show(userEmail + "<==== Here is an email.");
+                                }*/
+
+                                MessageBox.Show(userEmail + "<==== Here is an email.");
+
 
 
                                 //Prepare email to send to user about notification
 
 
-                                MessageBox.Show(userEmail + "<==== Here is an email.");
+                                //MessageBox.Show(userEmail + "<==== Here is an email.");
 
 
                             }
                         }
                     }
                 }
-                else
+                else if (comparedDates >= 0)
                 {
-                    MessageBox.Show(notificationDateTime + " Date still to come");
+                    MessageBox.Show(fullNotificationDateTime + " Date still to come");
                 }
             }
 
