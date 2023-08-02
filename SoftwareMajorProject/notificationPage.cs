@@ -400,15 +400,15 @@ namespace SoftwareMajorProject
 
 
             
-            var dataTableNotificationsCheck = new DataTable();
+            var dataTableNotifications = new DataTable();
             SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotificationsCheck);
 
             sqlConnectionNotificationsCheck.Open();
-            notificationsDataAdapter.Fill(dataTableNotificationsCheck);
+            notificationsDataAdapter.Fill(dataTableNotifications);
             sqlConnectionNotificationsCheck.Close();
 
 
-            foreach (DataRow rowNotificationsCheck in dataTableNotificationsCheck.Rows) //Checks each row of the 'Notifications' table
+            foreach (DataRow rowNotificationsCheck in dataTableNotifications.Rows) //Checks each row of the 'Notifications' table
             {
                 DateTime dateTimeNow = DateTime.Now; //Gets current dateTime
                 string fullNotificationDateTimeString = rowNotificationsCheck[5].ToString(); //Gets notification dateTime from row in 'Notifications' as a string
@@ -420,29 +420,29 @@ namespace SoftwareMajorProject
                 {
                     MessageBox.Show(fullNotificationDateTime + " Has already passed");
 
-                    foreach (DataRow rowUserNotification in dataTableNotificationsCheck.Rows)
+                    int i = 1;
+
+                    foreach (DataRow rowUserNotification in dataTableNotifications.Rows)
                     {
                         string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
                         SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
 
 
 
-                        var dataTableCheckIfNotificationOverdue = new DataTable();
+                        var dataTableUserInfo = new DataTable();
 
                         sqlConnectionNotificationsCheck.Open();
-                        notificationOverdueDataAdapter.Fill(dataTableCheckIfNotificationOverdue);
+                        notificationOverdueDataAdapter.Fill(dataTableUserInfo);
                         sqlConnectionNotificationsCheck.Close();
 
 
                         overdueUserName = rowUserNotification[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
 
+                        
 
-
-
-
-                        foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)//-------------------- Problem may be here as it is checking and getting all rows regardless if it 
+                        foreach (DataRow rowNotificationOverdue in dataTableUserInfo.Rows)//-------------------- Problem may be here as it is checking and getting all rows regardless if it 
                         {
-                            if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName)
+                            if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName && i == 1)
                             {
                                 userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
 
@@ -457,7 +457,7 @@ namespace SoftwareMajorProject
                                     MessageBox.Show(userEmail + "<==== Here is an email.");
                                 }*/
 
-                                MessageBox.Show(userEmail + "<==== Here is an email.");
+                                MessageBox.Show(userEmail + "<==== Here is an email." + fullNotificationDateTimeString);
 
 
 
@@ -466,7 +466,7 @@ namespace SoftwareMajorProject
 
                                 //MessageBox.Show(userEmail + "<==== Here is an email.");
 
-
+                                i = 0;
                             }
                             
                         }
