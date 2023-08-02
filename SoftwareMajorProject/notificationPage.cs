@@ -415,7 +415,6 @@ namespace SoftwareMajorProject
                 DateTime fullNotificationDateTime = Convert.ToDateTime(fullNotificationDateTimeString); //Converts dateTime from row in 'Notificaitons'
 
 
-
                 int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
                 if (comparedDates < 0) //Occurs when the date is past current date
                 {
@@ -439,10 +438,11 @@ namespace SoftwareMajorProject
 
 
 
+
+
                         foreach (DataRow rowNotificationOverdue in dataTableCheckIfNotificationOverdue.Rows)//-------------------- Problem may be here as it is checking and getting all rows regardless if it 
                         {
-
-                            if (overdueUserName == rowNotificationOverdue[1].ToString() && comparedDates < 0)
+                            if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName)
                             {
                                 userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
 
@@ -468,6 +468,7 @@ namespace SoftwareMajorProject
 
 
                             }
+                            
                         }
                     }
                 }
