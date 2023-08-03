@@ -239,13 +239,13 @@ namespace SoftwareMajorProject
             string notificationLocation = txtNotificationLocation.Text;
             notificationDateTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
 
-            //MessageBox.Show(notificationDateTime););*******************************************
+            MessageBox.Show(notificationDateTime);
 
 
 
             if (notificationDateSelected != "" && CmbNotificationHour.Text != "" && CmbNotificationMinute.Text != "" && CmbNotificationPeriod.Text != "")
             {
-                //MessageBox.Show("Comparing dates"););*******************************************
+                MessageBox.Show("Comparing dates");
 
                 DateTime dateTimeNow = DateTime.Now;
                 DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
@@ -261,7 +261,7 @@ namespace SoftwareMajorProject
                 }
                 else
                 {
-                    MessageBox.Show("Notification added.");
+                    MessageBox.Show("Valid date!");
                     
 
                     SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -299,36 +299,27 @@ namespace SoftwareMajorProject
 
         private void btnDeleteNotification_Click(object sender, EventArgs e)
         {
-            DialogResult checkDeleteNotification = MessageBox.Show("Are you sure you want to delete notification?", "", MessageBoxButtons.YesNo);
-            if (checkDeleteNotification == DialogResult.Yes)
-            {
-                
+            SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+            sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-                SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
-                sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            SQLiteCommand deleteNotificationCommand = new SQLiteCommand();
 
-                SQLiteCommand deleteNotificationCommand = new SQLiteCommand();
+            deleteNotificationCommand.Connection = sqlConnectionDeleteNotification;
+            deleteNotificationCommand.CommandType = CommandType.Text;
+            deleteNotificationCommand.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=" + selectedNotificationIndex;
 
-                deleteNotificationCommand.Connection = sqlConnectionDeleteNotification;
-                deleteNotificationCommand.CommandType = CommandType.Text;
-                deleteNotificationCommand.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=" + selectedNotificationIndex;
+            deleteNotificationCommand.Parameters.AddWithValue("@NotificationIndex", selectedNotificationIndex);
 
-                deleteNotificationCommand.Parameters.AddWithValue("@NotificationIndex", selectedNotificationIndex);
-
-                sqlConnectionDeleteNotification.Open();
-                deleteNotificationCommand.ExecuteNonQuery();
-                sqlConnectionDeleteNotification.Close();
+            sqlConnectionDeleteNotification.Open();
+            deleteNotificationCommand.ExecuteNonQuery();
+            sqlConnectionDeleteNotification.Close();
 
 
-                LoadUserNotifications();
+            //============================================================================================================================
 
 
-                MessageBox.Show("Notification deleted.");
-            }
-            else
-            {
-                MessageBox.Show("Notification not deleted");
-            }
+            LoadUserNotifications();
+
         }
 
         private void DgvCurrentNotifications_SelectionChanged(object sender, EventArgs e)
@@ -356,7 +347,6 @@ namespace SoftwareMajorProject
         {
             DgvCurrentNotifications.ClearSelection();
 
-            MessageBox.Show("Looking for overdue notifications.");
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
             sqlConnectionNotificationsCheck.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
@@ -383,11 +373,11 @@ namespace SoftwareMajorProject
                 int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
                 if (comparedDates < 0) //Occurs when the date is past current date
                 {
-                    //MessageBox.Show(fullNotificationDateTime + " Has already passed");*************************************************
+                    MessageBox.Show(fullNotificationDateTime + " Has already passed");
 
                     int i = 1;
 
-                    //foreach (DataRow rowUserNotification in dataTableNotifications.Rows)
+                    foreach (DataRow rowUserNotification in dataTableNotifications.Rows)
                     {
                         string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
                         SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
@@ -401,7 +391,7 @@ namespace SoftwareMajorProject
                         sqlConnectionNotificationsCheck.Close();
 
 
-                        overdueUserName = rowNotificationsCheck[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
+                        overdueUserName = rowUserNotification[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
 
                         
 
@@ -410,7 +400,7 @@ namespace SoftwareMajorProject
                             if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName && i == 1)
                             {
                                 userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
-                                overdueUserIndex = rowNotificationsCheck[0].ToString();
+                                overdueUserIndex = rowUserNotification[0].ToString();
 
                                 /*foreach (DataRow row in dataTableNotificationsCheck.Rows)
                                 {
@@ -422,11 +412,11 @@ namespace SoftwareMajorProject
                                     MessageBox.Show(userEmail + "<==== Here is an email.");
                                 }*/
 
-                                //MessageBox.Show(userEmail + "<==== Here is an email." + fullNotificationDateTimeString);*******************************************
+                                MessageBox.Show(userEmail + "<==== Here is an email." + fullNotificationDateTimeString);
 
 
-                                notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowNotificationsCheck[2].ToString();
-                                notificationBodyToSendToUser = "Title: " + rowNotificationsCheck[2].ToString() + "\nDescription: " + rowNotificationsCheck[3].ToString() + "\n Location: " + rowNotificationsCheck[4].ToString() + "\n Time of Notification: " + rowNotificationsCheck[5].ToString();
+                                notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowUserNotification[2].ToString();
+                                notificationBodyToSendToUser = "Title: " + rowUserNotification[2].ToString() + "\nDescription: " + rowUserNotification[3].ToString() + "\n Location: " + rowUserNotification[4].ToString() + "\n Time of Notification: " + rowUserNotification[5].ToString();
 
 
                                 MailMessage mailMessage = new MailMessage();
@@ -450,8 +440,6 @@ namespace SoftwareMajorProject
                                     MessageBox.Show("Failed to send. Error: " + ex.Message);
                                 }
 
-                                MessageBox.Show(overdueUserIndex);
-
 
                                 SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
                                 sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
@@ -467,7 +455,14 @@ namespace SoftwareMajorProject
                                 sqlConnectionDeleteNotification.Close();
 
 
+
+
                                 LoadUserNotifications();
+
+
+                                //Prepare email to send to user about notification
+
+
 
                                 i = 0;
                             }
@@ -477,7 +472,7 @@ namespace SoftwareMajorProject
                 }
                 else if (comparedDates >= 0)
                 {
-                    //MessageBox.Show(fullNotificationDateTime + " Date still to come");*******************************************
+                    MessageBox.Show(fullNotificationDateTime + " Date still to come");
                 }
             }
 

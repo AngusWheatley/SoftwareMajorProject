@@ -65,6 +65,7 @@ namespace SoftwareMajorProject
         private void LoginPage_Load(object sender, EventArgs e)
         {
             userName = "";
+
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -146,7 +147,7 @@ namespace SoftwareMajorProject
             string trimmedUserPassword = String.Concat(userPassword.Where(c => !Char.IsWhiteSpace(c)));
 
 
-            //MessageBox.Show(trimmedUserName);****************************
+            MessageBox.Show(trimmedUserName);
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
