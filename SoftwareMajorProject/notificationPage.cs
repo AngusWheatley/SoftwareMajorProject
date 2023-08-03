@@ -427,7 +427,7 @@ namespace SoftwareMajorProject
 
 
                                 notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowNotificationsCheck[2].ToString();
-                                notificationBodyToSendToUser = "Title: " + rowNotificationsCheck[2].ToString() + "\nDescription: " + rowNotificationsCheck[3].ToString() + "\n Location: " + rowNotificationsCheck[4].ToString() + "\n Time of Notification: " + rowNotificationsCheck[5].ToString();
+                                notificationBodyToSendToUser = "Title: " + rowNotificationsCheck[2].ToString() + "\nDescription: " + rowNotificationsCheck[3].ToString() + "\nLocation: " + rowNotificationsCheck[4].ToString() + "\nTime of Notification: " + rowNotificationsCheck[5].ToString();
 
 
                                 MailMessage mailMessage = new MailMessage();
