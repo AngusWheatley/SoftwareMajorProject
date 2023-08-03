@@ -24,6 +24,7 @@ namespace SoftwareMajorProject
         string userPassword;
         string userEmail;
         bool userExists;
+        bool userPasswordExists; 
         string trimmedUserName;
         string trimmedUserPassword;
         string trimmedUserEmail;
@@ -60,7 +61,7 @@ namespace SoftwareMajorProject
 
             if (userName != "" && userPassword != "" && userEmail != "" && isLetter == true) 
             {
-                MessageBox.Show("True that");
+                MessageBox.Show("There are characters in each textbox.");
 
                 
 
@@ -82,19 +83,32 @@ namespace SoftwareMajorProject
                 cmd.Connection = sqlConnection;
                 sqlConnection.Open();
 
-                DataSet userInfoDataSet = new DataSet();
+                DataTable dataTableUserInfo = new DataTable();
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
 
-                dataAdapter.Fill(userInfoDataSet);
+                dataAdapter.Fill(dataTableUserInfo);
                 sqlConnection.Close();
 
-                userExists = ((userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0));
+                //userExists = (dataTableUserInfo.Tables.Count > 0) && (dataTableUserInfo.Tables[0].Rows.Count > 0) ;
+                //userPasswordExists = (userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0);
+                userExists = false;
+                userPasswordExists = false;
+                foreach (DataRow row in dataTableUserInfo.Rows)
+                {
+                    if (row[0].ToString() == userName || row[1].ToString() == userPassword)
+                    {
+                        userExists = true;
+                        userPasswordExists = true;
+                    }
+                }
+
+
                 //---------------------------------------------
                 MessageBox.Show("User exists= " + Convert.ToString(userExists));
 
 
 
-                if (userExists == false)
+                if (userExists == false && userPasswordExists == false)
                 {
                     //Creats and sends verification code to user
                     Random randomCode = new Random();

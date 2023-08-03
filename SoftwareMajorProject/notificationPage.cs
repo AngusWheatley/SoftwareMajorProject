@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Runtime;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,8 @@ namespace SoftwareMajorProject
         string userEmail;
         string overdueUserName;
         string overdueUserIndex;
+        string notificationTitleToSendToUser;
+        string notificationBodyToSendToUser;
 
         public ReminderEditorPage(string userNameLoggedIn)
         {
@@ -74,7 +78,7 @@ namespace SoftwareMajorProject
                     lblCurrentNotifications.BackColor = Color.FromName(row[2].ToString());
                     DgvCurrentNotifications.BackgroundColor = Color.FromName(row[2].ToString());
                     DgvCurrentNotifications.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-                    
+
 
                     //Font type
                     var fontConverter = new FontConverter();
@@ -109,26 +113,8 @@ namespace SoftwareMajorProject
 
 
 
-            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
-            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            LoadUserNotifications();
 
-            //string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
-
-            //insertNotificationsCommand.Parameters.AddWithValue("@userName", userName);
-            //insertNotificationsCommand.Connection = sqlConnectionNotifications;
-
-            sqlConnectionNotifications.Open();
-            var dataTableNotifications = new DataTable();
-            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
-            
-            
-            notificationsDataAdapter.Fill(dataTableNotifications);
-            sqlConnectionNotifications.Close();
-
-
-            //DataTable dataTableUserNotifications = new DataTable();
-            //dataTableUserNotifications = dataTableNotifications.Copy();
 
             /*
             bool userNotificationExists = dataTableUserNotifications.Rows.Count > 0;
@@ -152,14 +138,6 @@ namespace SoftwareMajorProject
             MessageBox.Show(Convert.ToString(userNotificationExistsShort));
             */
 
-            DgvCurrentNotifications.DataSource = dataTableNotifications;
-            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
-            DgvCurrentNotifications.Columns["UserName"].Visible = false;
-
-            DgvCurrentNotifications.Columns[2].Width = 120;
-            DgvCurrentNotifications.Columns[3].Width = 145;
-            DgvCurrentNotifications.Columns[4].Width = 115;
-            DgvCurrentNotifications.Columns[5].Width = 110;
 
             /*
             var dataTableUserNotifications = new DataTable();
@@ -185,8 +163,6 @@ namespace SoftwareMajorProject
             foreach (DataRow row in userNotifications)
             {
 
-
-
             }*/
 
 
@@ -199,6 +175,41 @@ namespace SoftwareMajorProject
 
 
 
+        }
+
+        private void LoadUserNotifications()
+        {
+            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
+            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            //string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+
+            //insertNotificationsCommand.Parameters.AddWithValue("@userName", userName);
+            //insertNotificationsCommand.Connection = sqlConnectionNotifications;
+
+            sqlConnectionNotifications.Open();
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+
+
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotifications.Close();
+
+
+            //DataTable dataTableUserNotifications = new DataTable();
+            //dataTableUserNotifications = dataTableNotifications.Copy();
+
+
+
+            DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
+            DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+            DgvCurrentNotifications.Columns[2].Width = 120;
+            DgvCurrentNotifications.Columns[3].Width = 145;
+            DgvCurrentNotifications.Columns[4].Width = 115;
+            DgvCurrentNotifications.Columns[5].Width = 110;
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -276,29 +287,7 @@ namespace SoftwareMajorProject
 
                 }
 
-                SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
-                sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-                string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
-
-                sqlConnectionNotifications.Open();
-                var dataTableNotifications = new DataTable();
-                SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
-
-
-                notificationsDataAdapter.Fill(dataTableNotifications);
-                sqlConnectionNotifications.Close();
-
-                //=========================================================================================================
-
-                DgvCurrentNotifications.DataSource = dataTableNotifications;
-                DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
-                DgvCurrentNotifications.Columns["UserName"].Visible = false;
-
-                DgvCurrentNotifications.Columns[2].Width = 120;
-                DgvCurrentNotifications.Columns[3].Width = 145;
-                DgvCurrentNotifications.Columns[4].Width = 115;
-                DgvCurrentNotifications.Columns[5].Width = 110;
+                LoadUserNotifications();
 
 
             }
@@ -331,34 +320,7 @@ namespace SoftwareMajorProject
             //============================================================================================================================
 
 
-            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
-            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
-            
-
-            sqlConnectionNotifications.Open();
-            var dataTableNotifications = new DataTable();
-            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
-
-
-            notificationsDataAdapter.Fill(dataTableNotifications);
-            sqlConnectionNotifications.Close();
-
-
-            DgvCurrentNotifications.DataSource = dataTableNotifications;
-            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
-            DgvCurrentNotifications.Columns["UserName"].Visible = false;
-
-            DgvCurrentNotifications.Columns[2].Width = 120;
-            DgvCurrentNotifications.Columns[3].Width = 145;
-            DgvCurrentNotifications.Columns[4].Width = 115;
-            DgvCurrentNotifications.Columns[5].Width = 110;
-
-
-
-
-
+            LoadUserNotifications();
 
         }
 
@@ -380,12 +342,7 @@ namespace SoftwareMajorProject
                 selectNotificationDataAdapter.Fill(dataTableNotifications);
 
                 sqlConnectionDeleteNotification.Close();
-
-
             }
-
-
-
         }
 
         private void BtnNotificationCheck_Click(object sender, EventArgs e)
@@ -445,7 +402,7 @@ namespace SoftwareMajorProject
                             if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName && i == 1)
                             {
                                 userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
-
+                                overdueUserIndex = rowUserNotification[0].ToString();
 
                                 /*foreach (DataRow row in dataTableNotificationsCheck.Rows)
                                 {
@@ -460,11 +417,54 @@ namespace SoftwareMajorProject
                                 MessageBox.Show(userEmail + "<==== Here is an email." + fullNotificationDateTimeString);
 
 
+                                notificationTitleToSendToUser = "New Notification: " + rowUserNotification[2].ToString();
+                                notificationBodyToSendToUser = "Description: " + rowUserNotification[3].ToString() + "\r\n Location: " + rowUserNotification[4].ToString() + "\r\n Time of Notification: " + rowUserNotification[5].ToString();
+
+
+                                MailMessage mailMessage = new MailMessage();
+                                mailMessage.From = new MailAddress("noterservices@gmail.com");
+                                mailMessage.To.Add(userEmail);
+                                mailMessage.Subject = notificationTitleToSendToUser;
+                                mailMessage.Body = notificationBodyToSendToUser;
+
+                                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                                smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
+                                smtpClient.EnableSsl = true;
+
+                                try
+                                {
+                                    smtpClient.Send(mailMessage);
+                                    MessageBox.Show("email sent");
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Failed to send. Error: " + ex.Message);
+                                }
+
+
+                                SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+                                sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+                                SQLiteCommand sqlCommandDeleteNotification = new SQLiteCommand();
+                                sqlCommandDeleteNotification.Connection = sqlConnectionDeleteNotification;
+                                sqlCommandDeleteNotification.CommandType = CommandType.Text;
+                                sqlCommandDeleteNotification.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=@NotificationIndex";
+                                sqlCommandDeleteNotification.Parameters.AddWithValue("@NotificationIndex", overdueUserIndex);
+
+                                sqlConnectionDeleteNotification.Open();
+                                sqlCommandDeleteNotification.ExecuteNonQuery();
+                                sqlConnectionDeleteNotification.Close();
+
+
+
+
+                                LoadUserNotifications();
+
 
                                 //Prepare email to send to user about notification
 
 
-                                //MessageBox.Show(userEmail + "<==== Here is an email.");
 
                                 i = 0;
                             }

@@ -106,7 +106,7 @@ namespace SoftwareMajorProject
 
                 //Checks if database for user already exists
                 sqlConnection.Open();
-                var commandCheckForTable = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='" + givenTrimmedUserName + "Diary';", sqlConnection);
+                var commandCheckForTable = new SQLiteCommand("SELECT name FROM sqlite_master WHERE type='table' AND name='" + givenTrimmedUserName + "_Diary';", sqlConnection);
                 var reader = commandCheckForTable.ExecuteReader();
 
                 bool tableExists = reader.HasRows;
