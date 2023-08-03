@@ -64,7 +64,7 @@ namespace SoftwareMajorProject
 
             if (userName != "" && userPassword != "" && userEmail != "" && isLetter == true) 
             {
-                MessageBox.Show("There are characters in each textbox.");
+                //MessageBox.Show("There are characters in each textbox.");****************************************************
 
                 
 
@@ -120,7 +120,7 @@ namespace SoftwareMajorProject
 
                 //userExists = dataTableUserInfo.Select().ToList().Exists(row2 => row2["userName"].ToString().ToUpper() == trimmedUserName);
 
-                MessageBox.Show(trimmedUserName);
+                //MessageBox.Show(trimmedUserName);*************************************************************
 
                 /*foreach (DataRow row in dataTableUserInfo.Rows)
                 {
@@ -133,9 +133,9 @@ namespace SoftwareMajorProject
                 }*/
 
 
+                MessageBox.Show("Please wait");
 
-
-                MessageBox.Show("User exists= " + Convert.ToString(userExists));
+                //MessageBox.Show("User exists= " + Convert.ToString(userExists)); *************************************************************
                 //MessageBox.Show("User password exists= " + Convert.ToString(userPasswordExists));
 
 
@@ -159,7 +159,7 @@ namespace SoftwareMajorProject
                     try
                     {
                         smtpClient.Send(mailMessage);
-                        MessageBox.Show("email sent");
+                        MessageBox.Show("An email has been sent to you for account verification.");
 
                         VerificationCodeForm verificationCodeForm = new VerificationCodeForm(verificationCode, userName, userEmail, userExists, trimmedUserName, trimmedUserPassword, trimmedUserEmail);
                         this.Hide();
@@ -188,7 +188,7 @@ namespace SoftwareMajorProject
             }
             else
             {
-                MessageBox.Show("Nothing entered");
+                MessageBox.Show("Please enter information into all text boses.");
             }
 
             userExists = false;
@@ -352,7 +352,6 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
                 BtnSignUp_Click(sender, e);
                 txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
             }
@@ -362,7 +361,6 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
                 BtnSignUp_Click(sender, e);
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
@@ -372,7 +370,6 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
-                txtUserEmail.Text = txtUserEmail.Text.Replace(System.Environment.NewLine, "");
                 BtnSignUp_Click(sender, e);
                 txtUserEmail.Text = txtUserEmail.Text.Replace(System.Environment.NewLine, "");
             }

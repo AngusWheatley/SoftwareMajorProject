@@ -43,8 +43,8 @@ namespace SoftwareMajorProject
             string codeEntered = txtCodeEntered.Text;
             int trimmedCodeEntered = Convert.ToInt32(String.Concat(codeEntered.Where(c => !Char.IsWhiteSpace(c))));
 
-            MessageBox.Show("You entered code " + Convert.ToString(trimmedCodeEntered) + ". But the correct code was " + givenVerificationCode);
-            
+            //MessageBox.Show("You entered code " + Convert.ToString(trimmedCodeEntered) + ". The correct code was " + givenVerificationCode);*************************************************************
+
 
             //Checks Input box for verification code entered
             if (trimmedCodeEntered == givenVerificationCode)

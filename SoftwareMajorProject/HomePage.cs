@@ -55,21 +55,16 @@ namespace SoftwareMajorProject
             {
                 if (row[0].ToString() == userNameLoggedIn)
                 {
-                    txtReplacedUserName.Text = row[0].ToString();
-                    txtUserBackgroundColour.Text = row[1].ToString();
-                    txtUserForegroundColour.Text = row[2].ToString();
-                    txtUserFont.Text = row[3].ToString();
+                    //txtReplacedUserName.Text = row[0].ToString();
+                    //txtUserBackgroundColour.Text = row[1].ToString();
+                    //txtUserForegroundColour.Text = row[2].ToString();
+                    //txtUserFont.Text = row[3].ToString();
 
 
 
 
-
+                    //Front colour
                     BackColor = Color.FromName(row[1].ToString());
-
-
-
-
-
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
 
 
