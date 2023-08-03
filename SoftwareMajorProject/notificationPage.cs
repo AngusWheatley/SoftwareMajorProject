@@ -356,6 +356,8 @@ namespace SoftwareMajorProject
         {
             DgvCurrentNotifications.ClearSelection();
 
+            MessageBox.Show("Searching for overdue notifications.");
+
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
             sqlConnectionNotificationsCheck.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
