@@ -28,6 +28,7 @@ namespace SoftwareMajorProject
         string trimmedUserName;
         string trimmedUserPassword;
         string trimmedUserEmail;
+        string users;
 
         public NewAccountPage()
         {
@@ -54,6 +55,8 @@ namespace SoftwareMajorProject
             userPassword = txtUserPassword.Text;
             userEmail = txtUserEmail.Text;
 
+            userExists = true;
+            userPasswordExists = true;
 
 
             bool isLetter = !string.IsNullOrEmpty(userName) && Char.IsLetter(userName[0]);
@@ -75,23 +78,24 @@ namespace SoftwareMajorProject
 
 
                 //Check if user exists
-                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword;");
-
+                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo "/* where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword*/);
+                /*
                 cmd.Parameters.AddWithValue("@userName", trimmedUserName);
                 cmd.Parameters.AddWithValue("@userPassword", trimmedUserPassword);
-                cmd.Parameters.AddWithValue("@userEmail", trimmedUserEmail);
+                cmd.Parameters.AddWithValue("@userEmail", trimmedUserEmail);*/
                 cmd.Connection = sqlConnection;
-                sqlConnection.Open();
 
                 DataTable dataTableUserInfo = new DataTable();
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
 
+                sqlConnection.Open();
                 dataAdapter.Fill(dataTableUserInfo);
                 sqlConnection.Close();
 
-                //userExists = (dataTableUserInfo.Tables.Count > 0) && (dataTableUserInfo.Tables[0].Rows.Count > 0) ;
-                //userPasswordExists = (userInfoDataSet.Tables.Count > 0) && (userInfoDataSet.Tables[0].Rows.Count > 0);
-                userExists = false;
+                //userExists = (dataSetUserInfo.Tables.Count > 0) || (dataSetUserInfo.Tables[0].Rows.Count > 0);
+                //userPasswordExists = (dataSetUserInfo.Tables.Count > 0) || (dataSetUserInfo.Tables[0].Rows.Count > 0);
+                
+                /*userExists = false;
                 userPasswordExists = false;
                 foreach (DataRow row in dataTableUserInfo.Rows)
                 {
@@ -100,15 +104,43 @@ namespace SoftwareMajorProject
                         userExists = true;
                         userPasswordExists = true;
                     }
-                }
+                }*/
 
 
                 //---------------------------------------------
+                
+
+                //DataRow[] users = dataTableUserInfo.Select("userName = '" + trimmedUserName + "'");
+                //if (users.Length != 0)
+
+                
+                users = trimmedUserName;
+                userExists = dataTableUserInfo.AsEnumerable().Any(row => users == row.Field<string>("userName"));
+                //userPasswordExists = dataTableUserInfo.AsEnumerable().Any(row => users == row.Field<string>("userPassword"));
+
+                //userExists = dataTableUserInfo.Select().ToList().Exists(row2 => row2["userName"].ToString().ToUpper() == trimmedUserName);
+
+                MessageBox.Show(trimmedUserName);
+
+                /*foreach (DataRow row in dataTableUserInfo.Rows)
+                {
+                    if (row[1].ToString() != txtUserName.Text)
+                    {
+                        
+                        userExists = false;
+                        userPasswordExists = false;
+                    }
+                }*/
+
+
+
+
                 MessageBox.Show("User exists= " + Convert.ToString(userExists));
+                //MessageBox.Show("User password exists= " + Convert.ToString(userPasswordExists));
 
 
-
-                if (userExists == false && userPasswordExists == false)
+                //if (userExists == false || userPasswordExists == false)
+                if (userExists == false/* && userPasswordExists == false*/)
                 {
                     //Creats and sends verification code to user
                     Random randomCode = new Random();
@@ -118,7 +150,7 @@ namespace SoftwareMajorProject
                     mailMessage.From = new MailAddress("noterservices@gmail.com");
                     mailMessage.To.Add(trimmedUserEmail);
                     mailMessage.Subject = "New account creation";
-                    mailMessage.Body = "Your account verification code is " + verificationCode + ". If you did not request for this code, please ignore this message.";
+                    mailMessage.Body = "Your account verification code for " + userName + "is " + verificationCode + ". If you did not request for this code, please ignore this message.";
 
                     SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
                     smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
@@ -146,6 +178,8 @@ namespace SoftwareMajorProject
                 else
                 {
                     MessageBox.Show("User already exists. Try another name.");
+                    userExists = true;
+                    userPasswordExists = true;
                 }
             }
             else if (isLetter == false)
@@ -157,7 +191,8 @@ namespace SoftwareMajorProject
                 MessageBox.Show("Nothing entered");
             }
 
-
+            userExists = false;
+            userPasswordExists = false;
 
 
 
@@ -317,6 +352,7 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
                 BtnSignUp_Click(sender, e);
                 txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
             }
@@ -326,6 +362,7 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
                 BtnSignUp_Click(sender, e);
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
@@ -335,6 +372,7 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txtUserEmail.Text = txtUserEmail.Text.Replace(System.Environment.NewLine, "");
                 BtnSignUp_Click(sender, e);
                 txtUserEmail.Text = txtUserEmail.Text.Replace(System.Environment.NewLine, "");
             }
