@@ -39,6 +39,7 @@
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
+            this.BtnAllEntries = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,10 +125,11 @@
             // txtUserName
             // 
             this.txtUserName.Location = new System.Drawing.Point(203, 54);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(115, 20);
             this.txtUserName.TabIndex = 36;
+            this.txtUserName.Visible = false;
             // 
             // lblEntryDate
             // 
@@ -150,12 +152,24 @@
             this.CalEntryDate.TabIndex = 37;
             this.CalEntryDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalDiaryEntryDate_DateSelected);
             // 
+            // BtnAllEntries
+            // 
+            this.BtnAllEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnAllEntries.Location = new System.Drawing.Point(728, 434);
+            this.BtnAllEntries.Name = "BtnAllEntries";
+            this.BtnAllEntries.Size = new System.Drawing.Size(561, 74);
+            this.BtnAllEntries.TabIndex = 42;
+            this.BtnAllEntries.Text = "All Entries";
+            this.BtnAllEntries.UseVisualStyleBackColor = true;
+            this.BtnAllEntries.Click += new System.EventHandler(this.BtnAllEntries_Click);
+            // 
             // DiaryEditorPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1424, 813);
+            this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.BtnAllEntries);
             this.Controls.Add(this.lblEntryDate);
             this.Controls.Add(this.CalEntryDate);
             this.Controls.Add(this.txtUserName);
@@ -169,8 +183,8 @@
             this.Controls.Add(this.picBackPlate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1440, 859);
-            this.MinimumSize = new System.Drawing.Size(1440, 834);
+            this.MaximumSize = new System.Drawing.Size(1440, 860);
+            this.MinimumSize = new System.Drawing.Size(1440, 860);
             this.Name = "DiaryEditorPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Diary Entry";
@@ -194,5 +208,6 @@
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.MonthCalendar CalEntryDate;
+        private System.Windows.Forms.Button BtnAllEntries;
     }
 }

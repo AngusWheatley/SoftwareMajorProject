@@ -49,7 +49,7 @@
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.picBackPlate.Location = new System.Drawing.Point(320, 4);
-            this.picBackPlate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picBackPlate.Margin = new System.Windows.Forms.Padding(2);
             this.picBackPlate.Name = "picBackPlate";
             this.picBackPlate.Size = new System.Drawing.Size(800, 800);
             this.picBackPlate.TabIndex = 6;
@@ -59,7 +59,7 @@
             // 
             this.btnNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNotifications.Location = new System.Drawing.Point(447, 390);
-            this.btnNotifications.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNotifications.Margin = new System.Windows.Forms.Padding(2);
             this.btnNotifications.Name = "btnNotifications";
             this.btnNotifications.Size = new System.Drawing.Size(262, 203);
             this.btnNotifications.TabIndex = 7;
@@ -71,7 +71,7 @@
             // 
             this.btnDiary.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiary.Location = new System.Drawing.Point(740, 390);
-            this.btnDiary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDiary.Margin = new System.Windows.Forms.Padding(2);
             this.btnDiary.Name = "btnDiary";
             this.btnDiary.Size = new System.Drawing.Size(262, 203);
             this.btnDiary.TabIndex = 8;
@@ -96,6 +96,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(142, 20);
             this.txtName.TabIndex = 27;
+            this.txtName.Visible = false;
             // 
             // txtPassword
             // 
@@ -103,6 +104,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(142, 20);
             this.txtPassword.TabIndex = 28;
+            this.txtPassword.Visible = false;
             // 
             // TxtUserEmail
             // 
@@ -110,6 +112,7 @@
             this.TxtUserEmail.Name = "TxtUserEmail";
             this.TxtUserEmail.Size = new System.Drawing.Size(142, 20);
             this.TxtUserEmail.TabIndex = 29;
+            this.TxtUserEmail.Visible = false;
             // 
             // BtnSettings
             // 
@@ -127,6 +130,7 @@
             this.txtUserBackgroundColour.Name = "txtUserBackgroundColour";
             this.txtUserBackgroundColour.Size = new System.Drawing.Size(110, 20);
             this.txtUserBackgroundColour.TabIndex = 31;
+            this.txtUserBackgroundColour.Visible = false;
             // 
             // txtUserForegroundColour
             // 
@@ -134,6 +138,7 @@
             this.txtUserForegroundColour.Name = "txtUserForegroundColour";
             this.txtUserForegroundColour.Size = new System.Drawing.Size(110, 20);
             this.txtUserForegroundColour.TabIndex = 32;
+            this.txtUserForegroundColour.Visible = false;
             // 
             // txtUserFont
             // 
@@ -141,6 +146,7 @@
             this.txtUserFont.Name = "txtUserFont";
             this.txtUserFont.Size = new System.Drawing.Size(110, 20);
             this.txtUserFont.TabIndex = 33;
+            this.txtUserFont.Visible = false;
             // 
             // txtReplacedUserName
             // 
@@ -148,6 +154,7 @@
             this.txtReplacedUserName.Name = "txtReplacedUserName";
             this.txtReplacedUserName.Size = new System.Drawing.Size(110, 20);
             this.txtReplacedUserName.TabIndex = 34;
+            this.txtReplacedUserName.Visible = false;
             // 
             // DgvSettings
             // 
@@ -156,6 +163,7 @@
             this.DgvSettings.Name = "DgvSettings";
             this.DgvSettings.Size = new System.Drawing.Size(588, 279);
             this.DgvSettings.TabIndex = 35;
+            this.DgvSettings.Visible = false;
             // 
             // HomePage
             // 

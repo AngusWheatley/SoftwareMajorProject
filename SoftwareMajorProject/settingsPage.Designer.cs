@@ -61,7 +61,8 @@
             "Orange",
             "Yellow",
             "Green",
-            "Blue",
+            "DodgerBlue",
+            "LightSteelBlue",
             "Purple"});
             this.CmbBackgroundColour.Location = new System.Drawing.Point(328, 178);
             this.CmbBackgroundColour.Name = "CmbBackgroundColour";
@@ -103,10 +104,12 @@
             // 
             // txtUserName
             // 
+            this.txtUserName.Enabled = false;
             this.txtUserName.Location = new System.Drawing.Point(897, 280);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(100, 20);
             this.txtUserName.TabIndex = 11;
+            this.txtUserName.Visible = false;
             // 
             // lblForegroundColour
             // 
@@ -129,7 +132,8 @@
             "Orange",
             "Yellow",
             "Green",
-            "Blue",
+            "DodgerBlue",
+            "LightSteelBlue",
             "Purple"});
             this.CmbForegroundColour.Location = new System.Drawing.Point(328, 263);
             this.CmbForegroundColour.Name = "CmbForegroundColour";

@@ -204,6 +204,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="diaryViewerPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="diaryViewerPage.Designer.cs">
+      <DependentUpon>diaryViewerPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="loginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
       <DependentUpon>settingsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="diaryViewerPage.resx">
+      <DependentUpon>diaryViewerPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="loginPage.resx">
       <DependentUpon>loginPage.cs</DependentUpon>
     </EmbeddedResource>

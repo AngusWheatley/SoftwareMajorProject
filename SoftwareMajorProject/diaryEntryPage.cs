@@ -68,8 +68,8 @@ namespace SoftwareMajorProject
                     CalEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
                     BtnSaveEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
                     BtnDeleteEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    BtnAllEntries.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
                     btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-
                 }
             }
 
@@ -129,6 +129,13 @@ namespace SoftwareMajorProject
         {
             diaryDate = e.Start.ToShortDateString();
             MessageBox.Show(diaryDate);
+        }
+
+        private void BtnAllEntries_Click(object sender, EventArgs e)
+        {
+            diaryViewerPage diaryViewerPage = new diaryViewerPage(userName);
+            this.Hide();
+            diaryViewerPage.Show();
         }
     }
 }

@@ -17,10 +17,8 @@ namespace SoftwareMajorProject
 {
     public partial class ReminderEditorPage : Form
     {
-        //(Change when need to pass to other forms)
-        string notificationDate; 
-        //----------------------------
-
+        
+        string notificationDate;
         string userName;
         string selectedNotificationIndex;
         string notificationDateTime;
@@ -417,8 +415,8 @@ namespace SoftwareMajorProject
                                 MessageBox.Show(userEmail + "<==== Here is an email." + fullNotificationDateTimeString);
 
 
-                                notificationTitleToSendToUser = "New Notification: " + rowUserNotification[2].ToString();
-                                notificationBodyToSendToUser = "Description: " + rowUserNotification[3].ToString() + "\r\n Location: " + rowUserNotification[4].ToString() + "\r\n Time of Notification: " + rowUserNotification[5].ToString();
+                                notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowUserNotification[2].ToString();
+                                notificationBodyToSendToUser = "Title: " + rowUserNotification[2].ToString() + "\nDescription: " + rowUserNotification[3].ToString() + "\n Location: " + rowUserNotification[4].ToString() + "\n Time of Notification: " + rowUserNotification[5].ToString();
 
 
                                 MailMessage mailMessage = new MailMessage();

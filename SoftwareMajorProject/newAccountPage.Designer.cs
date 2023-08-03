@@ -153,12 +153,14 @@
             // 
             // btnTestEmail
             // 
+            this.btnTestEmail.Enabled = false;
             this.btnTestEmail.Location = new System.Drawing.Point(1101, 290);
             this.btnTestEmail.Name = "btnTestEmail";
             this.btnTestEmail.Size = new System.Drawing.Size(139, 87);
             this.btnTestEmail.TabIndex = 15;
             this.btnTestEmail.Text = "button1";
             this.btnTestEmail.UseVisualStyleBackColor = true;
+            this.btnTestEmail.Visible = false;
             this.btnTestEmail.Click += new System.EventHandler(this.BtnTestEmail_Click);
             // 
             // label3

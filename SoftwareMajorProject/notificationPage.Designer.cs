@@ -49,8 +49,6 @@
             this.lblNotificationPeriod = new System.Windows.Forms.Label();
             this.lblCurrentNotifications = new System.Windows.Forms.Label();
             this.BtnNotificationCheck = new System.Windows.Forms.Button();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.txtUserEmail = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCurrentNotifications)).BeginInit();
             this.SuspendLayout();
@@ -162,9 +160,10 @@
             this.DgvCurrentNotifications.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvCurrentNotifications.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvCurrentNotifications.Location = new System.Drawing.Point(730, 477);
+            this.DgvCurrentNotifications.MultiSelect = false;
             this.DgvCurrentNotifications.Name = "DgvCurrentNotifications";
             this.DgvCurrentNotifications.RowHeadersWidth = 51;
-            this.DgvCurrentNotifications.Size = new System.Drawing.Size(560, 274);
+            this.DgvCurrentNotifications.Size = new System.Drawing.Size(560, 215);
             this.DgvCurrentNotifications.TabIndex = 23;
             this.DgvCurrentNotifications.SelectionChanged += new System.EventHandler(this.DgvCurrentNotifications_SelectionChanged);
             // 
@@ -344,27 +343,13 @@
             // BtnNotificationCheck
             // 
             this.BtnNotificationCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnNotificationCheck.Location = new System.Drawing.Point(388, 33);
+            this.BtnNotificationCheck.Location = new System.Drawing.Point(730, 700);
             this.BtnNotificationCheck.Name = "BtnNotificationCheck";
-            this.BtnNotificationCheck.Size = new System.Drawing.Size(215, 85);
+            this.BtnNotificationCheck.Size = new System.Drawing.Size(560, 51);
             this.BtnNotificationCheck.TabIndex = 34;
             this.BtnNotificationCheck.Text = "Check is any notifications are overdue";
             this.BtnNotificationCheck.UseVisualStyleBackColor = true;
             this.BtnNotificationCheck.Click += new System.EventHandler(this.BtnNotificationCheck_Click);
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Location = new System.Drawing.Point(650, 44);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(208, 20);
-            this.txtUserName.TabIndex = 35;
-            // 
-            // txtUserEmail
-            // 
-            this.txtUserEmail.Location = new System.Drawing.Point(650, 70);
-            this.txtUserEmail.Name = "txtUserEmail";
-            this.txtUserEmail.Size = new System.Drawing.Size(208, 20);
-            this.txtUserEmail.TabIndex = 36;
             // 
             // ReminderEditorPage
             // 
@@ -372,8 +357,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
-            this.Controls.Add(this.txtUserEmail);
-            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.BtnNotificationCheck);
             this.Controls.Add(this.lblCurrentNotifications);
             this.Controls.Add(this.lblNotificationPeriod);
@@ -398,6 +381,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ReminderEditorPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Notification Editor";
             this.Load += new System.EventHandler(this.ReminderEditorPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
@@ -430,7 +414,5 @@
         private System.Windows.Forms.Label lblNotificationPeriod;
         private System.Windows.Forms.Label lblCurrentNotifications;
         private System.Windows.Forms.Button BtnNotificationCheck;
-        private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.TextBox txtUserEmail;
     }
 }

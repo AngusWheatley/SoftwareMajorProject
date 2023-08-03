@@ -88,8 +88,8 @@ namespace SoftwareMajorProject
                 sqlCommandNewUserSettings.CommandText = "INSERT into NoterSettings (userName, backgroundColour, foregroundColour, fontType, fontSize) values (@userName, @backgroundColour, @foregroundColour, @fontType, @fontSize)";
 
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@userName", givenTrimmedUserName);
-                sqlCommandNewUserSettings.Parameters.AddWithValue("@backgroundColour", "Blue");
-                sqlCommandNewUserSettings.Parameters.AddWithValue("@foregroundColour", "Green");
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@backgroundColour", "DodgerBlue");
+                sqlCommandNewUserSettings.Parameters.AddWithValue("@foregroundColour", "LightSteelBlue");
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@fontType", "Microsoft Sans Serif");
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@fontSize", "12");
 
