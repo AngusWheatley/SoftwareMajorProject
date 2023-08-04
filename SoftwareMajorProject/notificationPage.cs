@@ -356,7 +356,7 @@ namespace SoftwareMajorProject
         {
             DgvCurrentNotifications.ClearSelection();
 
-            MessageBox.Show("Searching for overdue notifications.");
+            MessageBox.Show("Searching for overdue notifications, please wait.");
 
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
@@ -443,7 +443,7 @@ namespace SoftwareMajorProject
                                 try
                                 {
                                     smtpClient.Send(mailMessage);
-                                    MessageBox.Show("email sent");
+                                    //MessageBox.Show("Notificaation Sent.");*******************************************
 
                                 }
                                 catch (Exception ex)
@@ -451,7 +451,7 @@ namespace SoftwareMajorProject
                                     MessageBox.Show("Failed to send. Error: " + ex.Message);
                                 }
 
-                                MessageBox.Show(overdueUserIndex);
+                                //MessageBox.Show(overdueUserIndex);*******************************************
 
 
                                 SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
