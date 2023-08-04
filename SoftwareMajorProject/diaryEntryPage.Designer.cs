@@ -32,7 +32,6 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.lblEntryContents = new System.Windows.Forms.Label();
             this.TxtEntryContents = new System.Windows.Forms.TextBox();
-            this.BtnDeleteEntry = new System.Windows.Forms.Button();
             this.BtnSaveEntry = new System.Windows.Forms.Button();
             this.TxtEntryTitle = new System.Windows.Forms.TextBox();
             this.lblEntryTitle = new System.Windows.Forms.Label();
@@ -40,6 +39,7 @@
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
             this.BtnAllEntries = new System.Windows.Forms.Button();
+            this.BtnDeleteEntry = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             this.btnHome.Location = new System.Drawing.Point(1338, 776);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(80, 32);
-            this.btnHome.TabIndex = 25;
+            this.btnHome.TabIndex = 6;
             this.btnHome.Text = "Home";
             this.btnHome.UseVisualStyleBackColor = true;
             this.btnHome.Click += new System.EventHandler(this.BtnHome_Click);
@@ -80,17 +80,7 @@
             this.TxtEntryContents.Multiline = true;
             this.TxtEntryContents.Name = "TxtEntryContents";
             this.TxtEntryContents.Size = new System.Drawing.Size(553, 512);
-            this.TxtEntryContents.TabIndex = 27;
-            // 
-            // BtnDeleteEntry
-            // 
-            this.BtnDeleteEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDeleteEntry.Location = new System.Drawing.Point(1016, 354);
-            this.BtnDeleteEntry.Name = "BtnDeleteEntry";
-            this.BtnDeleteEntry.Size = new System.Drawing.Size(273, 74);
-            this.BtnDeleteEntry.TabIndex = 33;
-            this.BtnDeleteEntry.Text = "Delete";
-            this.BtnDeleteEntry.UseVisualStyleBackColor = true;
+            this.TxtEntryContents.TabIndex = 2;
             // 
             // BtnSaveEntry
             // 
@@ -98,7 +88,7 @@
             this.BtnSaveEntry.Location = new System.Drawing.Point(728, 354);
             this.BtnSaveEntry.Name = "BtnSaveEntry";
             this.BtnSaveEntry.Size = new System.Drawing.Size(273, 74);
-            this.BtnSaveEntry.TabIndex = 32;
+            this.BtnSaveEntry.TabIndex = 4;
             this.BtnSaveEntry.Text = "Save";
             this.BtnSaveEntry.UseVisualStyleBackColor = true;
             this.BtnSaveEntry.Click += new System.EventHandler(this.BtnSaveEntry_Click);
@@ -109,7 +99,7 @@
             this.TxtEntryTitle.Multiline = true;
             this.TxtEntryTitle.Name = "TxtEntryTitle";
             this.TxtEntryTitle.Size = new System.Drawing.Size(553, 41);
-            this.TxtEntryTitle.TabIndex = 35;
+            this.TxtEntryTitle.TabIndex = 1;
             // 
             // lblEntryTitle
             // 
@@ -149,19 +139,31 @@
             this.CalEntryDate.MaxSelectionCount = 1;
             this.CalEntryDate.Name = "CalEntryDate";
             this.CalEntryDate.ShowTodayCircle = false;
-            this.CalEntryDate.TabIndex = 37;
+            this.CalEntryDate.TabIndex = 3;
             this.CalEntryDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalDiaryEntryDate_DateSelected);
             // 
             // BtnAllEntries
             // 
             this.BtnAllEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAllEntries.Location = new System.Drawing.Point(728, 434);
+            this.BtnAllEntries.Location = new System.Drawing.Point(1016, 354);
             this.BtnAllEntries.Name = "BtnAllEntries";
-            this.BtnAllEntries.Size = new System.Drawing.Size(561, 74);
-            this.BtnAllEntries.TabIndex = 42;
+            this.BtnAllEntries.Size = new System.Drawing.Size(273, 74);
+            this.BtnAllEntries.TabIndex = 5;
             this.BtnAllEntries.Text = "All Entries";
             this.BtnAllEntries.UseVisualStyleBackColor = true;
             this.BtnAllEntries.Click += new System.EventHandler(this.BtnAllEntries_Click);
+            // 
+            // BtnDeleteEntry
+            // 
+            this.BtnDeleteEntry.Enabled = false;
+            this.BtnDeleteEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDeleteEntry.Location = new System.Drawing.Point(828, 579);
+            this.BtnDeleteEntry.Name = "BtnDeleteEntry";
+            this.BtnDeleteEntry.Size = new System.Drawing.Size(346, 74);
+            this.BtnDeleteEntry.TabIndex = 33;
+            this.BtnDeleteEntry.Text = "Delete";
+            this.BtnDeleteEntry.UseVisualStyleBackColor = true;
+            this.BtnDeleteEntry.Visible = false;
             // 
             // DiaryEditorPage
             // 
@@ -201,7 +203,6 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Label lblEntryContents;
         private System.Windows.Forms.TextBox TxtEntryContents;
-        private System.Windows.Forms.Button BtnDeleteEntry;
         private System.Windows.Forms.Button BtnSaveEntry;
         private System.Windows.Forms.TextBox TxtEntryTitle;
         private System.Windows.Forms.Label lblEntryTitle;
@@ -209,5 +210,6 @@
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.MonthCalendar CalEntryDate;
         private System.Windows.Forms.Button BtnAllEntries;
+        private System.Windows.Forms.Button BtnDeleteEntry;
     }
 }
