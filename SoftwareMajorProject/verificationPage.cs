@@ -43,8 +43,6 @@ namespace SoftwareMajorProject
             string codeEntered = txtCodeEntered.Text;
             int trimmedCodeEntered = Convert.ToInt32(String.Concat(codeEntered.Where(c => !Char.IsWhiteSpace(c))));
 
-            //MessageBox.Show("You entered code " + Convert.ToString(trimmedCodeEntered) + ". The correct code was " + givenVerificationCode);*************************************************************
-
 
             //Checks Input box for verification code entered
             if (trimmedCodeEntered == givenVerificationCode)
@@ -53,10 +51,10 @@ namespace SoftwareMajorProject
             }
             else
             {
+                verificationCodeCorrect = false;
                 MessageBox.Show("Code entered is not correct.");
             }
             //---------------------------------------------
-
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -85,23 +83,17 @@ namespace SoftwareMajorProject
                 SQLiteCommand sqlCommandNewUserSettings = new SQLiteCommand();
                 sqlCommandNewUserSettings.Connection = sqlConnection;
                 sqlCommandNewUserSettings.CommandType = CommandType.Text;
-                sqlCommandNewUserSettings.CommandText = "INSERT into NoterSettings (userName, backgroundColour, foregroundColour, fontType, fontSize) values (@userName, @backgroundColour, @foregroundColour, @fontType, @fontSize)";
+                sqlCommandNewUserSettings.CommandText = "INSERT into NoterSettings (userName, backgroundColour, foregroundColour, fontType) values (@userName, @backgroundColour, @foregroundColour, @fontType)";
 
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@userName", givenTrimmedUserName);
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@backgroundColour", "DodgerBlue");
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@foregroundColour", "LightSteelBlue");
                 sqlCommandNewUserSettings.Parameters.AddWithValue("@fontType", "Microsoft Sans Serif");
-                sqlCommandNewUserSettings.Parameters.AddWithValue("@fontSize", "12");
 
                 sqlConnection.Open();
                 sqlCommandNewUserSettings.ExecuteNonQuery();
                 sqlConnection.Close();
                 //---------------------------------------------
-
-
-
-
-
 
 
                 //Checks if database for user already exists
@@ -114,9 +106,6 @@ namespace SoftwareMajorProject
                 reader.Close();
                 sqlConnection.Close();
                 //---------------------------------------------
-
-
-
 
 
                 if (tableExists == false)
@@ -132,9 +121,7 @@ namespace SoftwareMajorProject
                     //---------------------------------------------
 
 
-
                     MessageBox.Show("You're All Set. You Can Now Log In.");
-
 
 
                     //Opens login page and closes new account page
@@ -146,20 +133,29 @@ namespace SoftwareMajorProject
                 else
                 {
                     MessageBox.Show("Name taken. Please choose another one.");
+
+                    NewAccountPage newAccountPage = new NewAccountPage();
+                    this.Hide();
+                    newAccountPage.Show();
                 }
 
             }
             else if (givenUserExists == true)
             {
                 MessageBox.Show("User already exists");
+
+                NewAccountPage newAccountPage = new NewAccountPage();
+                this.Hide();
+                newAccountPage.Show();
             }
             else
             {
                 MessageBox.Show("Please enter valid cridentials");
+
+                NewAccountPage newAccountPage = new NewAccountPage();
+                this.Hide();
+                newAccountPage.Show();
             }
-
-
-
 
             this.Close();
         }

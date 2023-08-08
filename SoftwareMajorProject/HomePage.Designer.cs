@@ -32,24 +32,17 @@
             this.btnNotifications = new System.Windows.Forms.Button();
             this.btnDiary = new System.Windows.Forms.Button();
             this.BtnLogOut = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.TxtUserEmail = new System.Windows.Forms.TextBox();
             this.BtnSettings = new System.Windows.Forms.Button();
-            this.txtUserBackgroundColour = new System.Windows.Forms.TextBox();
-            this.txtUserForegroundColour = new System.Windows.Forms.TextBox();
-            this.txtUserFont = new System.Windows.Forms.TextBox();
-            this.txtReplacedUserName = new System.Windows.Forms.TextBox();
-            this.DgvSettings = new System.Windows.Forms.DataGridView();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvSettings)).BeginInit();
             this.SuspendLayout();
             // 
             // picBackPlate
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.picBackPlate.Location = new System.Drawing.Point(320, 4);
-            this.picBackPlate.Margin = new System.Windows.Forms.Padding(2);
+            this.picBackPlate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picBackPlate.Name = "picBackPlate";
             this.picBackPlate.Size = new System.Drawing.Size(800, 800);
             this.picBackPlate.TabIndex = 6;
@@ -59,7 +52,7 @@
             // 
             this.btnNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNotifications.Location = new System.Drawing.Point(447, 390);
-            this.btnNotifications.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNotifications.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnNotifications.Name = "btnNotifications";
             this.btnNotifications.Size = new System.Drawing.Size(262, 203);
             this.btnNotifications.TabIndex = 7;
@@ -71,7 +64,7 @@
             // 
             this.btnDiary.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDiary.Location = new System.Drawing.Point(740, 390);
-            this.btnDiary.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDiary.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDiary.Name = "btnDiary";
             this.btnDiary.Size = new System.Drawing.Size(262, 203);
             this.btnDiary.TabIndex = 8;
@@ -82,41 +75,18 @@
             // BtnLogOut
             // 
             this.BtnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLogOut.Location = new System.Drawing.Point(675, 762);
+            this.BtnLogOut.Location = new System.Drawing.Point(571, 723);
             this.BtnLogOut.Name = "BtnLogOut";
-            this.BtnLogOut.Size = new System.Drawing.Size(90, 32);
+            this.BtnLogOut.Size = new System.Drawing.Size(138, 70);
             this.BtnLogOut.TabIndex = 26;
             this.BtnLogOut.Text = "Log Out";
             this.BtnLogOut.UseVisualStyleBackColor = true;
             this.BtnLogOut.Click += new System.EventHandler(this.BtnLogOut_Click);
             // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(61, 63);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(142, 20);
-            this.txtName.TabIndex = 27;
-            this.txtName.Visible = false;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(61, 111);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(142, 20);
-            this.txtPassword.TabIndex = 28;
-            this.txtPassword.Visible = false;
-            // 
-            // TxtUserEmail
-            // 
-            this.TxtUserEmail.Location = new System.Drawing.Point(61, 163);
-            this.TxtUserEmail.Name = "TxtUserEmail";
-            this.TxtUserEmail.Size = new System.Drawing.Size(142, 20);
-            this.TxtUserEmail.TabIndex = 29;
-            this.TxtUserEmail.Visible = false;
-            // 
             // BtnSettings
             // 
-            this.BtnSettings.Location = new System.Drawing.Point(839, 725);
+            this.BtnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSettings.Location = new System.Drawing.Point(740, 723);
             this.BtnSettings.Name = "BtnSettings";
             this.BtnSettings.Size = new System.Drawing.Size(133, 69);
             this.BtnSettings.TabIndex = 30;
@@ -124,46 +94,29 @@
             this.BtnSettings.UseVisualStyleBackColor = true;
             this.BtnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
-            // txtUserBackgroundColour
+            // lblTitle
             // 
-            this.txtUserBackgroundColour.Location = new System.Drawing.Point(1165, 195);
-            this.txtUserBackgroundColour.Name = "txtUserBackgroundColour";
-            this.txtUserBackgroundColour.Size = new System.Drawing.Size(110, 20);
-            this.txtUserBackgroundColour.TabIndex = 31;
-            this.txtUserBackgroundColour.Visible = false;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(625, 72);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(189, 73);
+            this.lblTitle.TabIndex = 31;
+            this.lblTitle.Text = "Noter";
             // 
-            // txtUserForegroundColour
+            // lblWelcome
             // 
-            this.txtUserForegroundColour.Location = new System.Drawing.Point(1165, 232);
-            this.txtUserForegroundColour.Name = "txtUserForegroundColour";
-            this.txtUserForegroundColour.Size = new System.Drawing.Size(110, 20);
-            this.txtUserForegroundColour.TabIndex = 32;
-            this.txtUserForegroundColour.Visible = false;
-            // 
-            // txtUserFont
-            // 
-            this.txtUserFont.Location = new System.Drawing.Point(1165, 268);
-            this.txtUserFont.Name = "txtUserFont";
-            this.txtUserFont.Size = new System.Drawing.Size(110, 20);
-            this.txtUserFont.TabIndex = 33;
-            this.txtUserFont.Visible = false;
-            // 
-            // txtReplacedUserName
-            // 
-            this.txtReplacedUserName.Location = new System.Drawing.Point(1165, 163);
-            this.txtReplacedUserName.Name = "txtReplacedUserName";
-            this.txtReplacedUserName.Size = new System.Drawing.Size(110, 20);
-            this.txtReplacedUserName.TabIndex = 34;
-            this.txtReplacedUserName.Visible = false;
-            // 
-            // DgvSettings
-            // 
-            this.DgvSettings.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvSettings.Location = new System.Drawing.Point(414, 63);
-            this.DgvSettings.Name = "DgvSettings";
-            this.DgvSettings.Size = new System.Drawing.Size(588, 279);
-            this.DgvSettings.TabIndex = 35;
-            this.DgvSettings.Visible = false;
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblWelcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Location = new System.Drawing.Point(537, 269);
+            this.lblWelcome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(193, 42);
+            this.lblWelcome.TabIndex = 32;
+            this.lblWelcome.Text = "Welcome: ";
             // 
             // HomePage
             // 
@@ -171,15 +124,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
-            this.Controls.Add(this.DgvSettings);
-            this.Controls.Add(this.txtReplacedUserName);
-            this.Controls.Add(this.txtUserFont);
-            this.Controls.Add(this.txtUserForegroundColour);
-            this.Controls.Add(this.txtUserBackgroundColour);
+            this.Controls.Add(this.lblWelcome);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.BtnSettings);
-            this.Controls.Add(this.TxtUserEmail);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtName);
             this.Controls.Add(this.BtnLogOut);
             this.Controls.Add(this.btnDiary);
             this.Controls.Add(this.btnNotifications);
@@ -193,7 +140,6 @@
             this.Text = "Noter - Home";
             this.Load += new System.EventHandler(this.HomePage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvSettings)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,14 +151,8 @@
         private System.Windows.Forms.Button btnNotifications;
         private System.Windows.Forms.Button btnDiary;
         private System.Windows.Forms.Button BtnLogOut;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox TxtUserEmail;
         private System.Windows.Forms.Button BtnSettings;
-        private System.Windows.Forms.TextBox txtUserBackgroundColour;
-        private System.Windows.Forms.TextBox txtUserForegroundColour;
-        private System.Windows.Forms.TextBox txtUserFont;
-        private System.Windows.Forms.TextBox txtReplacedUserName;
-        private System.Windows.Forms.DataGridView DgvSettings;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblWelcome;
     }
 }

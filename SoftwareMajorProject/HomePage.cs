@@ -27,13 +27,7 @@ namespace SoftwareMajorProject
 
         private void HomePage_Load(object sender, EventArgs e)
         {
-            this.Width = 1440;
-            this.Height = 860; 
-
-
-            txtName.Text = userNameLoggedIn;
-            txtPassword.Text = userPassword;
-            TxtUserEmail.Text = userEmail;
+            lblWelcome.Text = "Welcome: " + userNameLoggedIn;
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -42,125 +36,37 @@ namespace SoftwareMajorProject
             string cmd = "SELECT * FROM 'NoterSettings'";
             SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
 
-            var dataGridViewSettings = new DataTable();
+            var dataTableSettings = new DataTable();
 
             sqlConnection.Open();
-            settingsDataAdapter.Fill(dataGridViewSettings);
+            settingsDataAdapter.Fill(dataTableSettings);
             sqlConnection.Close();
 
-            DgvSettings.DataSource = dataGridViewSettings;
 
-
-            foreach (DataRow row in dataGridViewSettings.Rows)
+            foreach (DataRow row in dataTableSettings.Rows)
             {
                 if (row[0].ToString() == userNameLoggedIn)
                 {
-                    //txtReplacedUserName.Text = row[0].ToString();
-                    //txtUserBackgroundColour.Text = row[1].ToString();
-                    //txtUserForegroundColour.Text = row[2].ToString();
-                    //txtUserFont.Text = row[3].ToString();
-
-
-
-
-                    //Front colour
+                    //Background colour
                     BackColor = Color.FromName(row[1].ToString());
+
+                    //Foreground colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblTitle.BackColor = Color.FromName(row[2].ToString());
+                    lblWelcome.BackColor = Color.FromName(row[2].ToString());
 
-
-                    //Font type
-                    var fontConverter = new FontConverter();
-
-                    btnNotifications.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    btnDiary.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    BtnLogOut.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    BtnSettings.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-
-
-
+                    //Font type -- Done
+                    Font userFontBig = new Font(row[3].ToString(), 36, FontStyle.Underline);
+                    Font userFontMedium = new Font(row[3].ToString(), 24);
+                    Font userFontSmall = new Font(row[3].ToString(), 16);
+                    lblTitle.Font = userFontBig;
+                    lblWelcome.Font = userFontMedium;
+                    btnNotifications.Font = userFontSmall;
+                    btnDiary.Font = userFontSmall;
+                    BtnLogOut.Font = userFontSmall;
+                    BtnSettings.Font = userFontSmall;
                 }
             }
-
-
-            
-
-
-
-
-            //txtReplacedUserName.Text = dataGridViewSettings.Rows[0]["userName"].ToString();
-            //txtUserBackgroundColour.Text = dataGridViewSettings.Rows[0]["backgroundColour"].ToString();
-            //txtUserForegroundColour.Text = dataGridViewSettings.Rows[0]["foregroundColour"].ToString();
-            //txtUserFont.Text = dataGridViewSettings.Rows[0]["fontType"].ToString();
-
-
-
-            /*
-            DataRow[] dr = dataGridViewSettings.Select("userName = '" + txtName.Text + "'");
-            if (dr.Length != 0)
-            {
-                DgvSettings.DataSource = dr;
-            }*/
-
-
-
-            /*
-
-
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-            string commandSelectUserSettings = "SELECT * FROM 'NoterSettings' WHERE 'userName' LIKE'%" + txtName.Text + "%'";
-            
-            SQLiteDataAdapter userSettingsDataAdapter = new SQLiteDataAdapter(commandSelectUserSettings, sqlConnection);
-            
-            var datatableUserSettings = new DataTable();
-
-            sqlConnection.Open();
-            userSettingsDataAdapter.Fill(datatableUserSettings);
-            
-
-
-
-            txtReplacedUserName.Text = datatableUserSettings.Rows[0]["'userName'"].ToString();
-            txtUserBackgroundColour.Text = datatableUserSettings.Rows[0]["backgroundColour"].ToString();
-            txtUserForegroundColour.Text = datatableUserSettings.Rows[0]["foregroundColour"].ToString();
-            txtUserFont.Text = datatableUserSettings.Rows[0]["fontType"].ToString();
-
-            sqlConnection.Close();
-
-            BackColor = Color.FromName(txtUserBackgroundColour.Text);
-
-
-            */
-
-
-            /*
-            {
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-            string commandSelectUserSettings = "SELECT * FROM NoterSettings WHERE userName=" + userName;
-            var datatableUserSettings = new DataTable();
-            SQLiteDataAdapter userSettingsDataAdapter = new SQLiteDataAdapter(commandSelectUserSettings, sqlConnection);
-            
-
-            sqlConnection.Open();
-            userSettingsDataAdapter.Fill(datatableUserSettings);
-
-            txtReplacedUserName.Text = datatableUserSettings.Rows[0]["userName"].ToString();
-            txtUserBackgroundColour.Text = datatableUserSettings.Rows[0]["backgroundColour"].ToString();
-            txtUserForegroundColour.Text = datatableUserSettings.Rows[0]["foregroundColour"].ToString();
-            txtUserFont.Text = datatableUserSettings.Rows[0]["fontType"].ToString();
-
-            sqlConnection.Close();
-
-            BackColor = Color.FromName(txtUserBackgroundColour.Text);
-            }*/
-
-
-
-
-
         }
 
         private void BtnReminder_Click(object sender, EventArgs e)

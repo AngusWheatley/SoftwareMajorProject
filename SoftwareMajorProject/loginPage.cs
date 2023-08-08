@@ -18,7 +18,7 @@ namespace SoftwareMajorProject
     public partial class LoginPage : Form
     {
 
-        string userName = "";
+        string userName;
         public static string userPassword;
         public static string trimmedUserName;
         public static string userEmail;
@@ -27,39 +27,8 @@ namespace SoftwareMajorProject
         {
             InitializeComponent();
 
-            {
-                userName = "";
-                /*
-                SQLiteConnection sqlConnection = new SQLiteConnection();
-                sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-                string commandTextUserInfo = "Select * From UserInfo";
-
-                List<string> userFirstNameList = new List<string>();
-
-
-                SQLiteDataAdapter myDataAdapterUserName = new SQLiteDataAdapter(commandTextUserInfo, sqlConnection);
-
-                sqlConnection.Open();
-                myDataAdapterUserName.Fill(userFirstNameList);
-                */
-
-
-                /*
-                userInfo.Parameters.AddWithValue("@firstName", userFirstNameList);
-                userInfo.Parameters.AddWithValue("@lastName", userLastNameList);
-
-
-
-                string message = string.Join(",", userFirstNameList);
-                MessageBox.Show(message);
-
-                */
-            }
-
-
-
-
+            userName = "";
+                
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
@@ -69,76 +38,6 @@ namespace SoftwareMajorProject
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            
-
-            {
-                /*
-                SQLiteConnection sqlConnection = new SQLiteConnection();
-                sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-                SQLiteCommand userInfo = new SQLiteCommand("Select * from UserInfo where firstName=@firstName and password=@password", sqlConnection);
-
-                userInfo.Parameters.AddWithValue("@firstName", txtUsername.Text);
-                userInfo.Parameters.AddWithValue("@lastName", txtUsername.Text);
-
-                sqlConnection.Open();
-
-                SQLiteDataReader readData = userInfo.ExecuteReader();
-
-                if (readData.Read())
-                {
-                    MessageBox.Show("Logged in");
-                }
-                else
-                {
-                    MessageBox.Show("Not avaliable");
-                }
-                */
-
-
-                /*
-                SQLiteConnection sqlConnection = new SQLiteConnection();
-                sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-
-                string username = "Select * FROM UserInfo WHERE firstName" + txtUsername.Text + "'";
-
-                */
-
-
-                /*
-                List<string> items = new List<string>();
-
-                SQLiteConnection sqlConnection = new SQLiteConnection(); 
-
-                sqlConnection.Open();
-
-                SQLiteCommand command = sqlConnection.CreateCommand();
-
-                command.CommandText = "Select * from UserInfo where firstName=@firstName and password=@password\", sqlConnection";
-
-                SQLiteDataReader reader = command.ExecuteReader();
-
-
-                while (reader.Read())
-                {
-                    int userID = reader.GetInt32(0);
-                    string userEmail = reader.GetString(1);
-                    items newItem = new 
-                }
-                */
-
-
-                /*
-                SQLiteConnection sqlConnection = new SQLiteConnection();
-                sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-
-                List<string> userInfo = new List<string>();
-                */
-            }
-
-
             userName = txtUserName.Text;
             userPassword = txtUserPassword.Text;
 
@@ -166,12 +65,6 @@ namespace SoftwareMajorProject
                 SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter(cmd);
 
 
-
-                /* Trying to get user email to take to other forms
-                SQLiteCommand getEmailCommand = new SQLiteCommand("SELECT userEmail FROM userInfo where username = @userName or userEmail = @userEmail");
-                userEmail = getEmailCommand.CommandText; 
-                */
-
                 dataAdapter.Fill(userInfoDataTable);
                 sqlConnection.Close();
 
@@ -182,32 +75,10 @@ namespace SoftwareMajorProject
 
                 if (loginSuccessful)
                 {
-
-                    /* Trying to get user email to take to other forms
-                    DataRow[] userIndex = userInfoDataTable.Select("userName = " + userName + "AND userPassword = " + userPassword);
-                    MessageBox.Show(Convert.ToString(userIndex));
-                    foreach (DataRow row in userIndex)
-                    {
-                        MessageBox.Show(Convert.ToString(row["userEmail"]));
-                    }
-
-                    string userEmail = userInfoDataTable.Rows[].Field<string>("userEmail");
-                    
-                    */
-
-
-
-
-
-
                     MessageBox.Show("Successfuly Logged In");
-
-
 
                     userName = txtUserName.Text;
                     userPassword = txtUserPassword.Text;
-
-                    
 
                     HomePage HomePage = new HomePage(userName);
                     this.Hide();

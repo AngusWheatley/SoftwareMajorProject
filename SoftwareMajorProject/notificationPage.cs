@@ -78,8 +78,35 @@ namespace SoftwareMajorProject
                     DgvCurrentNotifications.CellBorderStyle = DataGridViewCellBorderStyle.Single;
 
 
-                    //Font type
-                    var fontConverter = new FontConverter();
+                    //Font type -- Done
+                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
+                    Font userFontSmallSubtitleUnderlined = new Font(row[3].ToString(), 12, FontStyle.Underline);
+                    Font userFontComboBoxes = new Font(row[3].ToString(), 12);
+                    Font userFontButtons = new Font(row[3].ToString(), 14);
+                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
+                    Font userFontDataGridView = new Font(row[3].ToString(), 10);
+                    lblNotificationTitle.Font = userFontBigSubtitleUnderlined;
+                    txtNotificationTitle.Font = userFontTextBoxes;
+                    lblNotificationDescription.Font = userFontBigSubtitleUnderlined;
+                    txtNotificationDescription.Font = userFontTextBoxes;
+                    lblNotificationLocation.Font = userFontBigSubtitleUnderlined;
+                    txtNotificationLocation.Font = userFontTextBoxes;
+                    lblNotificationOccurrence.Font = userFontBigSubtitleUnderlined;
+                    lblNotificationHour.Font = userFontSmallSubtitleUnderlined;
+                    CmbNotificationHour.Font = userFontComboBoxes;
+                    lblNotificationMinute.Font = userFontSmallSubtitleUnderlined;
+                    CmbNotificationMinute.Font = userFontComboBoxes;
+                    lblNotificationPeriod.Font = userFontSmallSubtitleUnderlined;
+                    CmbNotificationPeriod.Font = userFontComboBoxes;
+                    BtnSaveNotification.Font = userFontButtons;
+                    btnDeleteNotification.Font = userFontButtons;
+                    lblCurrentNotifications.Font = userFontBigSubtitleUnderlined;
+                    DgvCurrentNotifications.Font = userFontDataGridView;
+                    btnHome.Font = userFontButtons;
+
+
+
+                    /*
                     //var sizeConverter = new SizeConverter();
                     //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
                     lblNotificationTitle.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
@@ -100,79 +127,13 @@ namespace SoftwareMajorProject
                     btnDeleteNotification.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
                     lblCurrentNotifications.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
                     DgvCurrentNotifications.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;*/
 
                 }
             }
-
-
-            //==================================================================================================================
-
-
 
 
             LoadUserNotifications();
-
-
-            /*
-            bool userNotificationExists = dataTableUserNotifications.Rows.Count > 0;
-            MessageBox.Show(Convert.ToString(userNotificationExists));
-
-
-            dataTableUserNotifications.AcceptChanges();
-
-            for (int i = dataTableUserNotifications.Rows.Count - 1; i >= 0; i--)
-            {
-                DataRow row = dataTableUserNotifications.Rows[i];
-                if (row["UserName"] != userName)
-                {
-                    row.Delete();
-                }
-            }
-            dataTableUserNotifications.AcceptChanges();
-
-
-            bool userNotificationExistsShort = dataTableUserNotifications.Rows.Count > 0;
-            MessageBox.Show(Convert.ToString(userNotificationExistsShort));
-            */
-
-
-            /*
-            var dataTableUserNotifications = new DataTable();
-            foreach (DataRow row in dataTableNotifications.Rows)
-            {
-                if (row[0].ToString() == userName)
-                {
-                    dataTableUserNotifications.ImportRow(row);
-                    
-                }
-            }*/
-
-
-
-
-            //DgvCurrentNotifications.DataSource = dataTableNotifications;
-
-
-
-
-            /*
-            DataRow[] userNotifications = dataTableNotifications.Select("UserName = '" + userName + "'");
-            foreach (DataRow row in userNotifications)
-            {
-
-            }*/
-
-
-            //DgvCurrentNotifications.Columns["UserName"].Visible = false;
-
-
-
-
-
-
-
-
         }
 
         private void LoadUserNotifications()
@@ -180,11 +141,7 @@ namespace SoftwareMajorProject
             SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
             sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
-            //string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName LIKE '%" + userName + "%'";
             string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
-
-            //insertNotificationsCommand.Parameters.AddWithValue("@userName", userName);
-            //insertNotificationsCommand.Connection = sqlConnectionNotifications;
 
             sqlConnectionNotifications.Open();
             var dataTableNotifications = new DataTable();
@@ -193,12 +150,6 @@ namespace SoftwareMajorProject
 
             notificationsDataAdapter.Fill(dataTableNotifications);
             sqlConnectionNotifications.Close();
-
-
-            //DataTable dataTableUserNotifications = new DataTable();
-            //dataTableUserNotifications = dataTableNotifications.Copy();
-
-
 
             DgvCurrentNotifications.DataSource = dataTableNotifications;
             DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
@@ -219,18 +170,6 @@ namespace SoftwareMajorProject
 
         private void BtnSaveNotification_Click(object sender, EventArgs e)
         {
-            /*
-            string time = DateTime.Now.Date.ToString();
-
-            MessageBox.Show(time);
-
-
-
-            if (notificationDate == "")
-            {
-                notificationDate = DateTime.Now.ToString("dd/MM/yyyy");
-            }*/
-
 
             string notificationDateSelected = CalNotificationDate.SelectionStart.ToShortDateString();
 
@@ -239,14 +178,10 @@ namespace SoftwareMajorProject
             string notificationLocation = txtNotificationLocation.Text;
             notificationDateTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
 
-            //MessageBox.Show(notificationDateTime););*******************************************
-
 
 
             if (notificationDateSelected != "" && CmbNotificationHour.Text != "" && CmbNotificationMinute.Text != "" && CmbNotificationPeriod.Text != "")
             {
-                //MessageBox.Show("Comparing dates"););*******************************************
-
                 DateTime dateTimeNow = DateTime.Now;
                 DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
 
@@ -302,8 +237,6 @@ namespace SoftwareMajorProject
             DialogResult checkDeleteNotification = MessageBox.Show("Are you sure you want to delete notification?", "", MessageBoxButtons.YesNo);
             if (checkDeleteNotification == DialogResult.Yes)
             {
-                
-
                 SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
                 sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
@@ -384,11 +317,9 @@ namespace SoftwareMajorProject
                 int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
                 if (comparedDates < 0) //Occurs when the date is past current date
                 {
-                    //MessageBox.Show(fullNotificationDateTime + " Has already passed");*************************************************
 
                     int i = 1;
 
-                    //foreach (DataRow rowUserNotification in dataTableNotifications.Rows)
                     {
                         string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
                         SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
@@ -413,17 +344,6 @@ namespace SoftwareMajorProject
                                 userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
                                 overdueUserIndex = rowNotificationsCheck[0].ToString();
 
-                                /*foreach (DataRow row in dataTableNotificationsCheck.Rows)
-                                {
-                                    if (overdueUserName == rowNotificationOverdue.ToString())
-                                    {
-                                        MessageBox.Show(userEmail + "<==== Here is an email...");
-                                    }
-
-                                    MessageBox.Show(userEmail + "<==== Here is an email.");
-                                }*/
-
-                                //MessageBox.Show(userEmail + "<==== Here is an email." + fullNotificationDateTimeString);*******************************************
 
 
                                 notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowNotificationsCheck[2].ToString();
@@ -443,7 +363,6 @@ namespace SoftwareMajorProject
                                 try
                                 {
                                     smtpClient.Send(mailMessage);
-                                    //MessageBox.Show("Notificaation Sent.");*******************************************
 
                                 }
                                 catch (Exception ex)
@@ -451,7 +370,6 @@ namespace SoftwareMajorProject
                                     MessageBox.Show("Failed to send. Error: " + ex.Message);
                                 }
 
-                                //MessageBox.Show(overdueUserIndex);*******************************************
 
 
                                 SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
@@ -478,7 +396,7 @@ namespace SoftwareMajorProject
                 }
                 else if (comparedDates >= 0)
                 {
-                    //MessageBox.Show(fullNotificationDateTime + " Date still to come");*******************************************
+
                 }
             }
 

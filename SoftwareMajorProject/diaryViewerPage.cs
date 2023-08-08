@@ -54,21 +54,22 @@ namespace SoftwareMajorProject
                     DgvDiaryViewer.BackgroundColor = Color.FromName(row[2].ToString());
                     DgvDiaryViewer.CellBorderStyle = DataGridViewCellBorderStyle.Single;
 
-
                     //Font type
-                    var fontConverter = new FontConverter();
-                    DgvDiaryViewer.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryTitle.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    TxtEntryTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryContents.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    TxtEntryContents.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryDate.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    txtEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
+                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
+                    Font userFontButtons = new Font(row[3].ToString(), 14);
+                    Font userFontDataGridView = new Font(row[3].ToString(), 10);
+                    DgvDiaryViewer.Font = userFontDataGridView;
+                    lblEntryTitle.Font = userFontBigSubtitleUnderlined;
+                    TxtEntryTitle.Font = userFontTextBoxes;
+                    lblEntryContents.Font = userFontBigSubtitleUnderlined;
+                    TxtEntryContents.Font = userFontTextBoxes;
+                    lblEntryDate.Font = userFontBigSubtitleUnderlined;
+                    txtEntryDate.Font = userFontTextBoxes;
+                    btnBack.Font = userFontButtons;
+                    btnHome.Font = userFontButtons;
                 }
             }
-
-
 
 
             string fillDataGridViewCommand = "SELECT * FROM '" + userNameLoggedIn + "_Diary'";
@@ -86,20 +87,12 @@ namespace SoftwareMajorProject
             DgvDiaryViewer.Columns[1].Width = 250;
             DgvDiaryViewer.Columns[2].Width = 160;
 
-
-
-
-
-
         }
 
         private void DgvDiaryViewer_SelectionChanged(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-
-
 
             if (DgvDiaryViewer.SelectedRows.Count > 0)
             {
@@ -121,8 +114,6 @@ namespace SoftwareMajorProject
 
                 sqlConnection.Close();
             }
-
-
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -130,6 +121,13 @@ namespace SoftwareMajorProject
             HomePage HomePage = new HomePage(userNameLoggedIn);
             this.Hide();
             HomePage.Show();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
+            this.Hide();
+            DiaryEditorPage.Show();
         }
     }
 }

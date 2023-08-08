@@ -53,29 +53,22 @@ namespace SoftwareMajorProject
                     lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
                     lblEntryContents.BackColor = Color.FromName(row[2].ToString());
                     lblEntryDate.BackColor = Color.FromName(row[2].ToString());
-
-
+                    
                     //Font type
-                    var fontConverter = new FontConverter();
-                    var sizeConverter = new SizeConverter();
-                    //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
-                    lblEntryTitle.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    TxtEntryTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryContents.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    TxtEntryContents.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblEntryDate.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    txtUserName.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    CalEntryDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    BtnSaveEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    BtnDeleteEntry.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    BtnAllEntries.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
+                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
+                    Font userFontButtons = new Font(row[3].ToString(), 14);
+                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
+                    lblEntryTitle.Font = userFontBigSubtitleUnderlined;
+                    TxtEntryTitle.Font = userFontTextBoxes;
+                    lblEntryContents.Font = userFontBigSubtitleUnderlined;
+                    TxtEntryContents.Font = userFontTextBoxes;
+                    lblEntryDate.Font = userFontBigSubtitleUnderlined;
+                    BtnSaveEntry.Font = userFontButtons;
+                    BtnDeleteEntry.Font = userFontButtons;
+                    BtnAllEntries.Font = userFontButtons;
+                    btnHome.Font = userFontButtons;
                 }
             }
-
-
-
-
         }
 
         private void BtnHome_Click(object sender, EventArgs e)
@@ -128,7 +121,6 @@ namespace SoftwareMajorProject
         private void CalDiaryEntryDate_DateSelected(object sender, DateRangeEventArgs e)
         {
             diaryDate = e.Start.ToShortDateString();
-            MessageBox.Show(diaryDate);
         }
 
         private void BtnAllEntries_Click(object sender, EventArgs e)

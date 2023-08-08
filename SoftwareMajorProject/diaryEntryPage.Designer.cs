@@ -35,7 +35,6 @@
             this.BtnSaveEntry = new System.Windows.Forms.Button();
             this.TxtEntryTitle = new System.Windows.Forms.TextBox();
             this.lblEntryTitle = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
             this.BtnAllEntries = new System.Windows.Forms.Button();
@@ -112,15 +111,6 @@
             this.lblEntryTitle.TabIndex = 34;
             this.lblEntryTitle.Text = "Title of Todays Entry:";
             // 
-            // txtUserName
-            // 
-            this.txtUserName.Location = new System.Drawing.Point(203, 54);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(115, 20);
-            this.txtUserName.TabIndex = 36;
-            this.txtUserName.Visible = false;
-            // 
             // lblEntryDate
             // 
             this.lblEntryDate.AutoSize = true;
@@ -174,7 +164,6 @@
             this.Controls.Add(this.BtnAllEntries);
             this.Controls.Add(this.lblEntryDate);
             this.Controls.Add(this.CalEntryDate);
-            this.Controls.Add(this.txtUserName);
             this.Controls.Add(this.TxtEntryTitle);
             this.Controls.Add(this.lblEntryTitle);
             this.Controls.Add(this.BtnDeleteEntry);
@@ -206,7 +195,6 @@
         private System.Windows.Forms.Button BtnSaveEntry;
         private System.Windows.Forms.TextBox TxtEntryTitle;
         private System.Windows.Forms.Label lblEntryTitle;
-        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.MonthCalendar CalEntryDate;
         private System.Windows.Forms.Button BtnAllEntries;

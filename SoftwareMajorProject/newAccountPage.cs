@@ -64,10 +64,6 @@ namespace SoftwareMajorProject
 
             if (userName != "" && userPassword != "" && userEmail != "" && isLetter == true) 
             {
-                //MessageBox.Show("There are characters in each textbox.");****************************************************
-
-                
-
                 trimmedUserName = String.Concat(userName.Where(c => !Char.IsWhiteSpace(c)));
                 trimmedUserPassword = String.Concat(userPassword.Where(c => !Char.IsWhiteSpace(c)));
                 trimmedUserEmail = String.Concat(userEmail.Where(c => !Char.IsWhiteSpace(c)));
@@ -78,11 +74,7 @@ namespace SoftwareMajorProject
 
 
                 //Check if user exists
-                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo "/* where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword*/);
-                /*
-                cmd.Parameters.AddWithValue("@userName", trimmedUserName);
-                cmd.Parameters.AddWithValue("@userPassword", trimmedUserPassword);
-                cmd.Parameters.AddWithValue("@userEmail", trimmedUserEmail);*/
+                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo ");
                 cmd.Connection = sqlConnection;
 
                 DataTable dataTableUserInfo = new DataTable();
@@ -92,55 +84,18 @@ namespace SoftwareMajorProject
                 dataAdapter.Fill(dataTableUserInfo);
                 sqlConnection.Close();
 
-                //userExists = (dataSetUserInfo.Tables.Count > 0) || (dataSetUserInfo.Tables[0].Rows.Count > 0);
-                //userPasswordExists = (dataSetUserInfo.Tables.Count > 0) || (dataSetUserInfo.Tables[0].Rows.Count > 0);
-                
-                /*userExists = false;
-                userPasswordExists = false;
-                foreach (DataRow row in dataTableUserInfo.Rows)
-                {
-                    if (row[0].ToString() == userName || row[1].ToString() == userPassword)
-                    {
-                        userExists = true;
-                        userPasswordExists = true;
-                    }
-                }*/
-
 
                 //---------------------------------------------
                 
-
-                //DataRow[] users = dataTableUserInfo.Select("userName = '" + trimmedUserName + "'");
-                //if (users.Length != 0)
-
                 
                 users = trimmedUserName;
                 userExists = dataTableUserInfo.AsEnumerable().Any(row => users == row.Field<string>("userName"));
-                //userPasswordExists = dataTableUserInfo.AsEnumerable().Any(row => users == row.Field<string>("userPassword"));
-
-                //userExists = dataTableUserInfo.Select().ToList().Exists(row2 => row2["userName"].ToString().ToUpper() == trimmedUserName);
-
-                //MessageBox.Show(trimmedUserName);*************************************************************
-
-                /*foreach (DataRow row in dataTableUserInfo.Rows)
-                {
-                    if (row[1].ToString() != txtUserName.Text)
-                    {
-                        
-                        userExists = false;
-                        userPasswordExists = false;
-                    }
-                }*/
 
 
                 MessageBox.Show("Please wait");
 
-                //MessageBox.Show("User exists= " + Convert.ToString(userExists)); *************************************************************
-                //MessageBox.Show("User password exists= " + Convert.ToString(userPasswordExists));
 
-
-                //if (userExists == false || userPasswordExists == false)
-                if (userExists == false/* && userPasswordExists == false*/)
+                if (userExists == false)
                 {
                     //Creats and sends verification code to user
                     Random randomCode = new Random();
@@ -170,10 +125,7 @@ namespace SoftwareMajorProject
                     {
                         MessageBox.Show("Failed to send. Error: " + ex.Message);
                     }
-                    //---------------------------------------------
 
-
-                    
                 }
                 else
                 {
@@ -193,43 +145,6 @@ namespace SoftwareMajorProject
 
             userExists = false;
             userPasswordExists = false;
-
-
-
-
-
-            /*
-            bool emailValid = IsUserEmailValid(userEmail);
-
-            if (emailValid = true)
-            {
-                MessageBox.Show("Real email");
-            }
-            else
-            {
-                MessageBox.Show("Not real email");
-            }*/
-
-            /*
-            MailAddress from = new MailAddress("anguswheatley44@gmail.com", "Angus Wheatley");
-            MailAddress to = new MailAddress("anguswheatley43@gmail.com", "Angus W");
-            List<MailAddress> cc = new List<MailAddress>();
-            cc.Add(new MailAddress("angus.wheatley2@gmail.com", "A W"));
-
-            string message = "Test message";
-
-            SendEmail(message, from, to, cc);
-            */
-
-            /*
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress("anguswheatley44@gmail.com");
-                Subject = "hello";
-                Body = "hello";
-                IsBodyHtml = true;
-            };
-            */
         }
 
         private static bool IsUserEmailValid(string userEmail)
