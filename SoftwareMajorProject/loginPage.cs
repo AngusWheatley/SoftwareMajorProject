@@ -19,16 +19,13 @@ namespace SoftwareMajorProject
     {
 
         string userName;
-        public static string userPassword;
-        public static string trimmedUserName;
-        public static string userEmail;
+        string userPassword;
+        string trimmedUserName;
+        //string userEmail; -- May not need
 
         public LoginPage()
         {
             InitializeComponent();
-
-            userName = "";
-                
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
@@ -43,9 +40,6 @@ namespace SoftwareMajorProject
 
             trimmedUserName = String.Concat(txtUserName.Text.Where(c => !Char.IsWhiteSpace(c)));
             string trimmedUserPassword = String.Concat(userPassword.Where(c => !Char.IsWhiteSpace(c)));
-
-
-            //MessageBox.Show(trimmedUserName);****************************
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -69,10 +63,7 @@ namespace SoftwareMajorProject
                 sqlConnection.Close();
 
 
-
-
                 bool loginSuccessful = (userInfoDataTable.Rows.Count > 0);
-
                 if (loginSuccessful)
                 {
                     MessageBox.Show("Successfuly Logged In");
@@ -88,13 +79,11 @@ namespace SoftwareMajorProject
                 {
                     MessageBox.Show("Invalid Username or Password");
                 }
-
             }
             else
             {
                 MessageBox.Show("Invalid Username or Password");
             }
-
         }
 
         private void LinkNewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -121,7 +110,5 @@ namespace SoftwareMajorProject
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
         }
-
-        
     }
 }

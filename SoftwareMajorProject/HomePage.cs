@@ -15,9 +15,6 @@ namespace SoftwareMajorProject
     public partial class HomePage : Form
     {
         string userNameLoggedIn;
-        public static string userPassword = LoginPage.userPassword;
-        public static string userEmail = LoginPage.userEmail;
-        public static string trimmedUserName = LoginPage.trimmedUserName;
 
         public HomePage(string userName)
         {
@@ -28,8 +25,60 @@ namespace SoftwareMajorProject
         private void HomePage_Load(object sender, EventArgs e)
         {
             lblWelcome.Text = "Welcome: " + userNameLoggedIn;
+            SetObjectFeatures(); //Initialises UI from user settings
+        }
 
+        private void BtnReminder_Click(object sender, EventArgs e)
+        {
 
+            ReminderEditorPage reminderEditorPage = new ReminderEditorPage(userNameLoggedIn);
+            this.Hide();
+            reminderEditorPage.Show();
+        }
+
+        private void BtnDiary_Click(object sender, EventArgs e)
+        {
+            DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
+            this.Hide();
+            DiaryEditorPage.Show();
+        }
+
+        private void BtnLogOut_Click(object sender, EventArgs e)
+        {
+            LogOut();
+
+        }
+
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            settingsPage settings = new settingsPage(userNameLoggedIn);
+            this.Hide();
+            settings.Show();
+        }
+
+        private void LogOut()
+        {
+            string logOutMessage = "Are You Sure You Want To Log Out?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+
+            DialogResult logOut = MessageBox.Show(logOutMessage, "", buttons);
+
+            if (logOut == DialogResult.Yes)
+            {
+                MessageBox.Show("Successfully Logged Out");
+
+                LoginPage LoginPage = new LoginPage();
+                this.Hide();
+                LoginPage.Show();
+            }
+            else
+            {
+                MessageBox.Show("Successfully Remained Logged In");
+            }
+        }
+        
+        private void SetObjectFeatures()
+        {
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
@@ -62,58 +111,12 @@ namespace SoftwareMajorProject
                     lblTitle.Font = userFontBig;
                     lblWelcome.Font = userFontMedium;
                     btnNotifications.Font = userFontSmall;
-                    btnDiary.Font = userFontSmall;
+                    BtnDiary.Font = userFontSmall;
                     BtnLogOut.Font = userFontSmall;
                     BtnSettings.Font = userFontSmall;
                 }
             }
         }
 
-        private void BtnReminder_Click(object sender, EventArgs e)
-        {
-
-            ReminderEditorPage reminderEditorPage = new ReminderEditorPage(userNameLoggedIn);
-            this.Hide();
-            reminderEditorPage.Show();
-        }
-
-        private void btnDiary_Click(object sender, EventArgs e)
-        {
-
-            DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
-            this.Hide();
-            DiaryEditorPage.Show();
-        }
-
-        private void BtnLogOut_Click(object sender, EventArgs e)
-        {
-            string logOutMessage = "Are You Sure You Want To Log Out?";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-
-            DialogResult logOut = MessageBox.Show(logOutMessage, "", buttons);
-
-            if (logOut == DialogResult.Yes)
-            {
-                MessageBox.Show("Successfully Logged Out");
-
-                LoginPage LoginPage = new LoginPage();
-                this.Hide();
-                LoginPage.Show();
-            }
-            else
-            {
-                MessageBox.Show("Successfully Remained Logged In");
-            }
-
-            
-        }
-
-        private void BtnSettings_Click(object sender, EventArgs e)
-        {
-            settingsPage settings = new settingsPage(userNameLoggedIn);
-            this.Hide();
-            settings.Show();
-            
-        }
     }
 }

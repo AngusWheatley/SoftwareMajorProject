@@ -25,8 +25,6 @@ namespace SoftwareMajorProject
 
         private void DiaryEditorPage_Load(object sender, EventArgs e)
         {
-
-
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
 
