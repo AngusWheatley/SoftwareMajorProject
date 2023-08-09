@@ -17,7 +17,6 @@ namespace SoftwareMajorProject
 {
     public partial class LoginPage : Form
     {
-
         string userName;
         string userPassword;
         string trimmedUserName;

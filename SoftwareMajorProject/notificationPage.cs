@@ -36,132 +36,12 @@ namespace SoftwareMajorProject
 
         private void ReminderEditorPage_Load(object sender, EventArgs e)
         {
-            CmbNotificationHour.Text = "12";
-            CmbNotificationMinute.Text = "00";
-            CmbNotificationPeriod.Text = "AM";
+            SetObjectFeatures(); //Initialises UI from user settings
 
-
-
-
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-            string cmd = "SELECT * FROM 'NoterSettings'";
-            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
-
-            var dataGridViewSettings = new DataTable();
-
-            sqlConnection.Open();
-            settingsDataAdapter.Fill(dataGridViewSettings);
-            sqlConnection.Close();
-
-
-
-            foreach (DataRow row in dataGridViewSettings.Rows)
-            {
-                if (row[0].ToString() == userName)
-                {
-                    //Back colour
-                    BackColor = Color.FromName(row[1].ToString());
-
-                    //Front colour
-                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationTitle.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationDescription.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationLocation.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationOccurrence.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationHour.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationMinute.BackColor = Color.FromName(row[2].ToString());
-                    lblNotificationPeriod.BackColor = Color.FromName(row[2].ToString());
-                    lblCurrentNotifications.BackColor = Color.FromName(row[2].ToString());
-                    DgvCurrentNotifications.BackgroundColor = Color.FromName(row[2].ToString());
-                    DgvCurrentNotifications.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-
-
-                    //Font type -- Done
-                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
-                    Font userFontSmallSubtitleUnderlined = new Font(row[3].ToString(), 12, FontStyle.Underline);
-                    Font userFontComboBoxes = new Font(row[3].ToString(), 12);
-                    Font userFontButtons = new Font(row[3].ToString(), 14);
-                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
-                    Font userFontDataGridView = new Font(row[3].ToString(), 10);
-                    lblNotificationTitle.Font = userFontBigSubtitleUnderlined;
-                    txtNotificationTitle.Font = userFontTextBoxes;
-                    lblNotificationDescription.Font = userFontBigSubtitleUnderlined;
-                    txtNotificationDescription.Font = userFontTextBoxes;
-                    lblNotificationLocation.Font = userFontBigSubtitleUnderlined;
-                    txtNotificationLocation.Font = userFontTextBoxes;
-                    lblNotificationOccurrence.Font = userFontBigSubtitleUnderlined;
-                    lblNotificationHour.Font = userFontSmallSubtitleUnderlined;
-                    CmbNotificationHour.Font = userFontComboBoxes;
-                    lblNotificationMinute.Font = userFontSmallSubtitleUnderlined;
-                    CmbNotificationMinute.Font = userFontComboBoxes;
-                    lblNotificationPeriod.Font = userFontSmallSubtitleUnderlined;
-                    CmbNotificationPeriod.Font = userFontComboBoxes;
-                    BtnSaveNotification.Font = userFontButtons;
-                    btnDeleteNotification.Font = userFontButtons;
-                    lblCurrentNotifications.Font = userFontBigSubtitleUnderlined;
-                    DgvCurrentNotifications.Font = userFontDataGridView;
-                    btnHome.Font = userFontButtons;
-
-
-
-                    /*
-                    //var sizeConverter = new SizeConverter();
-                    //lblBackgroundColour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, (FontStyle)sizeConverter.ConvertFromString("12"));
-                    lblNotificationTitle.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    txtNotificationTitle.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblNotificationDescription.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    txtNotificationDescription.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblNotificationLocation.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    txtNotificationLocation.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblNotificationOccurrence.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    CalNotificationDate.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblNotificationHour.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    CmbNotificationHour.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblNotificationMinute.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    CmbNotificationMinute.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblNotificationPeriod.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    CmbNotificationPeriod.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    BtnSaveNotification.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    btnDeleteNotification.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    lblCurrentNotifications.Font = new Font(fontConverter.ConvertFromString(row[3].ToString()) as Font, FontStyle.Underline);
-                    DgvCurrentNotifications.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;
-                    btnHome.Font = fontConverter.ConvertFromString(row[3].ToString()) as Font;*/
-
-                }
-            }
-
-
-            LoadUserNotifications();
+            LoadUserNotifications(); //Loads user notifications into data grid view
         }
 
-        private void LoadUserNotifications()
-        {
-            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
-            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
-
-            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
-
-            sqlConnectionNotifications.Open();
-            var dataTableNotifications = new DataTable();
-            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
-
-
-            notificationsDataAdapter.Fill(dataTableNotifications);
-            sqlConnectionNotifications.Close();
-
-            DgvCurrentNotifications.DataSource = dataTableNotifications;
-            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
-            DgvCurrentNotifications.Columns["UserName"].Visible = false;
-
-            DgvCurrentNotifications.Columns[2].Width = 120;
-            DgvCurrentNotifications.Columns[3].Width = 145;
-            DgvCurrentNotifications.Columns[4].Width = 115;
-            DgvCurrentNotifications.Columns[5].Width = 110;
-        }
-
-        private void btnHome_Click(object sender, EventArgs e)
+        private void BtnHome_Click(object sender, EventArgs e)
         {
             HomePage HomePage = new HomePage(userName);
             this.Hide();
@@ -219,12 +99,8 @@ namespace SoftwareMajorProject
                     sqlConnection.Close();
 
                 }
-
-                LoadUserNotifications();
-
-
+                LoadUserNotifications(); //Loads user notifications into data grid view
             }
-
         }
 
         private void CalNotificationDate_DateChanged(object sender, DateRangeEventArgs e)
@@ -232,7 +108,7 @@ namespace SoftwareMajorProject
             notificationDate = e.Start.ToShortDateString();
         }
 
-        private void btnDeleteNotification_Click(object sender, EventArgs e)
+        private void BtnDeleteNotification_Click(object sender, EventArgs e)
         {
             DialogResult checkDeleteNotification = MessageBox.Show("Are you sure you want to delete notification?", "", MessageBoxButtons.YesNo);
             if (checkDeleteNotification == DialogResult.Yes)
@@ -402,5 +278,100 @@ namespace SoftwareMajorProject
 
             
         }
+
+        private void LoadUserNotifications()
+        {
+            SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
+            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
+
+            sqlConnectionNotifications.Open();
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotifications);
+
+
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotifications.Close();
+
+            DgvCurrentNotifications.DataSource = dataTableNotifications;
+            DgvCurrentNotifications.Columns["NotificationIndex"].Visible = false;
+            DgvCurrentNotifications.Columns["UserName"].Visible = false;
+
+            DgvCurrentNotifications.Columns[2].Width = 120;
+            DgvCurrentNotifications.Columns[3].Width = 145;
+            DgvCurrentNotifications.Columns[4].Width = 115;
+            DgvCurrentNotifications.Columns[5].Width = 110;
+        } //Loads user notifications into data grid view
+
+        private void SetObjectFeatures()
+        {
+            CmbNotificationHour.Text = "12";
+            CmbNotificationMinute.Text = "00";
+            CmbNotificationPeriod.Text = "AM";
+
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+
+            string cmd = "SELECT * FROM 'NoterSettings'";
+            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
+
+            var dataGridViewSettings = new DataTable();
+
+            sqlConnection.Open();
+            settingsDataAdapter.Fill(dataGridViewSettings);
+            sqlConnection.Close();
+
+
+            foreach (DataRow row in dataGridViewSettings.Rows)
+            {
+                if (row[0].ToString() == userName)
+                {
+                    //Back colour
+                    BackColor = Color.FromName(row[1].ToString());
+
+                    //Front colour
+                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationTitle.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationDescription.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationLocation.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationOccurrence.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationHour.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationMinute.BackColor = Color.FromName(row[2].ToString());
+                    lblNotificationPeriod.BackColor = Color.FromName(row[2].ToString());
+                    lblCurrentNotifications.BackColor = Color.FromName(row[2].ToString());
+                    DgvCurrentNotifications.BackgroundColor = Color.FromName(row[2].ToString());
+                    DgvCurrentNotifications.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+
+
+                    //Font type -- Done
+                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
+                    Font userFontSmallSubtitleUnderlined = new Font(row[3].ToString(), 12, FontStyle.Underline);
+                    Font userFontComboBoxes = new Font(row[3].ToString(), 12);
+                    Font userFontButtons = new Font(row[3].ToString(), 14);
+                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
+                    Font userFontDataGridView = new Font(row[3].ToString(), 10);
+                    lblNotificationTitle.Font = userFontBigSubtitleUnderlined;
+                    txtNotificationTitle.Font = userFontTextBoxes;
+                    lblNotificationDescription.Font = userFontBigSubtitleUnderlined;
+                    txtNotificationDescription.Font = userFontTextBoxes;
+                    lblNotificationLocation.Font = userFontBigSubtitleUnderlined;
+                    txtNotificationLocation.Font = userFontTextBoxes;
+                    lblNotificationOccurrence.Font = userFontBigSubtitleUnderlined;
+                    lblNotificationHour.Font = userFontSmallSubtitleUnderlined;
+                    CmbNotificationHour.Font = userFontComboBoxes;
+                    lblNotificationMinute.Font = userFontSmallSubtitleUnderlined;
+                    CmbNotificationMinute.Font = userFontComboBoxes;
+                    lblNotificationPeriod.Font = userFontSmallSubtitleUnderlined;
+                    CmbNotificationPeriod.Font = userFontComboBoxes;
+                    BtnSaveNotification.Font = userFontButtons;
+                    BtnDeleteNotification.Font = userFontButtons;
+                    lblCurrentNotifications.Font = userFontBigSubtitleUnderlined;
+                    DgvCurrentNotifications.Font = userFontDataGridView;
+                    BtnHome.Font = userFontButtons;
+                }
+            }
+        }
+
     }
 }
