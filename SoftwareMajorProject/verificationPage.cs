@@ -58,7 +58,7 @@ namespace SoftwareMajorProject
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             if (givenTrimmedUserName != null && givenTrimmedUserPassword != null && givenTrimmedUserEmail != null && givenUserExists == false && verificationCodeCorrect == true)
             {

@@ -70,7 +70,7 @@ namespace SoftwareMajorProject
 
 
                 SQLiteConnection sqlConnection = new SQLiteConnection();
-                sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+                sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
 
                 //Check if user exists

@@ -42,7 +42,7 @@ namespace SoftwareMajorProject
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             if (txtUserName.Text != "" && txtUserPassword.Text != "" && txtUserName.Text != "" && txtUserPassword.Text != "")
             {

@@ -30,7 +30,7 @@ namespace SoftwareMajorProject
         private void Settings_Load(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             string cmd = "SELECT * FROM 'NoterSettings'";
             SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
@@ -117,7 +117,7 @@ namespace SoftwareMajorProject
 
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             SQLiteCommand cmd = new SQLiteCommand("UPDATE NoterSettings SET userName=@userName, backgroundColour=@backgroundColour, foregroundColour=@foregroundColour, fontType=@fontType WHERE userName=@userName");
 

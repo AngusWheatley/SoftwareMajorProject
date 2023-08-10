@@ -80,7 +80,7 @@ namespace SoftwareMajorProject
         private void SetObjectFeatures()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             string cmd = "SELECT * FROM 'NoterSettings'";
             SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);

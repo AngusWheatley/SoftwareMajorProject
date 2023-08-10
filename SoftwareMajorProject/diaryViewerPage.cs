@@ -26,7 +26,7 @@ namespace SoftwareMajorProject
         {
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             string cmd = "SELECT * FROM 'NoterSettings'";
             SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
@@ -92,7 +92,7 @@ namespace SoftwareMajorProject
         private void DgvDiaryViewer_SelectionChanged(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             if (DgvDiaryViewer.SelectedRows.Count > 0)
             {

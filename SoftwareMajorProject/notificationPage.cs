@@ -80,7 +80,7 @@ namespace SoftwareMajorProject
                     
 
                     SQLiteConnection sqlConnection = new SQLiteConnection();
-                    sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+                    sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
 
                     SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
@@ -114,7 +114,7 @@ namespace SoftwareMajorProject
             if (checkDeleteNotification == DialogResult.Yes)
             {
                 SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
-                sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+                sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
 
                 SQLiteCommand deleteNotificationCommand = new SQLiteCommand();
 
@@ -143,7 +143,7 @@ namespace SoftwareMajorProject
         private void DgvCurrentNotifications_SelectionChanged(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
-            sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
 
             if (DgvCurrentNotifications.SelectedRows.Count > 0)
             {
@@ -169,7 +169,7 @@ namespace SoftwareMajorProject
 
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
-            sqlConnectionNotificationsCheck.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnectionNotificationsCheck.ConnectionString = "DataSource = noterDatabase.db";
 
             string insertNotificationsCommand = "SELECT * FROM 'Notifications'";
 
@@ -249,7 +249,7 @@ namespace SoftwareMajorProject
 
 
                                 SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
-                                sqlConnectionDeleteNotification.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+                                sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
 
                                 SQLiteCommand sqlCommandDeleteNotification = new SQLiteCommand();
                                 sqlCommandDeleteNotification.Connection = sqlConnectionDeleteNotification;
@@ -282,7 +282,7 @@ namespace SoftwareMajorProject
         private void LoadUserNotifications()
         {
             SQLiteConnection sqlConnectionNotifications = new SQLiteConnection();
-            sqlConnectionNotifications.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnectionNotifications.ConnectionString = "DataSource = noterDatabase.db";
 
             string insertNotificationsCommand = "SELECT * FROM Notifications WHERE UserName='" + userName + "'";
 
@@ -311,7 +311,7 @@ namespace SoftwareMajorProject
             CmbNotificationPeriod.Text = "AM";
 
             SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = softwareMajorProjectDatabase.db";
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
             string cmd = "SELECT * FROM 'NoterSettings'";
             SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
