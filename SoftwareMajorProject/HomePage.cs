@@ -25,10 +25,17 @@ namespace SoftwareMajorProject
         private void HomePage_Load(object sender, EventArgs e)
         {
             lblWelcome.Text = "Welcome: " + userNameLoggedIn;
+
+            lblWelcome.Left = (this.Width / 2) - (lblWelcome.Size.Width / 2);
+
             SetObjectFeatures(); //Initialises UI from user settings
         }
-
-        private void BtnReminder_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Occurs when the 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnReminderPage_Click(object sender, EventArgs e)
         {
 
             ReminderEditorPage reminderEditorPage = new ReminderEditorPage(userNameLoggedIn);
@@ -36,7 +43,7 @@ namespace SoftwareMajorProject
             reminderEditorPage.Show();
         }
 
-        private void BtnDiary_Click(object sender, EventArgs e)
+        private void BtnDiaryPage_Click(object sender, EventArgs e)
         {
             DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
             this.Hide();
@@ -110,13 +117,12 @@ namespace SoftwareMajorProject
                     Font userFontSmall = new Font(row[3].ToString(), 16);
                     lblTitle.Font = userFontBig;
                     lblWelcome.Font = userFontMedium;
-                    btnNotifications.Font = userFontSmall;
-                    BtnDiary.Font = userFontSmall;
+                    btnNotificationsPage.Font = userFontSmall;
+                    BtnDiaryPage.Font = userFontSmall;
                     BtnLogOut.Font = userFontSmall;
                     BtnSettings.Font = userFontSmall;
                 }
             }
         }
-
     }
 }

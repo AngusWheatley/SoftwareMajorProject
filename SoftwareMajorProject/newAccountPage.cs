@@ -24,7 +24,6 @@ namespace SoftwareMajorProject
         string userPassword;
         string userEmail;
         bool userExists;
-        bool userPasswordExists; 
         string trimmedUserName;
         string trimmedUserPassword;
         string trimmedUserEmail;
@@ -56,7 +55,6 @@ namespace SoftwareMajorProject
             userEmail = txtUserEmail.Text;
 
             userExists = true;
-            userPasswordExists = true;
 
 
             bool isLetter = !string.IsNullOrEmpty(userName) && Char.IsLetter(userName[0]);
@@ -105,7 +103,7 @@ namespace SoftwareMajorProject
                     mailMessage.From = new MailAddress("noterservices@gmail.com");
                     mailMessage.To.Add(trimmedUserEmail);
                     mailMessage.Subject = "New account creation";
-                    mailMessage.Body = "Your account verification code for " + userName + "is " + verificationCode + ". If you did not request for this code, please ignore this message.";
+                    mailMessage.Body = "Your account verification code for " + userName + " is " + verificationCode + ". If you did not request for this code, please ignore this message.";
 
                     SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
                     smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
@@ -131,7 +129,6 @@ namespace SoftwareMajorProject
                 {
                     MessageBox.Show("User already exists. Try another name.");
                     userExists = true;
-                    userPasswordExists = true;
                 }
             }
             else if (isLetter == false)
@@ -144,7 +141,6 @@ namespace SoftwareMajorProject
             }
 
             userExists = false;
-            userPasswordExists = false;
         }
 
         private static bool IsUserEmailValid(string userEmail)

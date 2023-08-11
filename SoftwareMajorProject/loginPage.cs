@@ -20,7 +20,6 @@ namespace SoftwareMajorProject
         string userName;
         string userPassword;
         string trimmedUserName;
-        //string userEmail; -- May not need
 
         public LoginPage()
         {
@@ -67,8 +66,15 @@ namespace SoftwareMajorProject
                 {
                     MessageBox.Show("Successfuly Logged In");
 
-                    userName = txtUserName.Text;
                     userPassword = txtUserPassword.Text;
+
+                    foreach (DataRow row in userInfoDataTable.Rows)
+                    {
+                        if (row[1].ToString() == trimmedUserName || row[3].ToString() == trimmedUserName)
+                        {
+                            userName = row[1].ToString();
+                        }
+                    }
 
                     HomePage HomePage = new HomePage(userName);
                     this.Hide();
@@ -76,7 +82,7 @@ namespace SoftwareMajorProject
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Username or Password");
+                    MessageBox.Show("Invalid Username or Password. ");
                 }
             }
             else
@@ -96,6 +102,7 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
                 BtnLogin_Click(sender, e);
                 txtUserName.Text = txtUserName.Text.Replace(System.Environment.NewLine, "");
             }
@@ -105,6 +112,7 @@ namespace SoftwareMajorProject
         {
             if (e.KeyCode == Keys.Enter)
             {
+                txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
                 BtnLogin_Click(sender, e);
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
             }
