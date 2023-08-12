@@ -45,9 +45,8 @@ namespace SoftwareMajorProject
 
             if (txtUserName.Text != "" && txtUserPassword.Text != "" && txtUserName.Text != "" && txtUserPassword.Text != "")
             {
-                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo where userName = @userName and userPassword = @userPassword or userEmail = @userEmail and userPassword = @userPassword;");
+                SQLiteCommand cmd = new SQLiteCommand("Select * From userInfo where userName = @userName and userPassword = @userPassword;");
 
-                cmd.Parameters.AddWithValue("@userEmail", trimmedUserName);
                 cmd.Parameters.AddWithValue("@userName", trimmedUserName);
                 cmd.Parameters.AddWithValue("@userPassword", trimmedUserPassword);
                 cmd.Connection = sqlConnection;

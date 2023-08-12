@@ -26,15 +26,12 @@ namespace SoftwareMajorProject
         {
             lblWelcome.Text = "Welcome: " + userNameLoggedIn;
 
+            lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);
             lblWelcome.Left = (this.Width / 2) - (lblWelcome.Size.Width / 2);
 
             SetObjectFeatures(); //Initialises UI from user settings
         }
-        /// <summary>
-        /// Occurs when the 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void BtnReminderPage_Click(object sender, EventArgs e)
         {
 
@@ -111,8 +108,8 @@ namespace SoftwareMajorProject
                     lblTitle.BackColor = Color.FromName(row[2].ToString());
                     lblWelcome.BackColor = Color.FromName(row[2].ToString());
 
-                    //Font type -- Done
-                    Font userFontBig = new Font(row[3].ToString(), 36, FontStyle.Underline);
+                    //Font type
+                    Font userFontBig = new Font(row[3].ToString(), 48, FontStyle.Underline);
                     Font userFontMedium = new Font(row[3].ToString(), 24);
                     Font userFontSmall = new Font(row[3].ToString(), 16);
                     lblTitle.Font = userFontBig;

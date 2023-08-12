@@ -35,6 +35,7 @@
             this.BtnSettings = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,9 +76,9 @@
             // BtnLogOut
             // 
             this.BtnLogOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnLogOut.Location = new System.Drawing.Point(571, 723);
+            this.BtnLogOut.Location = new System.Drawing.Point(480, 724);
             this.BtnLogOut.Name = "BtnLogOut";
-            this.BtnLogOut.Size = new System.Drawing.Size(138, 70);
+            this.BtnLogOut.Size = new System.Drawing.Size(140, 70);
             this.BtnLogOut.TabIndex = 26;
             this.BtnLogOut.Text = "Log Out";
             this.BtnLogOut.UseVisualStyleBackColor = true;
@@ -86,9 +87,9 @@
             // BtnSettings
             // 
             this.BtnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSettings.Location = new System.Drawing.Point(740, 723);
+            this.BtnSettings.Location = new System.Drawing.Point(650, 725);
             this.BtnSettings.Name = "BtnSettings";
-            this.BtnSettings.Size = new System.Drawing.Size(133, 69);
+            this.BtnSettings.Size = new System.Drawing.Size(140, 70);
             this.BtnSettings.TabIndex = 30;
             this.BtnSettings.Text = "Settings";
             this.BtnSettings.UseVisualStyleBackColor = true;
@@ -118,12 +119,23 @@
             this.lblWelcome.TabIndex = 32;
             this.lblWelcome.Text = "Welcome: ";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(820, 725);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 70);
+            this.button1.TabIndex = 33;
+            this.button1.Text = "Settings";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // HomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.BtnSettings);
@@ -154,5 +166,6 @@
         private System.Windows.Forms.Button BtnSettings;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button button1;
     }
 }

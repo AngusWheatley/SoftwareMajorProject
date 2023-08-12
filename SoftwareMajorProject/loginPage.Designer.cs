@@ -66,9 +66,9 @@
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(419, 143);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(253, 37);
+            this.lblUsername.Size = new System.Drawing.Size(182, 37);
             this.lblUsername.TabIndex = 2;
-            this.lblUsername.Text = "Name or Email:";
+            this.lblUsername.Text = "Username:";
             // 
             // lblPassword
             // 

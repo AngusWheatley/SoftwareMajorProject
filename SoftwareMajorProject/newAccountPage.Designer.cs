@@ -38,7 +38,6 @@
             this.btnSignUp = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLogIn = new System.Windows.Forms.LinkLabel();
-            this.btnTestEmail = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
@@ -72,9 +71,9 @@
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(411, 132);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(117, 37);
+            this.lblUsername.Size = new System.Drawing.Size(182, 37);
             this.lblUsername.TabIndex = 7;
-            this.lblUsername.Text = "Name:";
+            this.lblUsername.Text = "Username:";
             // 
             // txtUserName
             // 
@@ -151,18 +150,6 @@
             this.linkLogIn.Text = "Log In Here!";
             this.linkLogIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLogIn_LinkClicked);
             // 
-            // btnTestEmail
-            // 
-            this.btnTestEmail.Enabled = false;
-            this.btnTestEmail.Location = new System.Drawing.Point(1101, 290);
-            this.btnTestEmail.Name = "btnTestEmail";
-            this.btnTestEmail.Size = new System.Drawing.Size(139, 87);
-            this.btnTestEmail.TabIndex = 15;
-            this.btnTestEmail.Text = "button1";
-            this.btnTestEmail.UseVisualStyleBackColor = true;
-            this.btnTestEmail.Visible = false;
-            this.btnTestEmail.Click += new System.EventHandler(this.BtnTestEmail_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -180,7 +167,6 @@
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnTestEmail);
             this.Controls.Add(this.linkLogIn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSignUp);
@@ -217,7 +203,6 @@
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.LinkLabel linkLogIn;
-        private System.Windows.Forms.Button btnTestEmail;
         private System.Windows.Forms.Label label3;
     }
 }
