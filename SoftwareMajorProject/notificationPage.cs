@@ -110,33 +110,40 @@ namespace SoftwareMajorProject
 
         private void BtnDeleteNotification_Click(object sender, EventArgs e)
         {
-            DialogResult checkDeleteNotification = MessageBox.Show("Are you sure you want to delete notification?", "", MessageBoxButtons.YesNo);
-            if (checkDeleteNotification == DialogResult.Yes)
+            if (selectedNotificationIndex != null)
             {
-                SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
-                sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
+                DialogResult checkDeleteNotification = MessageBox.Show("Are you sure you want to delete notification?", "", MessageBoxButtons.YesNo);
+                if (checkDeleteNotification == DialogResult.Yes)
+                {
+                    SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+                    sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
 
-                SQLiteCommand deleteNotificationCommand = new SQLiteCommand();
+                    SQLiteCommand deleteNotificationCommand = new SQLiteCommand();
 
-                deleteNotificationCommand.Connection = sqlConnectionDeleteNotification;
-                deleteNotificationCommand.CommandType = CommandType.Text;
-                deleteNotificationCommand.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=" + selectedNotificationIndex;
+                    deleteNotificationCommand.Connection = sqlConnectionDeleteNotification;
+                    deleteNotificationCommand.CommandType = CommandType.Text;
+                    deleteNotificationCommand.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=" + selectedNotificationIndex;
 
-                deleteNotificationCommand.Parameters.AddWithValue("@NotificationIndex", selectedNotificationIndex);
+                    deleteNotificationCommand.Parameters.AddWithValue("@NotificationIndex", selectedNotificationIndex);
 
-                sqlConnectionDeleteNotification.Open();
-                deleteNotificationCommand.ExecuteNonQuery();
-                sqlConnectionDeleteNotification.Close();
-
-
-                LoadUserNotifications();
+                    sqlConnectionDeleteNotification.Open();
+                    deleteNotificationCommand.ExecuteNonQuery();
+                    sqlConnectionDeleteNotification.Close();
 
 
-                MessageBox.Show("Notification deleted.");
+                    LoadUserNotifications();
+
+
+                    MessageBox.Show("Notification deleted.");
+                }
+                else
+                {
+                    MessageBox.Show("Notification not deleted");
+                }
             }
             else
             {
-                MessageBox.Show("Notification not deleted");
+                MessageBox.Show("Select a notification to be deleted.");
             }
         }
 
@@ -332,6 +339,7 @@ namespace SoftwareMajorProject
 
                     //Front colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblNotifications.BackColor = Color.FromName(row[2].ToString());
                     lblNotificationTitle.BackColor = Color.FromName(row[2].ToString());
                     lblNotificationDescription.BackColor = Color.FromName(row[2].ToString());
                     lblNotificationLocation.BackColor = Color.FromName(row[2].ToString());
@@ -345,12 +353,14 @@ namespace SoftwareMajorProject
 
 
                     //Font type -- Done
+                    Font userFontTitleUnderlined = new Font(row[3].ToString(), 42, FontStyle.Underline);
                     Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
                     Font userFontSmallSubtitleUnderlined = new Font(row[3].ToString(), 12, FontStyle.Underline);
                     Font userFontComboBoxes = new Font(row[3].ToString(), 12);
                     Font userFontButtons = new Font(row[3].ToString(), 14);
                     Font userFontTextBoxes = new Font(row[3].ToString(), 12);
                     Font userFontDataGridView = new Font(row[3].ToString(), 10);
+                    lblNotifications.Font = userFontTitleUnderlined;
                     lblNotificationTitle.Font = userFontBigSubtitleUnderlined;
                     txtNotificationTitle.Font = userFontTextBoxes;
                     lblNotificationDescription.Font = userFontBigSubtitleUnderlined;
@@ -373,5 +383,122 @@ namespace SoftwareMajorProject
             }
         }
 
+        private void TimerCheckNotifications_Tick(object sender, EventArgs e)
+        {
+            DgvCurrentNotifications.ClearSelection();
+
+            MessageBox.Show("Searching for overdue notifications, please wait.");
+
+
+            SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
+            sqlConnectionNotificationsCheck.ConnectionString = "DataSource = noterDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM 'Notifications'";
+
+
+
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotificationsCheck);
+
+            sqlConnectionNotificationsCheck.Open();
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotificationsCheck.Close();
+
+
+            foreach (DataRow rowNotificationsCheck in dataTableNotifications.Rows) //Checks each row of the 'Notifications' table
+            {
+                DateTime dateTimeNow = DateTime.Now; //Gets current dateTime
+                string fullNotificationDateTimeString = rowNotificationsCheck[5].ToString(); //Gets notification dateTime from row in 'Notifications' as a string
+                DateTime fullNotificationDateTime = Convert.ToDateTime(fullNotificationDateTimeString); //Converts dateTime from row in 'Notificaitons'
+
+
+                int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
+                if (comparedDates < 0) //Occurs when the date is past current date
+                {
+
+                    int i = 1;
+
+                    {
+                        string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
+                        SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
+
+
+
+                        var dataTableUserInfo = new DataTable();
+
+                        sqlConnectionNotificationsCheck.Open();
+                        notificationOverdueDataAdapter.Fill(dataTableUserInfo);
+                        sqlConnectionNotificationsCheck.Close();
+
+
+                        overdueUserName = rowNotificationsCheck[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
+
+
+
+                        foreach (DataRow rowNotificationOverdue in dataTableUserInfo.Rows)//-------------------- Problem may be here as it is checking and getting all rows regardless if it 
+                        {
+                            if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName && i == 1)
+                            {
+                                userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
+                                overdueUserIndex = rowNotificationsCheck[0].ToString();
+
+
+
+                                notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowNotificationsCheck[2].ToString();
+                                notificationBodyToSendToUser = "Title: " + rowNotificationsCheck[2].ToString() + "\nDescription: " + rowNotificationsCheck[3].ToString() + "\nLocation: " + rowNotificationsCheck[4].ToString() + "\nTime of Notification: " + rowNotificationsCheck[5].ToString();
+
+
+                                MailMessage mailMessage = new MailMessage();
+                                mailMessage.From = new MailAddress("noterservices@gmail.com");
+                                mailMessage.To.Add(userEmail);
+                                mailMessage.Subject = notificationTitleToSendToUser;
+                                mailMessage.Body = notificationBodyToSendToUser;
+
+                                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                                smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
+                                smtpClient.EnableSsl = true;
+
+                                try
+                                {
+                                    smtpClient.Send(mailMessage);
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Failed to send. Error: " + ex.Message);
+                                }
+
+
+
+                                SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+                                sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
+
+                                SQLiteCommand sqlCommandDeleteNotification = new SQLiteCommand();
+                                sqlCommandDeleteNotification.Connection = sqlConnectionDeleteNotification;
+                                sqlCommandDeleteNotification.CommandType = CommandType.Text;
+                                sqlCommandDeleteNotification.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=@NotificationIndex";
+                                sqlCommandDeleteNotification.Parameters.AddWithValue("@NotificationIndex", overdueUserIndex);
+
+                                sqlConnectionDeleteNotification.Open();
+                                sqlCommandDeleteNotification.ExecuteNonQuery();
+                                sqlConnectionDeleteNotification.Close();
+
+
+                                LoadUserNotifications();
+
+                                i = 0;
+                            }
+
+                        }
+                    }
+                }
+                else if (comparedDates >= 0)
+                {
+
+                }
+            }
+
+
+        }
     }
 }

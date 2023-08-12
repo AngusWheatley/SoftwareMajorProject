@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginPage));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
@@ -38,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.linkNewAccount = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.TimerCheckNotifications = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,6 +141,11 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Noter";
             // 
+            // TimerCheckNotifications
+            // 
+            this.TimerCheckNotifications.Interval = 8000;
+            this.TimerCheckNotifications.Tick += new System.EventHandler(this.TimerCheckNotifications_Tick);
+            // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -179,6 +186,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkNewAccount;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer TimerCheckNotifications;
     }
 }
 

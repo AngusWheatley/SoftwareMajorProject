@@ -56,16 +56,18 @@ namespace SoftwareMajorProject
 
                     //Front colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblSettings.BackColor = Color.FromName(row[2].ToString());
                     lblBackgroundColour.BackColor = Color.FromName(row[2].ToString());
                     lblForegroundColour.BackColor = Color.FromName(row[2].ToString());
                     lblFontType.BackColor = Color.FromName(row[2].ToString());
 
 
                     //Font type
-                    var fontConverter = new FontConverter();
+                    Font userFontTitleUnderlined = new Font(row[3].ToString(), 20, FontStyle.Underline);
                     Font userFontSubtitleUnderlined = new Font(row[3].ToString(), 12, FontStyle.Underline);
                     Font userFontComboBoxes = new Font(row[3].ToString(), 12);
-                    Font userFontButtons = new Font(row[3].ToString(), 16);
+                    Font userFontButtons = new Font(row[3].ToString(), 14);
+                    lblSettings.Font = userFontTitleUnderlined;
                     lblBackgroundColour.Font = userFontSubtitleUnderlined;
                     CmbBackgroundColour.Font = userFontComboBoxes;
                     lblForegroundColour.Font = userFontSubtitleUnderlined;
@@ -94,15 +96,18 @@ namespace SoftwareMajorProject
 
             //Foreground colour
             picBackPlate.BackColor = Color.FromName(foregroundColourSelected);
+            lblSettings.BackColor = Color.FromName(foregroundColourSelected);
             lblBackgroundColour.BackColor = Color.FromName(foregroundColourSelected);
             lblForegroundColour.BackColor = Color.FromName(foregroundColourSelected);
             lblFontType.BackColor = Color.FromName(foregroundColourSelected);
 
 
             //Font type -- Done
+            Font userFontTitleUnderlined = new Font(fontType, 20, FontStyle.Underline);
             Font userFontSubtitleUnderlined = new Font(fontType, 12, FontStyle.Underline);
             Font userFontComboBoxes = new Font(fontType, 12);
-            Font userFontButtons = new Font(fontType, 16);
+            Font userFontButtons = new Font(fontType, 14);
+            lblSettings.Font = userFontTitleUnderlined;
             lblBackgroundColour.Font = userFontSubtitleUnderlined;
             CmbBackgroundColour.Font = userFontComboBoxes;
             lblForegroundColour.Font = userFontSubtitleUnderlined;

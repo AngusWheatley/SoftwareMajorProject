@@ -24,6 +24,8 @@ namespace SoftwareMajorProject
 
         private void HomePage_Load(object sender, EventArgs e)
         {
+
+
             lblWelcome.Text = "Welcome: " + userNameLoggedIn;
 
             lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);

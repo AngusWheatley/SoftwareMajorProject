@@ -38,6 +38,7 @@
             this.CmbForegroundColour = new System.Windows.Forms.ComboBox();
             this.cmbFontType = new System.Windows.Forms.ComboBox();
             this.lblFontType = new System.Windows.Forms.Label();
+            this.lblSettings = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,9 +46,9 @@
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.picBackPlate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBackPlate.Location = new System.Drawing.Point(260, 12);
+            this.picBackPlate.Location = new System.Drawing.Point(17, 12);
             this.picBackPlate.Name = "picBackPlate";
-            this.picBackPlate.Size = new System.Drawing.Size(920, 800);
+            this.picBackPlate.Size = new System.Drawing.Size(390, 405);
             this.picBackPlate.TabIndex = 6;
             this.picBackPlate.TabStop = false;
             // 
@@ -64,9 +65,9 @@
             "DodgerBlue",
             "LightSteelBlue",
             "Purple"});
-            this.CmbBackgroundColour.Location = new System.Drawing.Point(328, 178);
+            this.CmbBackgroundColour.Location = new System.Drawing.Point(41, 108);
             this.CmbBackgroundColour.Name = "CmbBackgroundColour";
-            this.CmbBackgroundColour.Size = new System.Drawing.Size(171, 28);
+            this.CmbBackgroundColour.Size = new System.Drawing.Size(196, 28);
             this.CmbBackgroundColour.TabIndex = 7;
             // 
             // lblBackgroundColour
@@ -74,7 +75,7 @@
             this.lblBackgroundColour.AutoSize = true;
             this.lblBackgroundColour.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblBackgroundColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBackgroundColour.Location = new System.Drawing.Point(324, 155);
+            this.lblBackgroundColour.Location = new System.Drawing.Point(37, 85);
             this.lblBackgroundColour.Name = "lblBackgroundColour";
             this.lblBackgroundColour.Size = new System.Drawing.Size(149, 20);
             this.lblBackgroundColour.TabIndex = 8;
@@ -83,7 +84,7 @@
             // BtnSaveSettings
             // 
             this.BtnSaveSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSaveSettings.Location = new System.Drawing.Point(365, 554);
+            this.BtnSaveSettings.Location = new System.Drawing.Point(41, 317);
             this.BtnSaveSettings.Name = "BtnSaveSettings";
             this.BtnSaveSettings.Size = new System.Drawing.Size(150, 61);
             this.BtnSaveSettings.TabIndex = 9;
@@ -94,7 +95,7 @@
             // BtnHome
             // 
             this.BtnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHome.Location = new System.Drawing.Point(540, 554);
+            this.BtnHome.Location = new System.Drawing.Point(216, 317);
             this.BtnHome.Name = "BtnHome";
             this.BtnHome.Size = new System.Drawing.Size(150, 61);
             this.BtnHome.TabIndex = 10;
@@ -107,7 +108,7 @@
             this.lblForegroundColour.AutoSize = true;
             this.lblForegroundColour.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblForegroundColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForegroundColour.Location = new System.Drawing.Point(324, 240);
+            this.lblForegroundColour.Location = new System.Drawing.Point(37, 156);
             this.lblForegroundColour.Name = "lblForegroundColour";
             this.lblForegroundColour.Size = new System.Drawing.Size(146, 20);
             this.lblForegroundColour.TabIndex = 12;
@@ -126,9 +127,9 @@
             "DodgerBlue",
             "LightSteelBlue",
             "Purple"});
-            this.CmbForegroundColour.Location = new System.Drawing.Point(328, 263);
+            this.CmbForegroundColour.Location = new System.Drawing.Point(41, 179);
             this.CmbForegroundColour.Name = "CmbForegroundColour";
-            this.CmbForegroundColour.Size = new System.Drawing.Size(171, 28);
+            this.CmbForegroundColour.Size = new System.Drawing.Size(196, 28);
             this.CmbForegroundColour.TabIndex = 13;
             // 
             // cmbFontType
@@ -145,9 +146,9 @@
             "Arial",
             "Cambria",
             "Rockwell"});
-            this.cmbFontType.Location = new System.Drawing.Point(328, 341);
+            this.cmbFontType.Location = new System.Drawing.Point(41, 251);
             this.cmbFontType.Name = "cmbFontType";
-            this.cmbFontType.Size = new System.Drawing.Size(171, 28);
+            this.cmbFontType.Size = new System.Drawing.Size(196, 28);
             this.cmbFontType.TabIndex = 15;
             // 
             // lblFontType
@@ -155,18 +156,30 @@
             this.lblFontType.AutoSize = true;
             this.lblFontType.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblFontType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFontType.Location = new System.Drawing.Point(324, 318);
+            this.lblFontType.Location = new System.Drawing.Point(37, 228);
             this.lblFontType.Name = "lblFontType";
             this.lblFontType.Size = new System.Drawing.Size(84, 20);
             this.lblFontType.TabIndex = 14;
             this.lblFontType.Text = "Font Type:";
+            // 
+            // lblSettings
+            // 
+            this.lblSettings.AutoSize = true;
+            this.lblSettings.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSettings.Location = new System.Drawing.Point(145, 34);
+            this.lblSettings.Name = "lblSettings";
+            this.lblSettings.Size = new System.Drawing.Size(113, 31);
+            this.lblSettings.TabIndex = 16;
+            this.lblSettings.Text = "Settings";
             // 
             // settingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.ClientSize = new System.Drawing.Size(424, 439);
+            this.Controls.Add(this.lblSettings);
             this.Controls.Add(this.cmbFontType);
             this.Controls.Add(this.lblFontType);
             this.Controls.Add(this.CmbForegroundColour);
@@ -178,8 +191,6 @@
             this.Controls.Add(this.picBackPlate);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1440, 860);
-            this.MinimumSize = new System.Drawing.Size(1440, 844);
             this.Name = "settingsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Settings";
@@ -201,5 +212,6 @@
         private System.Windows.Forms.ComboBox CmbForegroundColour;
         private System.Windows.Forms.ComboBox cmbFontType;
         private System.Windows.Forms.Label lblFontType;
+        private System.Windows.Forms.Label lblSettings;
     }
 }

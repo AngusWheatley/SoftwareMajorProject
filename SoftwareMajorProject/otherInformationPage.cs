@@ -62,12 +62,16 @@ namespace SoftwareMajorProject
 
         private void BtnUserGuide_Click(object sender, EventArgs e)
         {
-
+            UserGuidePage UserGuidePage = new UserGuidePage(userName);
+            this.Hide();
+            UserGuidePage.Show();
         }
 
         private void BtnEndUserLicenceAgreement_Click(object sender, EventArgs e)
         {
-
+            EndUserLicenceAgreementPage EndUserLicenceAgreementPage = new EndUserLicenceAgreementPage(userName);
+            this.Hide();
+            EndUserLicenceAgreementPage.Show();
         }
 
         private void BtnHome_Click(object sender, EventArgs e)

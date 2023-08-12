@@ -12,6 +12,8 @@ using System.IO;
 using System.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Reflection;
+using System.Net.Mail;
+using System.Net;
 
 namespace SoftwareMajorProject
 {
@@ -21,14 +23,32 @@ namespace SoftwareMajorProject
         string userPassword;
         string trimmedUserName;
 
+        string userEmail;
+        string overdueUserName;
+        string overdueUserIndex;
+        string notificationTitleToSendToUser;
+        string notificationBodyToSendToUser;
+
+        bool isTimerRunning;
+
         public LoginPage()
         {
+            
+
             InitializeComponent();
+            /*TimerCheckNotifications.Stop();
+            isTimerRunning = false;
+            TimerCheckNotifications.Enabled = true;*/     //Make timer not be able to tick multiple times at once after logging in and out many times
+
+
+
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
         {
             userName = "";
+
+
         }
 
         private void BtnLogin_Click(object sender, EventArgs e)
@@ -114,6 +134,116 @@ namespace SoftwareMajorProject
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
                 BtnLogin_Click(sender, e);
                 txtUserPassword.Text = txtUserPassword.Text.Replace(System.Environment.NewLine, "");
+            }
+        }
+
+        private void TimerCheckNotifications_Tick(object sender, EventArgs e)
+        {
+            MessageBox.Show("Searching for overdue notifications, please wait.");
+
+
+            SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
+            sqlConnectionNotificationsCheck.ConnectionString = "DataSource = noterDatabase.db";
+
+            string insertNotificationsCommand = "SELECT * FROM 'Notifications'";
+
+
+            var dataTableNotifications = new DataTable();
+            SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotificationsCheck);
+
+            sqlConnectionNotificationsCheck.Open();
+            notificationsDataAdapter.Fill(dataTableNotifications);
+            sqlConnectionNotificationsCheck.Close();
+
+
+            foreach (DataRow rowNotificationsCheck in dataTableNotifications.Rows) //Checks each row of the 'Notifications' table
+            {
+                DateTime dateTimeNow = DateTime.Now; //Gets current dateTime
+                string fullNotificationDateTimeString = rowNotificationsCheck[5].ToString(); //Gets notification dateTime from row in 'Notifications' as a string
+                DateTime fullNotificationDateTime = Convert.ToDateTime(fullNotificationDateTimeString); //Converts dateTime from row in 'Notificaitons'
+
+
+                int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
+                if (comparedDates < 0) //Occurs when the date is past current date
+                {
+
+                    int i = 1;
+
+                    {
+                        string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
+                        SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
+
+
+
+                        var dataTableUserInfo = new DataTable();
+
+                        sqlConnectionNotificationsCheck.Open();
+                        notificationOverdueDataAdapter.Fill(dataTableUserInfo);
+                        sqlConnectionNotificationsCheck.Close();
+
+
+                        overdueUserName = rowNotificationsCheck[1].ToString(); //Gets overdueUserName from the row in 'Notifications'
+
+
+
+                        foreach (DataRow rowNotificationOverdue in dataTableUserInfo.Rows)//-------------------- Problem may be here as it is checking and getting all rows regardless if it 
+                        {
+                            if (rowNotificationOverdue[1].ToString() == overdueUserName && rowNotificationsCheck[1].ToString() == overdueUserName && i == 1)
+                            {
+                                userEmail = rowNotificationOverdue[3].ToString(); //Gets userEmail from the row in 'UserInfo'
+                                overdueUserIndex = rowNotificationsCheck[0].ToString();
+
+
+
+                                notificationTitleToSendToUser = "New Notification for " + overdueUserName + ": " + rowNotificationsCheck[2].ToString();
+                                notificationBodyToSendToUser = "Title: " + rowNotificationsCheck[2].ToString() + "\nDescription: " + rowNotificationsCheck[3].ToString() + "\nLocation: " + rowNotificationsCheck[4].ToString() + "\nTime of Notification: " + rowNotificationsCheck[5].ToString();
+
+
+                                MailMessage mailMessage = new MailMessage();
+                                mailMessage.From = new MailAddress("noterservices@gmail.com");
+                                mailMessage.To.Add(userEmail);
+                                mailMessage.Subject = notificationTitleToSendToUser;
+                                mailMessage.Body = notificationBodyToSendToUser;
+
+                                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                                smtpClient.Credentials = new NetworkCredential("noterservices@gmail.com", "wxtleisaobiiluuu");
+                                smtpClient.EnableSsl = true;
+
+                                try
+                                {
+                                    smtpClient.Send(mailMessage);
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Failed to send. Error: " + ex.Message);
+                                }
+
+
+
+                                SQLiteConnection sqlConnectionDeleteNotification = new SQLiteConnection();
+                                sqlConnectionDeleteNotification.ConnectionString = "DataSource = noterDatabase.db";
+
+                                SQLiteCommand sqlCommandDeleteNotification = new SQLiteCommand();
+                                sqlCommandDeleteNotification.Connection = sqlConnectionDeleteNotification;
+                                sqlCommandDeleteNotification.CommandType = CommandType.Text;
+                                sqlCommandDeleteNotification.CommandText = "DELETE FROM Notifications WHERE NotificationIndex=@NotificationIndex";
+                                sqlCommandDeleteNotification.Parameters.AddWithValue("@NotificationIndex", overdueUserIndex);
+
+                                sqlConnectionDeleteNotification.Open();
+                                sqlCommandDeleteNotification.ExecuteNonQuery();
+                                sqlConnectionDeleteNotification.Close();
+
+                                i = 0;
+                            }
+
+                        }
+                    }
+                }
+                else if (comparedDates >= 0)
+                {
+
+                }
             }
         }
     }

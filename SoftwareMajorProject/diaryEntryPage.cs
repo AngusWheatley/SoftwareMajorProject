@@ -48,21 +48,23 @@ namespace SoftwareMajorProject
 
                     //Front colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblNotifications.BackColor = Color.FromName(row[2].ToString());
                     lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
                     lblEntryContents.BackColor = Color.FromName(row[2].ToString());
                     lblEntryDate.BackColor = Color.FromName(row[2].ToString());
-                    
+
                     //Font type
+                    Font userFontTitleUnderlined = new Font(row[3].ToString(), 36, FontStyle.Underline);
                     Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
                     Font userFontButtons = new Font(row[3].ToString(), 14);
                     Font userFontTextBoxes = new Font(row[3].ToString(), 12);
+                    lblNotifications.Font = userFontTitleUnderlined;
                     lblEntryTitle.Font = userFontBigSubtitleUnderlined;
                     TxtEntryTitle.Font = userFontTextBoxes;
                     lblEntryContents.Font = userFontBigSubtitleUnderlined;
                     TxtEntryContents.Font = userFontTextBoxes;
                     lblEntryDate.Font = userFontBigSubtitleUnderlined;
                     BtnSaveEntry.Font = userFontButtons;
-                    BtnDeleteEntry.Font = userFontButtons;
                     BtnAllEntries.Font = userFontButtons;
                     btnHome.Font = userFontButtons;
                 }

@@ -50,9 +50,9 @@
             // BtnHome
             // 
             this.BtnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHome.Location = new System.Drawing.Point(202, 250);
+            this.BtnHome.Location = new System.Drawing.Point(202, 252);
             this.BtnHome.Name = "BtnHome";
-            this.BtnHome.Size = new System.Drawing.Size(81, 38);
+            this.BtnHome.Size = new System.Drawing.Size(80, 34);
             this.BtnHome.TabIndex = 25;
             this.BtnHome.Text = "Home";
             this.BtnHome.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(50, 37);
+            this.lblTitle.Location = new System.Drawing.Point(62, 37);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(377, 31);
             this.lblTitle.TabIndex = 26;
@@ -102,11 +102,13 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.BtnHome);
             this.Controls.Add(this.picBackPlate);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 350);
             this.MinimumSize = new System.Drawing.Size(500, 350);
             this.Name = "OtherInformationPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Other Information - Noter";
             this.Load += new System.EventHandler(this.OtherInformationPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();

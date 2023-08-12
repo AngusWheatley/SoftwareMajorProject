@@ -47,6 +47,7 @@ namespace SoftwareMajorProject
 
                     //Front colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblDiaryEntries.BackColor = Color.FromName(row[2].ToString());
                     lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
                     lblEntryContents.BackColor = Color.FromName(row[2].ToString());
                     lblEntryDate.BackColor = Color.FromName(row[2].ToString());
@@ -54,10 +55,12 @@ namespace SoftwareMajorProject
                     DgvDiaryViewer.CellBorderStyle = DataGridViewCellBorderStyle.Single;
 
                     //Font type
+                    Font userFontTitleUnderlined = new Font(row[3].ToString(), 36, FontStyle.Underline);
                     Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
                     Font userFontTextBoxes = new Font(row[3].ToString(), 12);
                     Font userFontButtons = new Font(row[3].ToString(), 14);
                     Font userFontDataGridView = new Font(row[3].ToString(), 10);
+                    lblDiaryEntries.Font = userFontTitleUnderlined;
                     DgvDiaryViewer.Font = userFontDataGridView;
                     lblEntryTitle.Font = userFontBigSubtitleUnderlined;
                     TxtEntryTitle.Font = userFontTextBoxes;

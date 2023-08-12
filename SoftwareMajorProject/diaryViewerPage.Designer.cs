@@ -39,6 +39,7 @@
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblDiaryEntries = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDiaryViewer)).BeginInit();
             this.SuspendLayout();
@@ -46,7 +47,7 @@
             // picBackPlate
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.picBackPlate.Location = new System.Drawing.Point(87, 10);
+            this.picBackPlate.Location = new System.Drawing.Point(83, 8);
             this.picBackPlate.Name = "picBackPlate";
             this.picBackPlate.Size = new System.Drawing.Size(1250, 800);
             this.picBackPlate.TabIndex = 8;
@@ -58,7 +59,7 @@
             this.DgvDiaryViewer.AllowUserToResizeRows = false;
             this.DgvDiaryViewer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvDiaryViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvDiaryViewer.Location = new System.Drawing.Point(128, 145);
+            this.DgvDiaryViewer.Location = new System.Drawing.Point(127, 145);
             this.DgvDiaryViewer.MultiSelect = false;
             this.DgvDiaryViewer.Name = "DgvDiaryViewer";
             this.DgvDiaryViewer.Size = new System.Drawing.Size(570, 635);
@@ -67,7 +68,7 @@
             // 
             // TxtEntryTitle
             // 
-            this.TxtEntryTitle.Location = new System.Drawing.Point(745, 174);
+            this.TxtEntryTitle.Location = new System.Drawing.Point(744, 174);
             this.TxtEntryTitle.Multiline = true;
             this.TxtEntryTitle.Name = "TxtEntryTitle";
             this.TxtEntryTitle.ReadOnly = true;
@@ -79,7 +80,7 @@
             this.lblEntryTitle.AutoSize = true;
             this.lblEntryTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblEntryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntryTitle.Location = new System.Drawing.Point(740, 145);
+            this.lblEntryTitle.Location = new System.Drawing.Point(739, 145);
             this.lblEntryTitle.Name = "lblEntryTitle";
             this.lblEntryTitle.Size = new System.Drawing.Size(139, 26);
             this.lblEntryTitle.TabIndex = 38;
@@ -87,7 +88,7 @@
             // 
             // TxtEntryContents
             // 
-            this.TxtEntryContents.Location = new System.Drawing.Point(745, 268);
+            this.TxtEntryContents.Location = new System.Drawing.Point(744, 268);
             this.TxtEntryContents.Multiline = true;
             this.TxtEntryContents.Name = "TxtEntryContents";
             this.TxtEntryContents.ReadOnly = true;
@@ -99,7 +100,7 @@
             this.lblEntryContents.AutoSize = true;
             this.lblEntryContents.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblEntryContents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntryContents.Location = new System.Drawing.Point(740, 239);
+            this.lblEntryContents.Location = new System.Drawing.Point(739, 239);
             this.lblEntryContents.Name = "lblEntryContents";
             this.lblEntryContents.Size = new System.Drawing.Size(69, 26);
             this.lblEntryContents.TabIndex = 36;
@@ -107,7 +108,7 @@
             // 
             // txtEntryDate
             // 
-            this.txtEntryDate.Location = new System.Drawing.Point(745, 738);
+            this.txtEntryDate.Location = new System.Drawing.Point(744, 738);
             this.txtEntryDate.Multiline = true;
             this.txtEntryDate.Name = "txtEntryDate";
             this.txtEntryDate.ReadOnly = true;
@@ -119,7 +120,7 @@
             this.lblEntryDate.AutoSize = true;
             this.lblEntryDate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblEntryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntryDate.Location = new System.Drawing.Point(740, 709);
+            this.lblEntryDate.Location = new System.Drawing.Point(739, 709);
             this.lblEntryDate.Name = "lblEntryDate";
             this.lblEntryDate.Size = new System.Drawing.Size(145, 26);
             this.lblEntryDate.TabIndex = 40;
@@ -149,12 +150,24 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblDiaryEntries
+            // 
+            this.lblDiaryEntries.AutoSize = true;
+            this.lblDiaryEntries.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDiaryEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiaryEntries.Location = new System.Drawing.Point(578, 32);
+            this.lblDiaryEntries.Name = "lblDiaryEntries";
+            this.lblDiaryEntries.Size = new System.Drawing.Size(298, 55);
+            this.lblDiaryEntries.TabIndex = 44;
+            this.lblDiaryEntries.Text = "Diary Entries";
+            // 
             // diaryViewerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.lblDiaryEntries);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.txtEntryDate);
@@ -193,5 +206,6 @@
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label lblDiaryEntries;
     }
 }

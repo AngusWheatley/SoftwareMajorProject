@@ -39,7 +39,7 @@
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
             this.BtnAllEntries = new System.Windows.Forms.Button();
-            this.BtnDeleteEntry = new System.Windows.Forms.Button();
+            this.lblNotifications = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +80,7 @@
             this.TxtEntryContents.Multiline = true;
             this.TxtEntryContents.Name = "TxtEntryContents";
             this.TxtEntryContents.Size = new System.Drawing.Size(553, 512);
-            this.TxtEntryContents.TabIndex = 2;
+            this.TxtEntryContents.TabIndex = 3;
             // 
             // BtnSaveEntry
             // 
@@ -99,7 +99,7 @@
             this.TxtEntryTitle.Multiline = true;
             this.TxtEntryTitle.Name = "TxtEntryTitle";
             this.TxtEntryTitle.Size = new System.Drawing.Size(553, 41);
-            this.TxtEntryTitle.TabIndex = 1;
+            this.TxtEntryTitle.TabIndex = 2;
             // 
             // lblEntryTitle
             // 
@@ -130,7 +130,7 @@
             this.CalEntryDate.MaxSelectionCount = 1;
             this.CalEntryDate.Name = "CalEntryDate";
             this.CalEntryDate.ShowTodayCircle = false;
-            this.CalEntryDate.TabIndex = 3;
+            this.CalEntryDate.TabIndex = 1;
             this.CalEntryDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalDiaryEntryDate_DateSelected);
             // 
             // BtnAllEntries
@@ -144,17 +144,16 @@
             this.BtnAllEntries.UseVisualStyleBackColor = true;
             this.BtnAllEntries.Click += new System.EventHandler(this.BtnAllEntries_Click);
             // 
-            // BtnDeleteEntry
+            // lblNotifications
             // 
-            this.BtnDeleteEntry.Enabled = false;
-            this.BtnDeleteEntry.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnDeleteEntry.Location = new System.Drawing.Point(828, 579);
-            this.BtnDeleteEntry.Name = "BtnDeleteEntry";
-            this.BtnDeleteEntry.Size = new System.Drawing.Size(346, 74);
-            this.BtnDeleteEntry.TabIndex = 33;
-            this.BtnDeleteEntry.Text = "Delete";
-            this.BtnDeleteEntry.UseVisualStyleBackColor = true;
-            this.BtnDeleteEntry.Visible = false;
+            this.lblNotifications.AutoSize = true;
+            this.lblNotifications.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNotifications.Location = new System.Drawing.Point(578, 32);
+            this.lblNotifications.Name = "lblNotifications";
+            this.lblNotifications.Size = new System.Drawing.Size(298, 55);
+            this.lblNotifications.TabIndex = 45;
+            this.lblNotifications.Text = "Diary Entries";
             // 
             // DiaryEditorPage
             // 
@@ -162,12 +161,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.lblNotifications);
             this.Controls.Add(this.BtnAllEntries);
             this.Controls.Add(this.lblEntryDate);
             this.Controls.Add(this.CalEntryDate);
             this.Controls.Add(this.TxtEntryTitle);
             this.Controls.Add(this.lblEntryTitle);
-            this.Controls.Add(this.BtnDeleteEntry);
             this.Controls.Add(this.BtnSaveEntry);
             this.Controls.Add(this.TxtEntryContents);
             this.Controls.Add(this.lblEntryContents);
@@ -200,6 +199,6 @@
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.MonthCalendar CalEntryDate;
         private System.Windows.Forms.Button BtnAllEntries;
-        private System.Windows.Forms.Button BtnDeleteEntry;
+        private System.Windows.Forms.Label lblNotifications;
     }
 }
