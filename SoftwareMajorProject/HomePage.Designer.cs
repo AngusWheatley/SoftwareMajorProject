@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomePage));
             this.picBackPlate = new System.Windows.Forms.PictureBox();
             this.btnNotificationsPage = new System.Windows.Forms.Button();
             this.BtnDiaryPage = new System.Windows.Forms.Button();
@@ -128,6 +129,7 @@
             this.BtnOtherInformation.TabIndex = 33;
             this.BtnOtherInformation.Text = "Other Information";
             this.BtnOtherInformation.UseVisualStyleBackColor = true;
+            this.BtnOtherInformation.Click += new System.EventHandler(this.BtnOtherInformation_Click);
             // 
             // HomePage
             // 
@@ -144,6 +146,7 @@
             this.Controls.Add(this.btnNotificationsPage);
             this.Controls.Add(this.picBackPlate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 860);
             this.MinimumSize = new System.Drawing.Size(1440, 860);

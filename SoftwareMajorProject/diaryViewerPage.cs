@@ -24,7 +24,6 @@ namespace SoftwareMajorProject
 
         private void diaryViewerPage_Load(object sender, EventArgs e)
         {
-
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 

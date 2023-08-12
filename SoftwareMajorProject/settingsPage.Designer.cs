@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(settingsPage));
             this.picBackPlate = new System.Windows.Forms.PictureBox();
             this.CmbBackgroundColour = new System.Windows.Forms.ComboBox();
             this.lblBackgroundColour = new System.Windows.Forms.Label();
@@ -44,10 +45,9 @@
             // 
             this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.picBackPlate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBackPlate.Location = new System.Drawing.Point(347, 15);
-            this.picBackPlate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picBackPlate.Location = new System.Drawing.Point(260, 12);
             this.picBackPlate.Name = "picBackPlate";
-            this.picBackPlate.Size = new System.Drawing.Size(1226, 984);
+            this.picBackPlate.Size = new System.Drawing.Size(920, 800);
             this.picBackPlate.TabIndex = 6;
             this.picBackPlate.TabStop = false;
             // 
@@ -64,10 +64,9 @@
             "DodgerBlue",
             "LightSteelBlue",
             "Purple"});
-            this.CmbBackgroundColour.Location = new System.Drawing.Point(437, 219);
-            this.CmbBackgroundColour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbBackgroundColour.Location = new System.Drawing.Point(328, 178);
             this.CmbBackgroundColour.Name = "CmbBackgroundColour";
-            this.CmbBackgroundColour.Size = new System.Drawing.Size(227, 28);
+            this.CmbBackgroundColour.Size = new System.Drawing.Size(171, 28);
             this.CmbBackgroundColour.TabIndex = 7;
             // 
             // lblBackgroundColour
@@ -75,8 +74,7 @@
             this.lblBackgroundColour.AutoSize = true;
             this.lblBackgroundColour.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblBackgroundColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBackgroundColour.Location = new System.Drawing.Point(432, 191);
-            this.lblBackgroundColour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBackgroundColour.Location = new System.Drawing.Point(324, 155);
             this.lblBackgroundColour.Name = "lblBackgroundColour";
             this.lblBackgroundColour.Size = new System.Drawing.Size(149, 20);
             this.lblBackgroundColour.TabIndex = 8;
@@ -85,10 +83,9 @@
             // BtnSaveSettings
             // 
             this.BtnSaveSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSaveSettings.Location = new System.Drawing.Point(487, 682);
-            this.BtnSaveSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnSaveSettings.Location = new System.Drawing.Point(365, 554);
             this.BtnSaveSettings.Name = "BtnSaveSettings";
-            this.BtnSaveSettings.Size = new System.Drawing.Size(200, 75);
+            this.BtnSaveSettings.Size = new System.Drawing.Size(150, 61);
             this.BtnSaveSettings.TabIndex = 9;
             this.BtnSaveSettings.Text = "Save Settings";
             this.BtnSaveSettings.UseVisualStyleBackColor = true;
@@ -97,10 +94,9 @@
             // BtnHome
             // 
             this.BtnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnHome.Location = new System.Drawing.Point(720, 682);
-            this.BtnHome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnHome.Location = new System.Drawing.Point(540, 554);
             this.BtnHome.Name = "BtnHome";
-            this.BtnHome.Size = new System.Drawing.Size(200, 75);
+            this.BtnHome.Size = new System.Drawing.Size(150, 61);
             this.BtnHome.TabIndex = 10;
             this.BtnHome.Text = "Home";
             this.BtnHome.UseVisualStyleBackColor = true;
@@ -111,8 +107,7 @@
             this.lblForegroundColour.AutoSize = true;
             this.lblForegroundColour.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblForegroundColour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblForegroundColour.Location = new System.Drawing.Point(432, 295);
-            this.lblForegroundColour.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblForegroundColour.Location = new System.Drawing.Point(324, 240);
             this.lblForegroundColour.Name = "lblForegroundColour";
             this.lblForegroundColour.Size = new System.Drawing.Size(146, 20);
             this.lblForegroundColour.TabIndex = 12;
@@ -131,10 +126,9 @@
             "DodgerBlue",
             "LightSteelBlue",
             "Purple"});
-            this.CmbForegroundColour.Location = new System.Drawing.Point(437, 324);
-            this.CmbForegroundColour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CmbForegroundColour.Location = new System.Drawing.Point(328, 263);
             this.CmbForegroundColour.Name = "CmbForegroundColour";
-            this.CmbForegroundColour.Size = new System.Drawing.Size(227, 28);
+            this.CmbForegroundColour.Size = new System.Drawing.Size(171, 28);
             this.CmbForegroundColour.TabIndex = 13;
             // 
             // cmbFontType
@@ -151,10 +145,9 @@
             "Arial",
             "Cambria",
             "Rockwell"});
-            this.cmbFontType.Location = new System.Drawing.Point(437, 420);
-            this.cmbFontType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmbFontType.Location = new System.Drawing.Point(328, 341);
             this.cmbFontType.Name = "cmbFontType";
-            this.cmbFontType.Size = new System.Drawing.Size(227, 28);
+            this.cmbFontType.Size = new System.Drawing.Size(171, 28);
             this.cmbFontType.TabIndex = 15;
             // 
             // lblFontType
@@ -162,8 +155,7 @@
             this.lblFontType.AutoSize = true;
             this.lblFontType.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblFontType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFontType.Location = new System.Drawing.Point(432, 391);
-            this.lblFontType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFontType.Location = new System.Drawing.Point(324, 318);
             this.lblFontType.Name = "lblFontType";
             this.lblFontType.Size = new System.Drawing.Size(84, 20);
             this.lblFontType.TabIndex = 14;
@@ -171,10 +163,10 @@
             // 
             // settingsPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1899, 1010);
+            this.ClientSize = new System.Drawing.Size(1424, 821);
             this.Controls.Add(this.cmbFontType);
             this.Controls.Add(this.lblFontType);
             this.Controls.Add(this.CmbForegroundColour);
@@ -184,10 +176,10 @@
             this.Controls.Add(this.lblBackgroundColour);
             this.Controls.Add(this.CmbBackgroundColour);
             this.Controls.Add(this.picBackPlate);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1915, 1049);
-            this.MinimumSize = new System.Drawing.Size(1915, 1030);
+            this.MaximumSize = new System.Drawing.Size(1440, 860);
+            this.MinimumSize = new System.Drawing.Size(1440, 844);
             this.Name = "settingsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Settings";

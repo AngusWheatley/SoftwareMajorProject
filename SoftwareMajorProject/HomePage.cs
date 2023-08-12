@@ -118,8 +118,16 @@ namespace SoftwareMajorProject
                     BtnDiaryPage.Font = userFontSmall;
                     BtnLogOut.Font = userFontSmall;
                     BtnSettings.Font = userFontSmall;
+                    BtnOtherInformation.Font = userFontSmall;
                 }
             }
+        }
+
+        private void BtnOtherInformation_Click(object sender, EventArgs e)
+        {
+            OtherInformationPage otherInformationPage = new OtherInformationPage(userNameLoggedIn);
+            this.Hide();
+            otherInformationPage.Show();
         }
     }
 }

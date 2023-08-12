@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>NoterLogoIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -210,6 +213,12 @@
     <Compile Include="diaryViewerPage.Designer.cs">
       <DependentUpon>diaryViewerPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="EndUserLicenceAgreementPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EndUserLicenceAgreementPage.Designer.cs">
+      <DependentUpon>EndUserLicenceAgreementPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="loginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +249,18 @@
     <Compile Include="diaryEntryPage.Designer.cs">
       <DependentUpon>diaryEntryPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="otherInformationPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="otherInformationPage.Designer.cs">
+      <DependentUpon>otherInformationPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserGuidePage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserGuidePage.Designer.cs">
+      <DependentUpon>UserGuidePage.cs</DependentUpon>
+    </Compile>
     <Compile Include="verificationPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +279,9 @@
     <EmbeddedResource Include="diaryViewerPage.resx">
       <DependentUpon>diaryViewerPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EndUserLicenceAgreementPage.resx">
+      <DependentUpon>EndUserLicenceAgreementPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="loginPage.resx">
       <DependentUpon>loginPage.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +296,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="diaryEntryPage.resx">
       <DependentUpon>diaryEntryPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="otherInformationPage.resx">
+      <DependentUpon>otherInformationPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserGuidePage.resx">
+      <DependentUpon>UserGuidePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="verificationPage.resx">
       <DependentUpon>verificationPage.cs</DependentUpon>
@@ -313,6 +343,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NoterLogoIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

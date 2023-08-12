@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(diaryViewerPage));
             this.picBackPlate = new System.Windows.Forms.PictureBox();
             this.DgvDiaryViewer = new System.Windows.Forms.DataGridView();
             this.TxtEntryTitle = new System.Windows.Forms.TextBox();
@@ -165,6 +166,7 @@
             this.Controls.Add(this.DgvDiaryViewer);
             this.Controls.Add(this.picBackPlate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 860);
             this.MinimumSize = new System.Drawing.Size(1440, 860);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerificationCodeForm));
             this.label1 = new System.Windows.Forms.Label();
             this.BtnSubmitCode = new System.Windows.Forms.Button();
             this.txtCodeEntered = new System.Windows.Forms.TextBox();
@@ -97,6 +98,7 @@
             this.Controls.Add(this.txtCodeEntered);
             this.Controls.Add(this.BtnSubmitCode);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerificationCodeForm";
             this.Text = "Noter - Verification Code";
             this.ResumeLayout(false);
