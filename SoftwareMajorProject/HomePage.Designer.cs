@@ -35,7 +35,7 @@
             this.BtnSettings = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnOtherInformation = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,15 +119,15 @@
             this.lblWelcome.TabIndex = 32;
             this.lblWelcome.Text = "Welcome: ";
             // 
-            // button1
+            // BtnOtherInformation
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(820, 725);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 70);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Settings";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnOtherInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnOtherInformation.Location = new System.Drawing.Point(820, 725);
+            this.BtnOtherInformation.Name = "BtnOtherInformation";
+            this.BtnOtherInformation.Size = new System.Drawing.Size(140, 70);
+            this.BtnOtherInformation.TabIndex = 33;
+            this.BtnOtherInformation.Text = "Other Information";
+            this.BtnOtherInformation.UseVisualStyleBackColor = true;
             // 
             // HomePage
             // 
@@ -135,7 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnOtherInformation);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.BtnSettings);
@@ -166,6 +166,6 @@
         private System.Windows.Forms.Button BtnSettings;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnOtherInformation;
     }
 }
