@@ -125,9 +125,10 @@ namespace SoftwareMajorProject
 
         private void BtnAllEntries_Click(object sender, EventArgs e)
         {
-            diaryViewerPage diaryViewerPage = new diaryViewerPage(userName);
+            DiaryViewerPage DiaryViewerPage = new DiaryViewerPage(userName);
             this.Hide();
-            diaryViewerPage.Show();
+            DiaryViewerPage.Show();
         }
+
     }
 }

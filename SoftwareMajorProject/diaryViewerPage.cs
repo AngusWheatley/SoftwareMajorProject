@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -12,83 +13,22 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SoftwareMajorProject
 {
-    public partial class diaryViewerPage : Form
+    public partial class DiaryViewerPage : Form
     {
         string userNameLoggedIn;
         string selectedDiaryEntry;
-        public diaryViewerPage(string userName)
+        string searchDiaryDate;
+        public DiaryViewerPage(string userName)
         {
             userNameLoggedIn = userName;
             InitializeComponent();
         }
 
-        private void diaryViewerPage_Load(object sender, EventArgs e)
+        private void DiaryViewerPage_Load(object sender, EventArgs e)
         {
-            SQLiteConnection sqlConnection = new SQLiteConnection();
-            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
-
-            string cmd = "SELECT * FROM 'NoterSettings'";
-            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
-
-            var dataGridViewSettings = new DataTable();
-
-            sqlConnection.Open();
-            settingsDataAdapter.Fill(dataGridViewSettings);
-            sqlConnection.Close();
-
-
-
-            foreach (DataRow row in dataGridViewSettings.Rows)
-            {
-                if (row[0].ToString() == userNameLoggedIn)
-                {
-                    //Back colour
-                    BackColor = Color.FromName(row[1].ToString());
-
-                    //Front colour
-                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
-                    lblDiaryEntries.BackColor = Color.FromName(row[2].ToString());
-                    lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
-                    lblEntryContents.BackColor = Color.FromName(row[2].ToString());
-                    lblEntryDate.BackColor = Color.FromName(row[2].ToString());
-                    DgvDiaryViewer.BackgroundColor = Color.FromName(row[2].ToString());
-                    DgvDiaryViewer.CellBorderStyle = DataGridViewCellBorderStyle.Single;
-
-                    //Font type
-                    Font userFontTitleUnderlined = new Font(row[3].ToString(), 36, FontStyle.Underline);
-                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
-                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
-                    Font userFontButtons = new Font(row[3].ToString(), 14);
-                    Font userFontDataGridView = new Font(row[3].ToString(), 10);
-                    lblDiaryEntries.Font = userFontTitleUnderlined;
-                    DgvDiaryViewer.Font = userFontDataGridView;
-                    lblEntryTitle.Font = userFontBigSubtitleUnderlined;
-                    TxtEntryTitle.Font = userFontTextBoxes;
-                    lblEntryContents.Font = userFontBigSubtitleUnderlined;
-                    TxtEntryContents.Font = userFontTextBoxes;
-                    lblEntryDate.Font = userFontBigSubtitleUnderlined;
-                    txtEntryDate.Font = userFontTextBoxes;
-                    btnBack.Font = userFontButtons;
-                    btnHome.Font = userFontButtons;
-                }
-            }
-
-
-            string fillDataGridViewCommand = "SELECT * FROM '" + userNameLoggedIn + "_Diary'";
-            SQLiteDataAdapter sqlAdapter = new SQLiteDataAdapter(fillDataGridViewCommand, sqlConnection);
-
-            DataTable diaryDataTable = new DataTable();
-
-            sqlConnection.Open();
-            sqlAdapter.Fill(diaryDataTable);
-            sqlConnection.Close();
-            
-            DgvDiaryViewer.DataSource = diaryDataTable;
-
-            DgvDiaryViewer.Columns[0].Width = 100;
-            DgvDiaryViewer.Columns[1].Width = 250;
-            DgvDiaryViewer.Columns[2].Width = 160;
-
+            SetObjectFeatures();
+            ShowUserDiaryEntries();
+            ClearTextboxes();
         }
 
         private void DgvDiaryViewer_SelectionChanged(object sender, EventArgs e)
@@ -130,6 +70,126 @@ namespace SoftwareMajorProject
             DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
             this.Hide();
             DiaryEditorPage.Show();
+        }
+
+        private void BtnSearchDiaryEntries_Click(object sender, EventArgs e)
+        {
+
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
+
+            string fillDataGridViewCommand = "SELECT * FROM '" + userNameLoggedIn + "_Diary' WHERE date = '" + searchDiaryDate + "'"; //Make WHERE date = selectedDate
+            SQLiteDataAdapter sqlAdapter = new SQLiteDataAdapter(fillDataGridViewCommand, sqlConnection);
+
+            DataTable diaryDataTable = new DataTable();
+
+            sqlConnection.Open();
+            sqlAdapter.Fill(diaryDataTable);
+            sqlConnection.Close();
+
+            DgvDiaryViewer.DataSource = diaryDataTable;
+
+            DgvDiaryViewer.Columns[0].Width = 100;
+            DgvDiaryViewer.Columns[1].Width = 250;
+            DgvDiaryViewer.Columns[2].Width = 160;
+
+            ClearTextboxes();
+        }
+
+        private void BtnResetSearchDiaryEntries_Click(object sender, EventArgs e)
+        {
+            ShowUserDiaryEntries();
+            ClearTextboxes();
+        }
+
+        private void CalEntryDate_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            searchDiaryDate = e.Start.ToShortDateString();
+        }
+
+        private void SetObjectFeatures()
+        {
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
+
+            string cmd = "SELECT * FROM 'NoterSettings'";
+            SQLiteDataAdapter settingsDataAdapter = new SQLiteDataAdapter(cmd, sqlConnection);
+
+            var dataGridViewSettings = new DataTable();
+
+            sqlConnection.Open();
+            settingsDataAdapter.Fill(dataGridViewSettings);
+            sqlConnection.Close();
+
+
+
+            foreach (DataRow row in dataGridViewSettings.Rows)
+            {
+                if (row[0].ToString() == userNameLoggedIn)
+                {
+                    //Back colour
+                    BackColor = Color.FromName(row[1].ToString());
+
+                    //Front colour
+                    picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblDiaryEntries.BackColor = Color.FromName(row[2].ToString());
+                    lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
+                    lblEntryContents.BackColor = Color.FromName(row[2].ToString());
+                    lblEntryDate.BackColor = Color.FromName(row[2].ToString());
+                    DgvDiaryViewer.BackgroundColor = Color.FromName(row[2].ToString());
+                    DgvDiaryViewer.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+
+                    //Font type
+                    Font userFontTitleUnderlined = new Font(row[3].ToString(), 36, FontStyle.Underline);
+                    Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
+                    Font userFontSearchDateSubtitle = new Font(row[3].ToString(), 14, FontStyle.Underline);
+                    Font userFontSearchDateButtons = new Font(row[3].ToString(), 10);
+                    Font userFontTextBoxes = new Font(row[3].ToString(), 12);
+                    Font userFontButtons = new Font(row[3].ToString(), 12);
+                    Font userFontDataGridView = new Font(row[3].ToString(), 10);
+                    lblDiaryEntries.Font = userFontTitleUnderlined;
+                    DgvDiaryViewer.Font = userFontDataGridView;
+                    lblSearchEntryDate.Font = userFontSearchDateSubtitle;
+                    BtnSearchDiaryEntries.Font = userFontSearchDateButtons;
+                    BtnResetSearchDiaryEntries.Font = userFontSearchDateButtons;
+                    lblEntryTitle.Font = userFontBigSubtitleUnderlined;
+                    TxtEntryTitle.Font = userFontTextBoxes;
+                    lblEntryContents.Font = userFontBigSubtitleUnderlined;
+                    TxtEntryContents.Font = userFontTextBoxes;
+                    lblEntryDate.Font = userFontBigSubtitleUnderlined;
+                    txtEntryDate.Font = userFontTextBoxes;
+                    btnBack.Font = userFontButtons;
+                    btnHome.Font = userFontButtons;
+                }
+            }
+        }
+
+        private void ClearTextboxes()
+        {
+            TxtEntryTitle.Text = "";
+            TxtEntryContents.Text = "";
+            txtEntryDate.Text = "";
+        }
+
+        private void ShowUserDiaryEntries()
+        {
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
+
+            string fillDataGridViewCommand = "SELECT * FROM '" + userNameLoggedIn + "_Diary'";
+            SQLiteDataAdapter sqlAdapter = new SQLiteDataAdapter(fillDataGridViewCommand, sqlConnection);
+
+            DataTable diaryDataTable = new DataTable();
+
+            sqlConnection.Open();
+            sqlAdapter.Fill(diaryDataTable);
+            sqlConnection.Close();
+
+            DgvDiaryViewer.DataSource = diaryDataTable;
+
+            DgvDiaryViewer.Columns[0].Width = 100;
+            DgvDiaryViewer.Columns[1].Width = 250;
+            DgvDiaryViewer.Columns[2].Width = 160;
         }
     }
 }

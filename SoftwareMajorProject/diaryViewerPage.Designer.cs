@@ -1,6 +1,6 @@
 ﻿namespace SoftwareMajorProject
 {
-    partial class diaryViewerPage
+    partial class DiaryViewerPage
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(diaryViewerPage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiaryViewerPage));
             this.picBackPlate = new System.Windows.Forms.PictureBox();
             this.DgvDiaryViewer = new System.Windows.Forms.DataGridView();
             this.TxtEntryTitle = new System.Windows.Forms.TextBox();
@@ -40,6 +40,10 @@
             this.btnHome = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblDiaryEntries = new System.Windows.Forms.Label();
+            this.lblSearchEntryDate = new System.Windows.Forms.Label();
+            this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
+            this.BtnSearchDiaryEntries = new System.Windows.Forms.Button();
+            this.BtnResetSearchDiaryEntries = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDiaryViewer)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +66,7 @@
             this.DgvDiaryViewer.Location = new System.Drawing.Point(127, 145);
             this.DgvDiaryViewer.MultiSelect = false;
             this.DgvDiaryViewer.Name = "DgvDiaryViewer";
-            this.DgvDiaryViewer.Size = new System.Drawing.Size(570, 635);
+            this.DgvDiaryViewer.Size = new System.Drawing.Size(570, 435);
             this.DgvDiaryViewer.TabIndex = 9;
             this.DgvDiaryViewer.SelectionChanged += new System.EventHandler(this.DgvDiaryViewer_SelectionChanged);
             // 
@@ -161,12 +165,59 @@
             this.lblDiaryEntries.TabIndex = 44;
             this.lblDiaryEntries.Text = "Diary Entries";
             // 
-            // diaryViewerPage
+            // lblSearchEntryDate
+            // 
+            this.lblSearchEntryDate.AutoSize = true;
+            this.lblSearchEntryDate.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblSearchEntryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchEntryDate.Location = new System.Drawing.Point(123, 590);
+            this.lblSearchEntryDate.Name = "lblSearchEntryDate";
+            this.lblSearchEntryDate.Size = new System.Drawing.Size(186, 24);
+            this.lblSearchEntryDate.TabIndex = 45;
+            this.lblSearchEntryDate.Text = "Search Date of Entry:";
+            // 
+            // CalEntryDate
+            // 
+            this.CalEntryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CalEntryDate.Location = new System.Drawing.Point(127, 618);
+            this.CalEntryDate.MaxSelectionCount = 1;
+            this.CalEntryDate.Name = "CalEntryDate";
+            this.CalEntryDate.ShowTodayCircle = false;
+            this.CalEntryDate.TabIndex = 46;
+            this.CalEntryDate.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.CalEntryDate_DateSelected);
+            // 
+            // BtnSearchDiaryEntries
+            // 
+            this.BtnSearchDiaryEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSearchDiaryEntries.Location = new System.Drawing.Point(366, 697);
+            this.BtnSearchDiaryEntries.Name = "BtnSearchDiaryEntries";
+            this.BtnSearchDiaryEntries.Size = new System.Drawing.Size(113, 38);
+            this.BtnSearchDiaryEntries.TabIndex = 47;
+            this.BtnSearchDiaryEntries.Text = "Search";
+            this.BtnSearchDiaryEntries.UseVisualStyleBackColor = true;
+            this.BtnSearchDiaryEntries.Click += new System.EventHandler(this.BtnSearchDiaryEntries_Click);
+            // 
+            // BtnResetSearchDiaryEntries
+            // 
+            this.BtnResetSearchDiaryEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnResetSearchDiaryEntries.Location = new System.Drawing.Point(366, 742);
+            this.BtnResetSearchDiaryEntries.Name = "BtnResetSearchDiaryEntries";
+            this.BtnResetSearchDiaryEntries.Size = new System.Drawing.Size(113, 38);
+            this.BtnResetSearchDiaryEntries.TabIndex = 48;
+            this.BtnResetSearchDiaryEntries.Text = "Reset Search";
+            this.BtnResetSearchDiaryEntries.UseVisualStyleBackColor = true;
+            this.BtnResetSearchDiaryEntries.Click += new System.EventHandler(this.BtnResetSearchDiaryEntries_Click);
+            // 
+            // DiaryViewerPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.Controls.Add(this.BtnResetSearchDiaryEntries);
+            this.Controls.Add(this.BtnSearchDiaryEntries);
+            this.Controls.Add(this.CalEntryDate);
+            this.Controls.Add(this.lblSearchEntryDate);
             this.Controls.Add(this.lblDiaryEntries);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnHome);
@@ -183,10 +234,10 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1440, 860);
             this.MinimumSize = new System.Drawing.Size(1440, 860);
-            this.Name = "diaryViewerPage";
+            this.Name = "DiaryViewerPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Diary Viewer";
-            this.Load += new System.EventHandler(this.diaryViewerPage_Load);
+            this.Load += new System.EventHandler(this.DiaryViewerPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDiaryViewer)).EndInit();
             this.ResumeLayout(false);
@@ -207,5 +258,9 @@
         private System.Windows.Forms.Button btnHome;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label lblDiaryEntries;
+        private System.Windows.Forms.Label lblSearchEntryDate;
+        private System.Windows.Forms.MonthCalendar CalEntryDate;
+        private System.Windows.Forms.Button BtnSearchDiaryEntries;
+        private System.Windows.Forms.Button BtnResetSearchDiaryEntries;
     }
 }
