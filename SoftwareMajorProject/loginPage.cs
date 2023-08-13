@@ -41,6 +41,12 @@ namespace SoftwareMajorProject
             TimerCheckNotifications.Enabled = true;*/     //Make timer not be able to tick multiple times at once after logging in and out many times
 
 
+            //TimerCheckNotifications.Enabled = true;
+
+            if (!TimerCheckNotifications.Enabled)
+            {
+                TimerCheckNotifications.Start();
+            }
 
         }
 
