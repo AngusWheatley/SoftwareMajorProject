@@ -25,6 +25,14 @@ namespace SoftwareMajorProject
 
         private void DiaryEditorPage_Load(object sender, EventArgs e)
         {
+            SetObjectFeatures();
+
+        }
+        /// <summary>
+        /// Sets up how the form looks based on the user's settings.
+        /// </summary>
+        private void SetObjectFeatures()
+        {
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
@@ -36,7 +44,6 @@ namespace SoftwareMajorProject
             sqlConnection.Open();
             settingsDataAdapter.Fill(dataGridViewSettings);
             sqlConnection.Close();
-
 
 
             foreach (DataRow row in dataGridViewSettings.Rows)
@@ -129,6 +136,5 @@ namespace SoftwareMajorProject
             this.Hide();
             DiaryViewerPage.Show();
         }
-
     }
 }
