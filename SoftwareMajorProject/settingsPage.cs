@@ -102,7 +102,7 @@ namespace SoftwareMajorProject
             lblFontType.BackColor = Color.FromName(foregroundColourSelected);
 
 
-            //Font type -- Done
+            //Font type
             Font userFontTitleUnderlined = new Font(fontType, 20, FontStyle.Underline);
             Font userFontSubtitleUnderlined = new Font(fontType, 12, FontStyle.Underline);
             Font userFontComboBoxes = new Font(fontType, 12);
@@ -145,9 +145,13 @@ namespace SoftwareMajorProject
 
         private void BtnHome_Click(object sender, EventArgs e)
         {
-            HomePage HomePage = new HomePage(userName);
-            this.Hide();
-            HomePage.Show();
+            DialogResult result = MessageBox.Show("Are you sure you want these settings?", "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                HomePage HomePage = new HomePage(userName);
+                this.Hide();
+                HomePage.Show();
+            }
         }
     }
 }

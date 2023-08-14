@@ -58,14 +58,14 @@ namespace SoftwareMajorProject
             }
         }
 
-        private void btnHome_Click(object sender, EventArgs e)
+        private void BtnHome_Click(object sender, EventArgs e)
         {
             HomePage HomePage = new HomePage(userNameLoggedIn);
             this.Hide();
             HomePage.Show();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        private void BtnBack_Click(object sender, EventArgs e)
         {
             DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
             this.Hide();
@@ -158,8 +158,8 @@ namespace SoftwareMajorProject
                     TxtEntryContents.Font = userFontTextBoxes;
                     lblEntryDate.Font = userFontBigSubtitleUnderlined;
                     txtEntryDate.Font = userFontTextBoxes;
-                    btnBack.Font = userFontButtons;
-                    btnHome.Font = userFontButtons;
+                    BtnBack.Font = userFontButtons;
+                    BtnHome.Font = userFontButtons;
                 }
             }
         }

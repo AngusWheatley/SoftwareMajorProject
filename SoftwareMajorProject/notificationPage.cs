@@ -32,6 +32,7 @@ namespace SoftwareMajorProject
         {
             userName = userNameLoggedIn;
             InitializeComponent();
+
         }
 
         private void ReminderEditorPage_Load(object sender, EventArgs e)

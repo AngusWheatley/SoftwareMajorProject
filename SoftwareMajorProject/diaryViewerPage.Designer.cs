@@ -37,8 +37,8 @@
             this.lblEntryContents = new System.Windows.Forms.Label();
             this.txtEntryDate = new System.Windows.Forms.TextBox();
             this.lblEntryDate = new System.Windows.Forms.Label();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.BtnHome = new System.Windows.Forms.Button();
+            this.BtnBack = new System.Windows.Forms.Button();
             this.lblDiaryEntries = new System.Windows.Forms.Label();
             this.lblSearchEntryDate = new System.Windows.Forms.Label();
             this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
@@ -130,29 +130,29 @@
             this.lblEntryDate.TabIndex = 40;
             this.lblEntryDate.Text = "Date of Entry:";
             // 
-            // btnHome
+            // BtnHome
             // 
-            this.btnHome.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHome.Location = new System.Drawing.Point(1338, 776);
-            this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(80, 32);
-            this.btnHome.TabIndex = 42;
-            this.btnHome.Text = "Home";
-            this.btnHome.UseVisualStyleBackColor = true;
-            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            this.BtnHome.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnHome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnHome.Location = new System.Drawing.Point(1338, 776);
+            this.BtnHome.Name = "BtnHome";
+            this.BtnHome.Size = new System.Drawing.Size(80, 32);
+            this.BtnHome.TabIndex = 42;
+            this.BtnHome.Text = "Home";
+            this.BtnHome.UseVisualStyleBackColor = true;
+            this.BtnHome.Click += new System.EventHandler(this.BtnHome_Click);
             // 
-            // btnBack
+            // BtnBack
             // 
-            this.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(1338, 736);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(80, 32);
-            this.btnBack.TabIndex = 43;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.BtnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnBack.Location = new System.Drawing.Point(1338, 736);
+            this.BtnBack.Name = "BtnBack";
+            this.BtnBack.Size = new System.Drawing.Size(80, 32);
+            this.BtnBack.TabIndex = 43;
+            this.BtnBack.Text = "Back";
+            this.BtnBack.UseVisualStyleBackColor = true;
+            this.BtnBack.Click += new System.EventHandler(this.BtnBack_Click);
             // 
             // lblDiaryEntries
             // 
@@ -219,8 +219,8 @@
             this.Controls.Add(this.CalEntryDate);
             this.Controls.Add(this.lblSearchEntryDate);
             this.Controls.Add(this.lblDiaryEntries);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnHome);
+            this.Controls.Add(this.BtnBack);
+            this.Controls.Add(this.BtnHome);
             this.Controls.Add(this.txtEntryDate);
             this.Controls.Add(this.lblEntryDate);
             this.Controls.Add(this.TxtEntryTitle);
@@ -255,8 +255,8 @@
         private System.Windows.Forms.Label lblEntryContents;
         private System.Windows.Forms.TextBox txtEntryDate;
         private System.Windows.Forms.Label lblEntryDate;
-        private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button BtnHome;
+        private System.Windows.Forms.Button BtnBack;
         private System.Windows.Forms.Label lblDiaryEntries;
         private System.Windows.Forms.Label lblSearchEntryDate;
         private System.Windows.Forms.MonthCalendar CalEntryDate;
