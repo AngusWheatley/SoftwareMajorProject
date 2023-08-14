@@ -39,7 +39,7 @@
             this.lblEntryDate = new System.Windows.Forms.Label();
             this.CalEntryDate = new System.Windows.Forms.MonthCalendar();
             this.BtnAllEntries = new System.Windows.Forms.Button();
-            this.lblNotifications = new System.Windows.Forms.Label();
+            this.lblDiaryEntries = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,16 +144,16 @@
             this.BtnAllEntries.UseVisualStyleBackColor = true;
             this.BtnAllEntries.Click += new System.EventHandler(this.BtnAllEntries_Click);
             // 
-            // lblNotifications
+            // lblDiaryEntries
             // 
-            this.lblNotifications.AutoSize = true;
-            this.lblNotifications.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNotifications.Location = new System.Drawing.Point(578, 32);
-            this.lblNotifications.Name = "lblNotifications";
-            this.lblNotifications.Size = new System.Drawing.Size(298, 55);
-            this.lblNotifications.TabIndex = 45;
-            this.lblNotifications.Text = "Diary Entries";
+            this.lblDiaryEntries.AutoSize = true;
+            this.lblDiaryEntries.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.lblDiaryEntries.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiaryEntries.Location = new System.Drawing.Point(578, 32);
+            this.lblDiaryEntries.Name = "lblDiaryEntries";
+            this.lblDiaryEntries.Size = new System.Drawing.Size(298, 55);
+            this.lblDiaryEntries.TabIndex = 45;
+            this.lblDiaryEntries.Text = "Diary Entries";
             // 
             // DiaryEditorPage
             // 
@@ -161,7 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(1424, 821);
-            this.Controls.Add(this.lblNotifications);
+            this.Controls.Add(this.lblDiaryEntries);
             this.Controls.Add(this.BtnAllEntries);
             this.Controls.Add(this.lblEntryDate);
             this.Controls.Add(this.CalEntryDate);
@@ -199,6 +199,6 @@
         private System.Windows.Forms.Label lblEntryDate;
         private System.Windows.Forms.MonthCalendar CalEntryDate;
         private System.Windows.Forms.Button BtnAllEntries;
-        private System.Windows.Forms.Label lblNotifications;
+        private System.Windows.Forms.Label lblDiaryEntries;
     }
 }

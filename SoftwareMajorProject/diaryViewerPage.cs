@@ -132,6 +132,7 @@ namespace SoftwareMajorProject
 
                     //Front colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
+                    lblSearchEntryDate.BackColor = Color.FromName(row[2].ToString());
                     lblDiaryEntries.BackColor = Color.FromName(row[2].ToString());
                     lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
                     lblEntryContents.BackColor = Color.FromName(row[2].ToString());

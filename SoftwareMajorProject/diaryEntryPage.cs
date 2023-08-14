@@ -55,7 +55,7 @@ namespace SoftwareMajorProject
 
                     //Front colour
                     picBackPlate.BackColor = Color.FromName(row[2].ToString());
-                    lblNotifications.BackColor = Color.FromName(row[2].ToString());
+                    lblDiaryEntries.BackColor = Color.FromName(row[2].ToString());
                     lblEntryTitle.BackColor = Color.FromName(row[2].ToString());
                     lblEntryContents.BackColor = Color.FromName(row[2].ToString());
                     lblEntryDate.BackColor = Color.FromName(row[2].ToString());
@@ -65,7 +65,7 @@ namespace SoftwareMajorProject
                     Font userFontBigSubtitleUnderlined = new Font(row[3].ToString(), 16, FontStyle.Underline);
                     Font userFontButtons = new Font(row[3].ToString(), 14);
                     Font userFontTextBoxes = new Font(row[3].ToString(), 12);
-                    lblNotifications.Font = userFontTitleUnderlined;
+                    lblDiaryEntries.Font = userFontTitleUnderlined;
                     lblEntryTitle.Font = userFontBigSubtitleUnderlined;
                     TxtEntryTitle.Font = userFontTextBoxes;
                     lblEntryContents.Font = userFontBigSubtitleUnderlined;
@@ -93,7 +93,7 @@ namespace SoftwareMajorProject
             string diaryEntry = TxtEntryContents.Text;
             
 
-            if (diaryDate != null && diaryTitle != "" && diaryEntry != "")
+            if (diaryDate != null && diaryTitle != "" && diaryEntry != "" && TxtEntryTitle.Text.Trim().Length != 0 && TxtEntryContents.Text.Trim().Length != 0)
             {
                 string userNameDiary = userName + "_Diary";
 
