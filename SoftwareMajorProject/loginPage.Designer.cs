@@ -143,7 +143,7 @@
             // 
             // TimerCheckNotifications
             // 
-            this.TimerCheckNotifications.Interval = 8000;
+            this.TimerCheckNotifications.Interval = 60000;
             this.TimerCheckNotifications.Tick += new System.EventHandler(this.TimerCheckNotifications_Tick);
             // 
             // LoginPage
