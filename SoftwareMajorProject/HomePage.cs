@@ -28,8 +28,7 @@ namespace SoftwareMajorProject
 
             lblWelcome.Text = "Welcome: " + userNameLoggedIn;
 
-            lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);
-            lblWelcome.Left = (this.Width / 2) - (lblWelcome.Size.Width / 2);
+            
 
             SetObjectFeatures(); //Initialises UI from user settings
         }
@@ -85,6 +84,9 @@ namespace SoftwareMajorProject
         
         private void SetObjectFeatures()
         {
+            lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);
+            lblWelcome.Left = (this.Width / 2) - (lblWelcome.Size.Width / 2);
+
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 

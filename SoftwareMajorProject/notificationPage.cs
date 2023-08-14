@@ -78,30 +78,46 @@ namespace SoftwareMajorProject
                 else
                 {
                     MessageBox.Show("Notification added.");
-                    
 
-                    SQLiteConnection sqlConnection = new SQLiteConnection();
-                    sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
-
-
-                    SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
-                    sqlCommandNewUser.Connection = sqlConnection;
-                    sqlCommandNewUser.CommandType = CommandType.Text;
-                    sqlCommandNewUser.CommandText = "INSERT into Notifications (UserName, Title, Description, Location, Time) values (@UserName, @Title, @Description, @Location, @Time)";
-
-                    sqlCommandNewUser.Parameters.AddWithValue("@UserName", userName);
-                    sqlCommandNewUser.Parameters.AddWithValue("@Title", notificationTitle);
-                    sqlCommandNewUser.Parameters.AddWithValue("@Description", notificationDescription);
-                    sqlCommandNewUser.Parameters.AddWithValue("@Location", notificationLocation);
-                    sqlCommandNewUser.Parameters.AddWithValue("@Time", notificationDateTime);
-
-                    sqlConnection.Open();
-                    sqlCommandNewUser.ExecuteNonQuery();
-                    sqlConnection.Close();
+                    AddNotificationToDatabase(notificationTitle, notificationDescription, notificationLocation);
+                    ClearNewNotificationFields();
 
                 }
                 LoadUserNotifications(); //Loads user notifications into data grid view
             }
+        }
+
+        private void ClearNewNotificationFields()
+        {
+            txtNotificationTitle.Text = null;
+            txtNotificationDescription.Text = null;
+            txtNotificationLocation.Text = null;
+            CmbNotificationHour.Text = "12";
+            CmbNotificationMinute.Text = "00";
+            CmbNotificationPeriod.Text = "AM";
+            CalNotificationDate.SelectionStart = DateTime.Now;
+        }
+
+        private void AddNotificationToDatabase(string notificationTitle, string notificationDescription, string notificationLocation)
+        {
+            SQLiteConnection sqlConnection = new SQLiteConnection();
+            sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
+
+
+            SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
+            sqlCommandNewUser.Connection = sqlConnection;
+            sqlCommandNewUser.CommandType = CommandType.Text;
+            sqlCommandNewUser.CommandText = "INSERT into Notifications (UserName, Title, Description, Location, Time) values (@UserName, @Title, @Description, @Location, @Time)";
+
+            sqlCommandNewUser.Parameters.AddWithValue("@UserName", userName);
+            sqlCommandNewUser.Parameters.AddWithValue("@Title", notificationTitle);
+            sqlCommandNewUser.Parameters.AddWithValue("@Description", notificationDescription);
+            sqlCommandNewUser.Parameters.AddWithValue("@Location", notificationLocation);
+            sqlCommandNewUser.Parameters.AddWithValue("@Time", notificationDateTime);
+
+            sqlConnection.Open();
+            sqlCommandNewUser.ExecuteNonQuery();
+            sqlConnection.Close();
         }
 
         private void CalNotificationDate_DateChanged(object sender, DateRangeEventArgs e)
@@ -314,6 +330,9 @@ namespace SoftwareMajorProject
 
         private void SetObjectFeatures()
         {
+            txtNotificationTitle.Text = null;
+            txtNotificationDescription.Text = null;
+            txtNotificationLocation.Text = null;
             CmbNotificationHour.Text = "12";
             CmbNotificationMinute.Text = "00";
             CmbNotificationPeriod.Text = "AM";
