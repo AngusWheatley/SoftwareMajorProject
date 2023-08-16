@@ -28,6 +28,7 @@ namespace SoftwareMajorProject
             SetObjectFeatures();
 
         }
+
         /// <summary>
         /// Sets up how the form looks based on the user's settings.
         /// </summary>
@@ -101,7 +102,6 @@ namespace SoftwareMajorProject
                 SQLiteConnection sqlConnection = new SQLiteConnection();
                 sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
-
                 SQLiteCommand sqlCommandNewUser = new SQLiteCommand();
                 sqlCommandNewUser.Connection = sqlConnection;
                 sqlCommandNewUser.CommandType = CommandType.Text;
@@ -116,19 +116,23 @@ namespace SoftwareMajorProject
                 sqlConnection.Close();
 
                 MessageBox.Show("Your diary entry has been saved.");
+
+
+                TxtEntryTitle.Text = null;
+                TxtEntryContents.Text = null;
             }
             else
             {
                 MessageBox.Show("Please make sure you have entered all information for this diary entry.");
             }
-
         }
-
+        //Inserts the given diary entry information into the users diary database
 
         private void CalDiaryEntryDate_DateSelected(object sender, DateRangeEventArgs e)
         {
             diaryDate = e.Start.ToShortDateString();
         }
+        //Sets the 'diaryDate' variable to the selected date
 
         private void BtnAllEntries_Click(object sender, EventArgs e)
         {
@@ -136,5 +140,7 @@ namespace SoftwareMajorProject
             this.Hide();
             DiaryViewerPage.Show();
         }
+        //Loads the 'diaryViewrerPage' form
+
     }
 }

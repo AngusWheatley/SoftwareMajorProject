@@ -69,7 +69,7 @@
             this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsername.Location = new System.Drawing.Point(419, 143);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(182, 37);
+            this.lblUsername.Size = new System.Drawing.Size(223, 46);
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "Username:";
             // 
@@ -80,7 +80,7 @@
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.Location = new System.Drawing.Point(419, 292);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(176, 37);
+            this.lblPassword.Size = new System.Drawing.Size(216, 46);
             this.lblPassword.TabIndex = 4;
             this.lblPassword.Text = "Password:";
             // 
@@ -113,7 +113,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(492, 736);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 25);
+            this.label1.Size = new System.Drawing.Size(237, 31);
             this.label1.TabIndex = 6;
             this.label1.Text = "Need an Account?";
             // 
@@ -124,7 +124,7 @@
             this.linkNewAccount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkNewAccount.Location = new System.Drawing.Point(735, 736);
             this.linkNewAccount.Name = "linkNewAccount";
-            this.linkNewAccount.Size = new System.Drawing.Size(171, 26);
+            this.linkNewAccount.Size = new System.Drawing.Size(220, 32);
             this.linkNewAccount.TabIndex = 7;
             this.linkNewAccount.TabStop = true;
             this.linkNewAccount.Text = "Make One Here!";
@@ -137,20 +137,20 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(623, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(194, 73);
+            this.label2.Size = new System.Drawing.Size(239, 91);
             this.label2.TabIndex = 8;
             this.label2.Text = "Noter";
             // 
             // TimerCheckNotifications
             // 
-            this.TimerCheckNotifications.Interval = 60000;
+            this.TimerCheckNotifications.Interval = 5000;
             this.TimerCheckNotifications.Tick += new System.EventHandler(this.TimerCheckNotifications_Tick);
             // 
             // LoginPage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Highlight;
-            this.ClientSize = new System.Drawing.Size(1424, 821);
+            this.ClientSize = new System.Drawing.Size(1422, 813);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.linkNewAccount);
             this.Controls.Add(this.label1);

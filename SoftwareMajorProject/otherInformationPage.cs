@@ -24,6 +24,15 @@ namespace SoftwareMajorProject
         private void OtherInformationPage_Load(object sender, EventArgs e)
         {
 
+            SetObjectFeaturers();
+
+        }
+
+        private void SetObjectFeaturers()
+        {
+            lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);
+
+
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
