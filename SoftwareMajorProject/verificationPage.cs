@@ -175,5 +175,12 @@ namespace SoftwareMajorProject
                 txtCodeEntered.Text = txtCodeEntered.Text.Replace(System.Environment.NewLine, "");
             }
         }
+
+        private void VerificationCodeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoginPage LoginPage = new LoginPage();
+            this.Hide();
+            LoginPage.Show();
+        }
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SoftwareMajorProject
 {
@@ -60,6 +61,13 @@ namespace SoftwareMajorProject
             OtherInformationPage OtherInformationPage = new OtherInformationPage(userNameLoggedIn);
             this.Hide();
             OtherInformationPage.Show();
+        }
+
+        private void EndUserLicenceAgreementPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomePage HomePage = new HomePage(userNameLoggedIn);
+            this.Hide();
+            HomePage.Show();
         }
     }
 }

@@ -192,5 +192,12 @@ namespace SoftwareMajorProject
             DgvDiaryViewer.Columns[1].Width = 250;
             DgvDiaryViewer.Columns[2].Width = 160;
         }
+
+        private void DiaryViewerPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomePage HomePage = new HomePage(userNameLoggedIn);
+            this.Hide();
+            HomePage.Show();
+        }
     }
 }

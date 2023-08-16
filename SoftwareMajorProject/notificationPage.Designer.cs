@@ -338,7 +338,7 @@
             this.lblCurrentNotifications.AutoSize = true;
             this.lblCurrentNotifications.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblCurrentNotifications.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentNotifications.Location = new System.Drawing.Point(725, 448);
+            this.lblCurrentNotifications.Location = new System.Drawing.Point(725, 445);
             this.lblCurrentNotifications.Name = "lblCurrentNotifications";
             this.lblCurrentNotifications.Size = new System.Drawing.Size(215, 26);
             this.lblCurrentNotifications.TabIndex = 33;
@@ -407,6 +407,7 @@
             this.Name = "ReminderEditorPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Notification Editor";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReminderEditorPage_FormClosed);
             this.Load += new System.EventHandler(this.ReminderEditorPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCurrentNotifications)).EndInit();

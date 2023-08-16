@@ -58,5 +58,11 @@ namespace SoftwareMajorProject
             OtherInformationPage.Show();
         }
 
+        private void UserGuidePage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomePage HomePage = new HomePage(userNameLoggedIn);
+            this.Hide();
+            HomePage.Show();
+        }
     }
 }

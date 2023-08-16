@@ -84,7 +84,7 @@
             this.lblEntryTitle.AutoSize = true;
             this.lblEntryTitle.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblEntryTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntryTitle.Location = new System.Drawing.Point(739, 145);
+            this.lblEntryTitle.Location = new System.Drawing.Point(739, 142);
             this.lblEntryTitle.Name = "lblEntryTitle";
             this.lblEntryTitle.Size = new System.Drawing.Size(139, 26);
             this.lblEntryTitle.TabIndex = 38;
@@ -104,7 +104,7 @@
             this.lblEntryContents.AutoSize = true;
             this.lblEntryContents.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblEntryContents.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntryContents.Location = new System.Drawing.Point(739, 239);
+            this.lblEntryContents.Location = new System.Drawing.Point(739, 236);
             this.lblEntryContents.Name = "lblEntryContents";
             this.lblEntryContents.Size = new System.Drawing.Size(69, 26);
             this.lblEntryContents.TabIndex = 36;
@@ -124,7 +124,7 @@
             this.lblEntryDate.AutoSize = true;
             this.lblEntryDate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblEntryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEntryDate.Location = new System.Drawing.Point(739, 709);
+            this.lblEntryDate.Location = new System.Drawing.Point(739, 706);
             this.lblEntryDate.Name = "lblEntryDate";
             this.lblEntryDate.Size = new System.Drawing.Size(145, 26);
             this.lblEntryDate.TabIndex = 40;
@@ -170,7 +170,7 @@
             this.lblSearchEntryDate.AutoSize = true;
             this.lblSearchEntryDate.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblSearchEntryDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearchEntryDate.Location = new System.Drawing.Point(123, 590);
+            this.lblSearchEntryDate.Location = new System.Drawing.Point(123, 588);
             this.lblSearchEntryDate.Name = "lblSearchEntryDate";
             this.lblSearchEntryDate.Size = new System.Drawing.Size(186, 24);
             this.lblSearchEntryDate.TabIndex = 45;
@@ -237,6 +237,7 @@
             this.Name = "DiaryViewerPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Diary Viewer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DiaryViewerPage_FormClosed);
             this.Load += new System.EventHandler(this.DiaryViewerPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDiaryViewer)).EndInit();

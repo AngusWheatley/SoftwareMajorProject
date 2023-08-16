@@ -186,6 +186,7 @@
             this.Name = "NewAccountPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - New Account Page";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewAccountPage_FormClosed);
             this.Load += new System.EventHandler(this.NewAccountPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             this.ResumeLayout(false);

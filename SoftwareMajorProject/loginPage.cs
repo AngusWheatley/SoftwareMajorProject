@@ -276,8 +276,6 @@ namespace SoftwareMajorProject
                     else if (minimizingNoterResult == DialogResult.No)
                     {
                         e.Cancel = true;
-
-                        this.WindowState = FormWindowState.Maximized;
                     }
 
                 }
@@ -285,7 +283,7 @@ namespace SoftwareMajorProject
             }
             else if (closingNoterResult == DialogResult.No)
             {
-                DialogResult minimizingNoterResult = MessageBox.Show("Would you like to minimize Noter?????", "Noter", MessageBoxButtons.YesNo);
+                DialogResult minimizingNoterResult = MessageBox.Show("Would you like to minimize Noter?", "Noter", MessageBoxButtons.YesNo);
                 if (minimizingNoterResult == DialogResult.Yes)
                 {
                     e.Cancel = true;

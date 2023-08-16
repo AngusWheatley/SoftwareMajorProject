@@ -520,5 +520,12 @@ namespace SoftwareMajorProject
 
 
         }
+
+        private void ReminderEditorPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomePage HomePage = new HomePage(userName);
+            this.Hide();
+            HomePage.Show();
+        }
     }
 }

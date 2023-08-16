@@ -180,6 +180,7 @@
             this.Name = "DiaryEditorPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Diary Entry";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DiaryEditorPage_FormClosed);
             this.Load += new System.EventHandler(this.DiaryEditorPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             this.ResumeLayout(false);

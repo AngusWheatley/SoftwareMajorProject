@@ -67,6 +67,7 @@
             this.Name = "EndUserLicenceAgreementPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "End User Licence Agreement - Noter";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EndUserLicenceAgreementPage_FormClosed);
             this.Load += new System.EventHandler(this.EndUserLicenceAgreementPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

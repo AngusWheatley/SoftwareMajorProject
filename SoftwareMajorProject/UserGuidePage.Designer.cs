@@ -68,6 +68,7 @@
             this.Name = "UserGuidePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Guide - Noter";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.UserGuidePage_FormClosed);
             this.Load += new System.EventHandler(this.UserGuidePage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

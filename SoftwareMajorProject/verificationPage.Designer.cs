@@ -34,11 +34,14 @@
             this.txtCodeEntered = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnCancelVerification = new System.Windows.Forms.Button();
+            this.picBackPlate = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(25, 31);
             this.label1.Name = "label1";
@@ -49,7 +52,7 @@
             // BtnSubmitCode
             // 
             this.BtnSubmitCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSubmitCode.Location = new System.Drawing.Point(29, 132);
+            this.BtnSubmitCode.Location = new System.Drawing.Point(37, 132);
             this.BtnSubmitCode.Name = "BtnSubmitCode";
             this.BtnSubmitCode.Size = new System.Drawing.Size(160, 60);
             this.BtnSubmitCode.TabIndex = 1;
@@ -70,6 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(25, 51);
             this.label2.Name = "label2";
@@ -80,7 +84,7 @@
             // BtnCancelVerification
             // 
             this.BtnCancelVerification.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnCancelVerification.Location = new System.Drawing.Point(234, 132);
+            this.BtnCancelVerification.Location = new System.Drawing.Point(237, 132);
             this.BtnCancelVerification.Name = "BtnCancelVerification";
             this.BtnCancelVerification.Size = new System.Drawing.Size(160, 60);
             this.BtnCancelVerification.TabIndex = 4;
@@ -88,19 +92,33 @@
             this.BtnCancelVerification.UseVisualStyleBackColor = true;
             this.BtnCancelVerification.Click += new System.EventHandler(this.BtnCancelVerification_Click);
             // 
+            // picBackPlate
+            // 
+            this.picBackPlate.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.picBackPlate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picBackPlate.Location = new System.Drawing.Point(12, 12);
+            this.picBackPlate.Name = "picBackPlate";
+            this.picBackPlate.Size = new System.Drawing.Size(410, 192);
+            this.picBackPlate.TabIndex = 7;
+            this.picBackPlate.TabStop = false;
+            // 
             // VerificationCodeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(434, 216);
             this.Controls.Add(this.BtnCancelVerification);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodeEntered);
             this.Controls.Add(this.BtnSubmitCode);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.picBackPlate);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerificationCodeForm";
             this.Text = "Noter - Verification Code";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.VerificationCodeForm_FormClosed);
+            ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +131,6 @@
         private System.Windows.Forms.TextBox txtCodeEntered;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button BtnCancelVerification;
+        private System.Windows.Forms.PictureBox picBackPlate;
     }
 }

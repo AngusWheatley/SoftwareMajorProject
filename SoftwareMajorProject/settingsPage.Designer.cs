@@ -194,6 +194,7 @@
             this.Name = "settingsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Noter - Settings";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.settingsPage_FormClosed);
             this.Load += new System.EventHandler(this.Settings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             this.ResumeLayout(false);

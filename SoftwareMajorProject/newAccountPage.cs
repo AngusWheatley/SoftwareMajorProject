@@ -286,6 +286,12 @@ namespace SoftwareMajorProject
             }
         }
 
+        private void NewAccountPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoginPage LoginPage = new LoginPage();
+            this.Hide();
+            LoginPage.Show();
+        }
     }
 
 }

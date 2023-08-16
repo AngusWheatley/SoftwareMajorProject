@@ -133,5 +133,12 @@ namespace SoftwareMajorProject
             this.Hide();
             otherInformationPage.Show();
         }
+
+        private void HomePage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoginPage LoginPage = new LoginPage();
+            this.Hide();
+            LoginPage.Show();
+        }
     }
 }

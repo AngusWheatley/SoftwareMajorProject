@@ -142,5 +142,11 @@ namespace SoftwareMajorProject
         }
         //Loads the 'diaryViewrerPage' form
 
+        private void DiaryEditorPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            HomePage HomePage = new HomePage(userName);
+            this.Hide();
+            HomePage.Show();
+        }
     }
 }

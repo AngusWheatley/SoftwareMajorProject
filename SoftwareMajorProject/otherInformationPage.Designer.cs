@@ -110,6 +110,7 @@
             this.Name = "OtherInformationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Other Information - Noter";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OtherInformationPage_FormClosed);
             this.Load += new System.EventHandler(this.OtherInformationPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picBackPlate)).EndInit();
             this.ResumeLayout(false);
