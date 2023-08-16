@@ -145,7 +145,7 @@ namespace SoftwareMajorProject
 
         private void TimerCheckNotifications_Tick(object sender, EventArgs e)
         {
-            MessageBox.Show("Searching for overdue notifications, please wait.");
+            //MessageBox.Show("Searching for overdue notifications, please wait.");
 
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
@@ -251,6 +251,55 @@ namespace SoftwareMajorProject
 
                 }
             }
+        }
+
+        private void LoginPage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+            DialogResult closingNoterResult = MessageBox.Show("Are you sure you want to close Noter?", "Noter", MessageBoxButtons.YesNo);
+            if (closingNoterResult == DialogResult.Yes)
+            {
+                DialogResult closingNoterConfirmationResult = MessageBox.Show("This will mean you will not recieve your notificaions until you open Noter again. Do you wish to continue?", "Noter", MessageBoxButtons.YesNo);
+                if (closingNoterConfirmationResult == DialogResult.Yes) 
+                {
+                    e.Cancel = false;
+                    Application.ExitThread();
+                }
+                else if (closingNoterConfirmationResult == DialogResult.No)
+                {
+                    DialogResult minimizingNoterResult = MessageBox.Show("Would you like to minimize Noter?", "Noter", MessageBoxButtons.YesNo);
+                    if (minimizingNoterResult == DialogResult.Yes)
+                    {
+                        e.Cancel = true;
+                        this.WindowState = FormWindowState.Minimized;
+                    }
+                    else if (minimizingNoterResult == DialogResult.No)
+                    {
+                        e.Cancel = true;
+
+                        this.WindowState = FormWindowState.Maximized;
+                    }
+
+                }
+
+            }
+            else if (closingNoterResult == DialogResult.No)
+            {
+                DialogResult minimizingNoterResult = MessageBox.Show("Would you like to minimize Noter?????", "Noter", MessageBoxButtons.YesNo);
+                if (minimizingNoterResult == DialogResult.Yes)
+                {
+                    e.Cancel = true;
+                    this.WindowState = FormWindowState.Minimized;
+                }
+                else if (minimizingNoterResult == DialogResult.No)
+                {
+                    //this.WindowState= FormWindowState.Normal;
+
+                    e.Cancel = true;
+
+                }
+            }
+
         }
     }
 }
