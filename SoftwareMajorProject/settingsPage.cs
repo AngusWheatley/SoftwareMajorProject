@@ -29,19 +29,25 @@ namespace SoftwareMajorProject
 
         private void Settings_Load(object sender, EventArgs e)
         {
+            AddListsToComboBoxes();
 
+            SetObjectFeatures();
+
+        }
+
+        private void AddListsToComboBoxes()
+        {
             CmbBackgroundColour.DataSource = typeof(Color).GetProperties().Where(x => x.PropertyType == typeof(Color)).Select(x => x.GetValue(null)).ToList();
             CmbForegroundColour.DataSource = typeof(Color).GetProperties().Where(x => x.PropertyType == typeof(Color)).Select(x => x.GetValue(null)).ToList();
-
-            //cmbFontType.DataSource = typeof(Font).GetProperties().Where(y => y.PropertyType == typeof(Font)).Select(x => x.GetValue(null)).ToList();
 
             foreach (FontFamily font in FontFamily.Families)
             {
                 cmbFontType.Items.Add(font.Name.ToString());
             }
+        }
 
-
-
+        private void SetObjectFeatures()
+        {
             SQLiteConnection sqlConnection = new SQLiteConnection();
             sqlConnection.ConnectionString = "DataSource = noterDatabase.db";
 
@@ -95,7 +101,6 @@ namespace SoftwareMajorProject
 
                 }
             }
-
         }
 
         private void BtnSaveSettings_Click(object sender, EventArgs e)

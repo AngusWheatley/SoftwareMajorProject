@@ -57,12 +57,17 @@ namespace SoftwareMajorProject
             string notificationTitle = txtNotificationTitle.Text;
             string notificationDescription = txtNotificationDescription.Text;
             string notificationLocation = txtNotificationLocation.Text;
-            notificationDateTime = notificationDateSelected + " " +CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
+            notificationDateTime = notificationDateSelected + " " + CmbNotificationHour.Text + ":" + CmbNotificationMinute.Text + ":00 " + CmbNotificationPeriod.Text;
 
 
 
-            if (notificationDateSelected != "" && CmbNotificationHour.Text != "" && CmbNotificationMinute.Text != "" && CmbNotificationPeriod.Text != "")
+            if (notificationTitle != "" && notificationDescription != "" && notificationDateSelected != "" && CmbNotificationHour.Text != null && CmbNotificationMinute.Text != null && CmbNotificationPeriod.Text != null)
             {
+                if (notificationLocation == "")
+                {
+                    notificationLocation = "No Location Added.";
+                }
+
                 DateTime dateTimeNow = DateTime.Now;
                 DateTime fullNotificationDateTime = Convert.ToDateTime(notificationDateTime);
 
@@ -85,6 +90,11 @@ namespace SoftwareMajorProject
                 }
                 LoadUserNotifications(); //Loads user notifications into data grid view
             }
+            else
+            {
+                MessageBox.Show("Make sure you have entered all information into notification.");
+            }
+
         }
 
         private void ClearNewNotificationFields()
@@ -189,7 +199,7 @@ namespace SoftwareMajorProject
         {
             DgvCurrentNotifications.ClearSelection();
 
-            MessageBox.Show("Searching for overdue notifications, please wait.");
+            //MessageBox.Show("Searching for overdue notifications, please wait.");
 
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
@@ -407,15 +417,13 @@ namespace SoftwareMajorProject
         {
             DgvCurrentNotifications.ClearSelection();
 
-            MessageBox.Show("Searching for overdue notifications, please wait.");
+            //MessageBox.Show("Searching for overdue notifications, please wait.");
 
 
             SQLiteConnection sqlConnectionNotificationsCheck = new SQLiteConnection();
             sqlConnectionNotificationsCheck.ConnectionString = "DataSource = noterDatabase.db";
 
             string insertNotificationsCommand = "SELECT * FROM 'Notifications'";
-
-
 
             var dataTableNotifications = new DataTable();
             SQLiteDataAdapter notificationsDataAdapter = new SQLiteDataAdapter(insertNotificationsCommand, sqlConnectionNotificationsCheck);

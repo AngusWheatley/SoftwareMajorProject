@@ -29,9 +29,7 @@ namespace SoftwareMajorProject
 
         }
 
-        /// <summary>
-        /// Sets up how the form looks based on the user's settings.
-        /// </summary>
+        //Sets up how user interface based on the user's settings.
         private void SetObjectFeatures()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -79,6 +77,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Takes the user back to the home page. 
         private void BtnHome_Click(object sender, EventArgs e)
         {
             HomePage HomePage = new HomePage(userName);
@@ -88,6 +87,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Inserts the given diary entry information into the users diary database. 
         private void BtnSaveEntry_Click(object sender, EventArgs e)
         {
             string diaryTitle = TxtEntryTitle.Text;
@@ -126,22 +126,22 @@ namespace SoftwareMajorProject
                 MessageBox.Show("Please make sure you have entered all information for this diary entry.");
             }
         }
-        //Inserts the given diary entry information into the users diary database
 
+        //Sets the 'diaryDate' variable to the selected date
         private void CalDiaryEntryDate_DateSelected(object sender, DateRangeEventArgs e)
         {
             diaryDate = e.Start.ToShortDateString();
         }
-        //Sets the 'diaryDate' variable to the selected date
 
+        //Loads the 'diaryViewrerPage' form
         private void BtnAllEntries_Click(object sender, EventArgs e)
         {
             DiaryViewerPage DiaryViewerPage = new DiaryViewerPage(userName);
             this.Hide();
             DiaryViewerPage.Show();
         }
-        //Loads the 'diaryViewrerPage' form
 
+        //Loads the Home Page when the form is closed.
         private void DiaryEditorPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             HomePage HomePage = new HomePage(userName);

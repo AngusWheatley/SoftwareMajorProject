@@ -31,6 +31,7 @@ namespace SoftwareMajorProject
             ClearTextboxes();
         }
 
+        //Gets the information of the row selected in the data grid view and places it into the textboxes. 
         private void DgvDiaryViewer_SelectionChanged(object sender, EventArgs e)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -58,6 +59,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Takes the user back to the Home page. 
         private void BtnHome_Click(object sender, EventArgs e)
         {
             HomePage HomePage = new HomePage(userNameLoggedIn);
@@ -65,6 +67,7 @@ namespace SoftwareMajorProject
             HomePage.Show();
         }
 
+        //Takes the user back to the Diary Entry Page page. 
         private void BtnBack_Click(object sender, EventArgs e)
         {
             DiaryEditorPage DiaryEditorPage = new DiaryEditorPage(userNameLoggedIn);
@@ -72,6 +75,7 @@ namespace SoftwareMajorProject
             DiaryEditorPage.Show();
         }
 
+        //Searches the users diary for entries with the specified search query. 
         private void BtnSearchDiaryEntries_Click(object sender, EventArgs e)
         {
 
@@ -96,17 +100,20 @@ namespace SoftwareMajorProject
             ClearTextboxes();
         }
 
+        //Resets the users search query. 
         private void BtnResetSearchDiaryEntries_Click(object sender, EventArgs e)
         {
             ShowUserDiaryEntries();
             ClearTextboxes();
         }
 
+        //Gets the date selected by the user. 
         private void CalEntryDate_DateSelected(object sender, DateRangeEventArgs e)
         {
             searchDiaryDate = e.Start.ToShortDateString();
         }
 
+        //Sets up how user interface based on the user's settings.
         private void SetObjectFeatures()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -165,6 +172,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Clears the textboxes for the diary entry. 
         private void ClearTextboxes()
         {
             TxtEntryTitle.Text = "";
@@ -172,6 +180,7 @@ namespace SoftwareMajorProject
             txtEntryDate.Text = "";
         }
 
+        //Displays the user's diary entries in the data table. 
         private void ShowUserDiaryEntries()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -193,6 +202,7 @@ namespace SoftwareMajorProject
             DgvDiaryViewer.Columns[2].Width = 160;
         }
 
+        //Takes the user back to the Home page. 
         private void DiaryViewerPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             HomePage HomePage = new HomePage(userNameLoggedIn);
