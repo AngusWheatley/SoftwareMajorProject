@@ -57,6 +57,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Checks if the user trying to login has valid information in the database and logs them in if the information is correct. 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             userName = txtUserName.Text;
@@ -143,6 +144,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Checks if any of te notifications are overdue
         private void TimerCheckNotifications_Tick(object sender, EventArgs e)
         {
             //MessageBox.Show("Searching for overdue notifications, please wait.");
@@ -172,13 +174,11 @@ namespace SoftwareMajorProject
                 int comparedDates = fullNotificationDateTime.CompareTo(dateTimeNow); //Compared the dateTime of the notification to the current dateTime
                 if (comparedDates < 0) //Occurs when the date is past current date
                 {
-
                     int i = 1;
 
                     {
                         string checkIfNotificationOverdueCommand = "SELECT * FROM 'UserInfo'";
                         SQLiteDataAdapter notificationOverdueDataAdapter = new SQLiteDataAdapter(checkIfNotificationOverdueCommand, sqlConnectionNotificationsCheck);
-
 
 
                         var dataTableUserInfo = new DataTable();
@@ -222,7 +222,7 @@ namespace SoftwareMajorProject
                                 }
                                 catch (Exception ex)
                                 {
-                                    MessageBox.Show("Failed to send. Error: " + ex.Message);
+                                    //MessageBox.Show("Failed to send. Error: " + ex.Message);
                                 }
 
 

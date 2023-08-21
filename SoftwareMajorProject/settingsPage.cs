@@ -35,6 +35,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Puts all colours and fonts into combo boxes. 
         private void AddListsToComboBoxes()
         {
             CmbBackgroundColour.DataSource = typeof(Color).GetProperties().Where(x => x.PropertyType == typeof(Color)).Select(x => x.GetValue(null)).ToList();
@@ -46,6 +47,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Sets up how user interface based on the user's settings.
         private void SetObjectFeatures()
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();
@@ -103,6 +105,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Saves the users new settings. 
         private void BtnSaveSettings_Click(object sender, EventArgs e)
         {
             backgroundColourSelected = CmbBackgroundColour.Text;
@@ -161,6 +164,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Loads the HomePage. 
         private void BtnHome_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want these settings?", "", MessageBoxButtons.YesNo);
@@ -172,6 +176,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Loads the HomePage when the application is closed. 
         private void settingsPage_FormClosed(object sender, FormClosedEventArgs e)
         {
             HomePage HomePage = new HomePage(userName);

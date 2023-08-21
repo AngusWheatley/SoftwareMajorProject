@@ -49,6 +49,7 @@ namespace SoftwareMajorProject
             HomePage.Show();
         }
 
+        //Saves the notification entered. 
         private void BtnSaveNotification_Click(object sender, EventArgs e)
         {
 
@@ -97,6 +98,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Clears the information entered into the notification. 
         private void ClearNewNotificationFields()
         {
             txtNotificationTitle.Text = null;
@@ -108,6 +110,7 @@ namespace SoftwareMajorProject
             CalNotificationDate.SelectionStart = DateTime.Now;
         }
 
+        //Adds the notification entered to the Notifications database. 
         private void AddNotificationToDatabase(string notificationTitle, string notificationDescription, string notificationLocation)
         {
             SQLiteConnection sqlConnection = new SQLiteConnection();

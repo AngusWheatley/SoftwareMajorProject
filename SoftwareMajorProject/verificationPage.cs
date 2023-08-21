@@ -38,6 +38,7 @@ namespace SoftwareMajorProject
             InitializeComponent();
         }
 
+        //Checks if the code entered is correct, then makes the users account into the database. 
         private void BtnSubmitCode_Click(object sender, EventArgs e)
         {
             string codeEntered = txtCodeEntered.Text;
@@ -176,6 +177,7 @@ namespace SoftwareMajorProject
             }
         }
 
+        //Loads the LoginPage whenthe user closes the application. 
         private void VerificationCodeForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             LoginPage LoginPage = new LoginPage();

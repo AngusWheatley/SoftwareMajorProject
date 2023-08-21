@@ -48,6 +48,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Gets the users information for a new account and checks if its valid. 
         private void BtnSignUp_Click(object sender, EventArgs e)
         {
             userName = txtUserName.Text;

@@ -28,6 +28,7 @@ namespace SoftwareMajorProject
 
         }
 
+        //Sets up how user interface based on the user's settings.
         private void SetObjectFeaturers()
         {
             lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);

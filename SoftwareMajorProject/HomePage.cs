@@ -61,6 +61,7 @@ namespace SoftwareMajorProject
             settings.Show();
         }
 
+        //Logs out the user by loading the loginPage form. 
         private void LogOut()
         {
             string logOutMessage = "Are You Sure You Want To Log Out?";
@@ -81,7 +82,8 @@ namespace SoftwareMajorProject
                 MessageBox.Show("Successfully Remained Logged In");
             }
         }
-        
+
+        //Sets up how user interface based on the user's settings.
         private void SetObjectFeatures()
         {
             lblTitle.Left = (this.Width / 2) - (lblTitle.Size.Width / 2);
